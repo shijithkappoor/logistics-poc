@@ -1,0 +1,165 @@
+{
+  "name": "Logistics POC Bootstrap",
+  "env": { "project": "logistics-poc", "repo": "git@github.com:your-org/logistics-poc.git" },
+  "steps": [
+    {
+      "id": "s01-structure",
+      "title": "Create folders and init git",
+      "actions": [
+        { "type": "mkdir", "path": "logistics-poc" },
+        { "type": "run", "command": "cd logistics-poc && git init" },
+        { "type": "mkdir", "path": "logistics-poc/backend" },
+        { "type": "mkdir", "path": "logistics-poc/frontend" },
+        { "type": "mkdir", "path": "logistics-poc/schemas" },
+        { "type": "mkdir", "path": "logistics-poc/seed" },
+        { "type": "mkdir", "path": "logistics-poc/infra" },
+        {
+          "type": "write_file",
+          "path": "logistics-poc/.gitignore",
+          "content": "node_modules/\n.vscode/\n.env*\n.venv/\n__pycache__/\ndist/\nfrontend/dist/\n"
+        },
+        {
+          "type": "write_file",
+          "path": "logistics-poc/.editorconfig",
+          "content": "root = true\n[*]\nindent_style = space\nindent_size = 2\nend_of_line = lf\ncharset = utf-8\ntrim_trailing_whitespace = true\ninsert_final_newline = true\n"
+        },
+        { "type": "git_commit", "message": "chore: init repo structure" }
+      ]
+    },
+    {
+      "id": "s02-tools-macos",
+      "title": "Install core tools (macOS)",
+      "when": { "os": "macos" },
+      "actions": [
+        { "type": "run", "command": "brew update" },
+        { "type": "run", "command": "brew install git gh volta" },
+        { "type": "run", "command": "brew install --cask docker visual-studio-code" },
+        { "type": "run", "command": "curl -LsSf https://astral.sh/uv/install.sh | sh" },
+        { "type": "run", "command": "volta install node@20 yarn" },
+        { "type": "git_commit", "message": "chore: install core dev tools on macOS" }
+      ]
+    },
+    {
+      "id": "s03-tools-linux",
+      "title": "Install core tools (Linux)",
+      "when": { "os": "linux" },
+      "actions": [
+        { "type": "run", "command": "sudo apt-get update && sudo apt-get install -y git curl build-essential" },
+        { "type": "run", "command": "curl https://get.volta.sh | bash -s -- -y" },
+        { "type": "run", "command": "$HOME/.volta/bin/volta install node@20 yarn" },
+        { "type": "run", "command": "curl -LsSf https://astral.sh/uv/install.sh | sh" },
+        { "type": "run", "command": "sudo apt-get install -y docker.io && sudo usermod -aG docker $USER || true" },
+        { "type": "git_commit", "message": "chore: install core dev tools on Linux" }
+      ]
+    },
+    {
+      "id": "s04-tools-windows",
+      "title": "Install core tools (Windows + WSL2)",
+      "when": { "os": "windows" },
+      "actions": [
+        { "type": "run", "shell": "powershell", "command": "wsl --install" },
+        { "type": "run", "shell": "powershell", "command": "winget install --id Git.Git -e --source winget" },
+        { "type": "run", "shell": "powershell", "command": "winget install --id Docker.DockerDesktop -e --source winget" },
+        { "type": "run", "shell": "powershell", "command": "winget install --id Microsoft.VisualStudioCode -e --source winget" },
+        { "type": "run", "shell": "powershell", "command": "wsl -d Ubuntu -- bash -lc 'curl https://get.volta.sh | bash -s -- -y && ~/.volta/bin/volta install node@20 yarn && curl -LsSf https://astral.sh/uv/install.sh | sh'" },
+        { "type": "git_commit", "message": "chore: install core dev tools on Windows/WSL2" }
+      ]
+    },
+    {
+      "id": "s05-backend",
+      "title": "Scaffold FastAPI backend",
+      "actions": [
+        {
+          "type": "write_file",
+          "path": "logistics-poc/backend/pyproject.toml",
+          "content": "[project]\nname = \"logistics-backend\"\nversion = \"0.1.0\"\nrequires-python = \">=3.11\"\ndependencies = [\"fastapi\",\"uvicorn[standard]\",\"pydantic-settings\",\"orjson\",\"sqlalchemy\",\"asyncpg\",\"alembic\",\"websockets\",\"python-dotenv\"]\n"
+        },
+        {
+          "type": "write_file",
+          "path": "logistics-poc/backend/app/main.py",
+          "content": "from fastapi import FastAPI\nfrom fastapi.middleware.cors import CORSMiddleware\napp = FastAPI(title=\"Logistics POC API\")\napp.add_middleware(CORSMiddleware, allow_origins=[\"*\"], allow_methods=[\"*\"], allow_headers=[\"*\"], allow_credentials=True)\n\n@app.get('/health')\ndef health():\n    return {\"ok\": True}\n\n@app.get('/warehouses')\ndef warehouses():\n    return [\n      {\"id\":\"W-BRAMPTON-DC\",\"name\":\"Martin Brower Brampton DC\",\"lat\":43.7505,\"lon\":-79.6773},\n      {\"id\":\"W-OSHAWA-DC\",\"name\":\"Martin Brower Oshawa DC\",\"lat\":43.9537,\"lon\":-78.8690}\n    ]\n"
+        },
+        {
+          "type": "write_file",
+          "path": "logistics-poc/backend/.env.example",
+          "content": "DATABASE_URL=postgresql+asyncpg://postgres:postgres@localhost:5432/logistics\n"
+        },
+        { "type": "git_commit", "message": "feat(api): FastAPI skeleton with /health and /warehouses" }
+      ]
+    },
+    {
+      "id": "s06-frontend",
+      "title": "Scaffold React + Vite frontend",
+      "actions": [
+        { "type": "run", "command": "cd logistics-poc/frontend && npm create vite@latest . -- --template react-ts" },
+        { "type": "run", "command": "cd logistics-poc/frontend && npm i maplibre-gl zustand" },
+        { "type": "run", "command": "cd logistics-poc/frontend && npm i -D eslint prettier @types/node vite-plugin-svgr" },
+        {
+          "type": "write_file",
+          "path": "logistics-poc/frontend/src/App.tsx",
+          "content": "import { useEffect, useRef } from 'react'\nimport maplibregl from 'maplibre-gl'\nimport 'maplibre-gl/dist/maplibre-gl.css'\nfunction App(){\n  const ref=useRef<HTMLDivElement>(null)\n  useEffect(()=>{ if(!ref.current) return; const map=new maplibregl.Map({container:ref.current,style:'https://demotiles.maplibre.org/style.json',center:[-79.3832,43.6532],zoom:9});\n    fetch('http://localhost:8000/warehouses').then(r=>r.json()).then(ws=>ws.forEach((w:any)=> new maplibregl.Marker({color:'#0b5'}).setLngLat([w.lon,w.lat]).setPopup(new maplibregl.Popup().setText(w.name)).addTo(map)));\n    return ()=>map.remove(); },[])\n  return <div ref={ref} style={{height:'100vh'}}/>\n}\nexport default App\n"
+        },
+        { "type": "git_commit", "message": "feat(web): Vite React app with MapLibre and warehouse markers" }
+      ]
+    },
+    {
+      "id": "s07-infra",
+      "title": "Add Docker Compose (Postgres, Redis)",
+      "actions": [
+        {
+          "type": "write_file",
+          "path": "logistics-poc/infra/docker-compose.yml",
+          "content": "version: '3.9'\nservices:\n  db:\n    image: postgres:15\n    environment:\n      - POSTGRES_PASSWORD=postgres\n      - POSTGRES_DB=logistics\n    ports: ['5432:5432']\n  redis:\n    image: redis:7\n    ports: ['6379:6379']\n"
+        },
+        { "type": "git_commit", "message": "chore(infra): docker-compose for Postgres and Redis" }
+      ]
+    },
+    {
+      "id": "s08-vscode",
+      "title": "VS Code extensions & settings",
+      "actions": [
+        {
+          "type": "write_file",
+          "path": "logistics-poc/.vscode/extensions.json",
+          "content": "{\n  \"recommendations\": [\n    \"ms-python.python\",\"charliermarsh.ruff\",\"ms-azuretools.vscode-docker\",\n    \"esbenp.prettier-vscode\",\"dbaeumer.vscode-eslint\",\n    \"ms-vscode.vscode-typescript-next\",\"github.copilot\",\"rangav.vscode-thunder-client\"\n  ]\n}\n"
+        },
+        {
+          "type": "write_file",
+          "path": "logistics-poc/.vscode/settings.json",
+          "content": "{\n  \"editor.formatOnSave\": true,\n  \"files.eol\": \"\\n\",\n  \"python.analysis.typeCheckingMode\": \"basic\",\n  \"python.formatting.provider\": \"black\",\n  \"[python]\": { \"editor.defaultFormatter\": \"ms-python.python\" },\n  \"[typescript]\": { \"editor.defaultFormatter\": \"esbenv.prettier-vscode\" },\n  \"editor.codeActionsOnSave\": { \"source.fixAll.eslint\": true }\n}\n"
+        },
+        {
+          "type": "install_extensions",
+          "extensions": [
+            "ms-python.python","charliermarsh.ruff","ms-azuretools.vscode-docker",
+            "esbenp.prettier-vscode","dbaeumer.vscode-eslint",
+            "ms-vscode.vscode-typescript-next","github.copilot","rangav.vscode-thunder-client"
+          ]
+        },
+        { "type": "git_commit", "message": "chore(ide): VS Code settings and recommended extensions" }
+      ]
+    },
+    {
+      "id": "s09-run",
+      "title": "First local run",
+      "actions": [
+        { "type": "run", "command": "cd logistics-poc/infra && docker compose up -d" },
+        { "type": "run", "command": "cd logistics-poc/backend && uv pip install -e . && uvicorn app.main:app --reload --port 8000" },
+        { "type": "run", "command": "cd logistics-poc/frontend && npm install && npm run dev" },
+        { "type": "git_commit", "message": "chore: first local run verified (compose up, API & web)" }
+      ]
+    },
+    {
+      "id": "s10-readme",
+      "title": "Add README",
+      "actions": [
+        {
+          "type": "write_file",
+          "path": "logistics-poc/README.md",
+          "content": "# Logistics POC\\n\\n## Quick start\\n\\n```bash\\ncd infra && docker compose up -d\\ncd backend && uv pip install -e . && uvicorn app.main:app --reload --port 8000\\ncd frontend && npm install && npm run dev\\n```\\n"
+        },
+        { "type": "git_commit", "message": "docs: add README with quick start" }
+      ]
+    }
+  ]
+}

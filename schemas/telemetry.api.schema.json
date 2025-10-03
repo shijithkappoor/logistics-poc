@@ -1,0 +1,143 @@
+{
+  "$id": "https://example.com/schemas/telemetry.api.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Telemetry – Models, WS Messages & REST Fallbacks",
+  "type": "object",
+  "definitions": {
+    "TruckState": {
+      "type": "string",
+      "enum": ["idle", "en_route", "at_stop", "unloading", "done"]
+    },
+    "TelemetryEvent": {
+      "type": "object",
+      "required": ["truck_id", "ts", "lat", "lon", "speed_kph", "status"],
+      "properties": {
+        "truck_id": { "type": "string" },
+        "ts": { "$ref": "common.types.schema.json#/definitions/ISODateTime" },
+        "lat": { "$ref": "common.types.schema.json#/definitions/Lat" },
+        "lon": { "$ref": "common.types.schema.json#/definitions/Lon" },
+        "speed_kph": { "type": "number", "minimum": 0 },
+        "heading_deg": { "type": "number", "minimum": 0, "maximum": 360 },
+        "matched_edge_id": { "type": "string" },
+        "h3": { "$ref": "common.types.schema.json#/definitions/H3Cell" },
+        "status": { "$ref": "#/definitions/TruckState" }
+      },
+      "additionalProperties": false
+    },
+
+    /* ---------- WebSocket: server → client ---------- */
+
+    "WsServerEnvelope": {
+      "type": "object",
+      "required": ["type", "ts"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["telemetry.tick", "heartbeat", "replay.eof", "error"]
+        },
+        "ts": { "$ref": "common.types.schema.json#/definitions/ISODateTime" },
+        "data": {
+          "oneOf": [
+            {
+              "type": "object",
+              "required": ["events", "cadence_sec"],
+              "properties": {
+                "events": {
+                  "type": "array",
+                  "items": { "$ref": "#/definitions/TelemetryEvent" },
+                  "description": "Batch of telemetry for this tick (3s nominal)"
+                },
+                "cadence_sec": { "type": "number", "minimum": 0.5, "maximum": 10 }
+              },
+              "additionalProperties": false
+            },
+            { "type": "null" },
+            {
+              "type": "object",
+              "required": ["message"],
+              "properties": { "message": { "type": "string" } },
+              "additionalProperties": false
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+
+    /* ---------- WebSocket: client → server ---------- */
+
+    "WsClientEnvelope": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "subscribe.telemetry",
+            "unsubscribe.telemetry",
+            "replay.start",
+            "replay.stop",
+            "set.cadence"
+          ]
+        },
+        "filters": {
+          "type": "object",
+          "properties": {
+            "truck_ids": { "type": "array", "items": { "type": "string" } },
+            "bbox": {
+              "type": "array",
+              "items": { "type": "number" },
+              "minItems": 4,
+              "maxItems": 4,
+              "description": "west, south, east, north (lon/lat)"
+            }
+          },
+          "additionalProperties": false
+        },
+        "replay": {
+          "type": "object",
+          "properties": {
+            "from": { "$ref": "common.types.schema.json#/definitions/ISODateTime" },
+            "to": { "$ref": "common.types.schema.json#/definitions/ISODateTime" },
+            "speed": { "type": "number", "enum": [1, 2, 4] }
+          },
+          "additionalProperties": false
+        },
+        "cadence_sec": { "type": "number", "minimum": 1, "maximum": 10 }
+      },
+      "additionalProperties": false
+    },
+
+    /* ---------- REST fallbacks / helpers ---------- */
+
+    "TelemetryPollResponse": {
+      "type": "object",
+      "required": ["events", "server_ts"],
+      "properties": {
+        "events": { "type": "array", "items": { "$ref": "#/definitions/TelemetryEvent" } },
+        "server_ts": { "$ref": "common.types.schema.json#/definitions/ISODateTime" }
+      },
+      "additionalProperties": false
+    },
+    "ReplayRequest": {
+      "type": "object",
+      "required": ["from", "to"],
+      "properties": {
+        "from": { "$ref": "common.types.schema.json#/definitions/ISODateTime" },
+        "to": { "$ref": "common.types.schema.json#/definitions/ISODateTime" },
+        "speed": { "type": "number", "enum": [1, 2, 4], "default": 4 },
+        "truck_ids": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": false
+    },
+    "ReplayAck": {
+      "type": "object",
+      "required": ["status", "replay_id"],
+      "properties": {
+        "status": { "type": "string", "enum": ["started", "stopped"] },
+        "replay_id": { "type": "string" }
+      },
+      "additionalProperties": false
+    }
+  }
+}

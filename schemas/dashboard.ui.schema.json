@@ -1,0 +1,203 @@
+{
+  "$id": "https://example.com/schemas/dashboard.ui.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Dashboard UI – Layout, Widgets, Roles, Data Sources",
+  "type": "object",
+  "required": ["version", "layout", "widgets", "datasources"],
+  "properties": {
+    "version": { "type": "string", "default": "1.0.0" },
+
+    "roles": {
+      "type": "array",
+      "items": { "type": "string", "enum": ["ops", "warehouse", "admin"] },
+      "default": ["ops", "warehouse", "admin"]
+    },
+
+    "datasources": {
+      "type": "object",
+      "required": ["apiBase"],
+      "properties": {
+        "apiBase": { "type": "string", "default": "http://localhost:8000" },
+        "telemetryWS": { "type": "string", "default": "ws://localhost:8000/stream/telemetry" },
+        "routes": {
+          "type": "object",
+          "properties": {
+            "planRun": { "type": "string", "default": "/plan/run" },
+            "reRoute": { "type": "string", "default": "/reroute" },
+            "kpiSnapshot": { "type": "string", "default": "/kpi/snapshot" }
+          },
+          "additionalProperties": false
+        },
+        "orders": {
+          "type": "object",
+          "properties": {
+            "generate": { "type": "string", "default": "/orders/generate" },
+            "list": { "type": "string", "default": "/orders" },
+            "get": { "type": "string", "default": "/orders/{id}" }
+          },
+          "additionalProperties": false
+        },
+        "traffic": {
+          "type": "object",
+          "properties": {
+            "snapshot": { "type": "string", "default": "/traffic/snapshot" },
+            "incidents": { "type": "string", "default": "/traffic/incidents" }
+          },
+          "additionalProperties": false
+        },
+        "inventory": {
+          "type": "object",
+          "properties": {
+            "snapshot": { "type": "string", "default": "/inventory/snapshot" },
+            "reserve": { "type": "string", "default": "/inventory/reserve" },
+            "release": { "type": "string", "default": "/inventory/release" },
+            "events": { "type": "string", "default": "/inventory/events" },
+            "feasibility": { "type": "string", "default": "/inventory/feasibility" }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "layout": {
+      "type": "object",
+      "required": ["grid", "panels"],
+      "properties": {
+        "grid": {
+          "type": "object",
+          "required": ["columns", "rowHeight"],
+          "properties": {
+            "columns": { "type": "integer", "minimum": 4, "maximum": 24, "default": 12 },
+            "rowHeight": { "type": "integer", "minimum": 40, "maximum": 200, "default": 80 },
+            "gap": { "type": "integer", "minimum": 0, "maximum": 40, "default": 8 }
+          },
+          "additionalProperties": false
+        },
+        "panels": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "widget", "x", "y", "w", "h"],
+            "properties": {
+              "id": { "type": "string" },
+              "widget": { "type": "string" },
+              "title": { "type": "string" },
+              "x": { "type": "integer", "minimum": 0 },
+              "y": { "type": "integer", "minimum": 0 },
+              "w": { "type": "integer", "minimum": 1 },
+              "h": { "type": "integer", "minimum": 1 },
+              "roles": { "type": "array", "items": { "type": "string" } },
+              "refreshSec": { "type": "integer", "minimum": 0, "default": 30 },
+              "props": { "type": "object" }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "widgets": {
+      "type": "object",
+      "description": "Widget definitions; props are validated per type",
+      "properties": {
+        "Map": {
+          "type": "object",
+          "required": ["type"],
+          "properties": {
+            "type": { "const": "Map" },
+            "center": {
+              "type": "array",
+              "items": [{ "type": "number" }, { "type": "number" }],
+              "minItems": 2,
+              "maxItems": 2,
+              "default": [-79.3832, 43.6532]
+            },
+            "zoom": { "type": "number", "minimum": 0, "maximum": 22, "default": 9 },
+            "layers": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["id", "kind", "visible"],
+                "properties": {
+                  "id": { "type": "string" },
+                  "kind": {
+                    "type": "string",
+                    "enum": ["warehouses", "franchisees", "trucks", "trails", "traffic", "incidents", "h3"]
+                  },
+                  "visible": { "type": "boolean", "default": true },
+                  "style": { "type": "object" }
+                },
+                "additionalProperties": false
+              },
+              "default": [
+                { "id": "warehouses", "kind": "warehouses", "visible": true },
+                { "id": "trucks", "kind": "trucks", "visible": true },
+                { "id": "trails", "kind": "trails", "visible": false },
+                { "id": "traffic", "kind": "traffic", "visible": false }
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+
+        "KPIs": {
+          "type": "object",
+          "required": ["type"],
+          "properties": {
+            "type": { "const": "KPIs" },
+            "metrics": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["id", "label", "source"],
+                "properties": {
+                  "id": { "type": "string" },
+                  "label": { "type": "string" },
+                  "source": {
+                    "type": "string",
+                    "enum": ["kpiSnapshot", "telemetryDerived", "custom"]
+                  },
+                  "format": { "type": "string", "enum": ["pct", "int", "float", "duration"], "default": "float" }
+                },
+                "additionalProperties": false
+              },
+              "default": [
+                { "id": "on_time_pct", "label": "On-time %", "source": "kpiSnapshot", "format": "pct" },
+                { "id": "overlap_pct", "label": "Overlap %", "source": "kpiSnapshot", "format": "pct" },
+                { "id": "utilization_median", "label": "Utilization (p50)", "source": "kpiSnapshot", "format": "pct" }
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+
+        "RoutesTable": {
+          "type": "object",
+          "required": ["type"],
+          "properties": {
+            "type": { "const": "RoutesTable" },
+            "pageSize": { "type": "integer", "minimum": 5, "maximum": 100, "default": 20 }
+          },
+          "additionalProperties": false
+        },
+
+        "Exceptions": {
+          "type": "object",
+          "required": ["type"],
+          "properties": {
+            "type": { "const": "Exceptions" },
+            "kinds": {
+              "type": "array",
+              "items": { "type": "string", "enum": ["eta_risk", "stock", "overlap", "late_order"] },
+              "default": ["eta_risk", "stock", "overlap"]
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

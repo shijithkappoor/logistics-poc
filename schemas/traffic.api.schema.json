@@ -1,0 +1,164 @@
+{
+  "$id": "https://example.com/schemas/traffic.api.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Traffic – Time-Dependent Speeds & Incidents",
+  "type": "object",
+  "definitions": {
+    "EdgeId": { "type": "string", "description": "Internal road segment id" },
+
+    "TrafficSource": {
+      "type": "string",
+      "enum": ["live", "historic", "imputed"]
+    },
+
+    "SpeedPoint": {
+      "type": "object",
+      "required": ["ts", "speed_kph"],
+      "properties": {
+        "ts": { "$ref": "common.types.schema.json#/definitions/ISODateTime" },
+        "speed_kph": { "type": "number", "minimum": 0 }
+      },
+      "additionalProperties": false
+    },
+
+    "TrafficEdge": {
+      "type": "object",
+      "required": ["edge_id", "ts", "speed_kph", "source", "confidence"],
+      "properties": {
+        "edge_id": { "$ref": "#/definitions/EdgeId" },
+        "ts": { "$ref": "common.types.schema.json#/definitions/ISODateTime" },
+        "speed_kph": { "type": "number", "minimum": 0 },
+        "source": { "$ref": "#/definitions/TrafficSource" },
+        "confidence": { "$ref": "common.types.schema.json#/definitions/Percent0to1" },
+        "geom": {
+          "type": "object",
+          "description": "Optional GeoJSON LineString for visualization",
+          "properties": {
+            "type": { "const": "LineString" },
+            "coordinates": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": [
+                  { "$ref": "common.types.schema.json#/definitions/Lon" },
+                  { "$ref": "common.types.schema.json#/definitions/Lat" }
+                ],
+                "minItems": 2,
+                "maxItems": 2
+              }
+            }
+          },
+          "required": ["type", "coordinates"],
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "IncidentType": {
+      "type": "string",
+      "enum": ["closure", "accident", "congestion", "construction", "weather", "event", "other"]
+    },
+
+    "Incident": {
+      "type": "object",
+      "required": ["id", "type", "severity", "edges", "start_ts"],
+      "properties": {
+        "id": { "type": "string" },
+        "type": { "$ref": "#/definitions/IncidentType" },
+        "severity": { "type": "integer", "minimum": 1, "maximum": 5 },
+        "description": { "type": "string" },
+        "edges": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/EdgeId" },
+          "minItems": 1
+        },
+        "start_ts": { "$ref": "common.types.schema.json#/definitions/ISODateTime" },
+        "end_ts": { "$ref": "common.types.schema.json#/definitions/ISODateTime" },
+        "location": {
+          "type": "object",
+          "description": "Representative point",
+          "properties": {
+            "lat": { "$ref": "common.types.schema.json#/definitions/Lat" },
+            "lon": { "$ref": "common.types.schema.json#/definitions/Lon" }
+          },
+          "required": ["lat", "lon"],
+          "additionalProperties": false
+        },
+        "lane_restrictions": { "type": "string" },
+        "provider": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+
+    /* ---------- Queries ---------- */
+
+    "BBox": {
+      "type": "array",
+      "items": { "type": "number" },
+      "minItems": 4,
+      "maxItems": 4,
+      "description": "west, south, east, north (lon/lat)"
+    },
+
+    "SnapshotQuery": {
+      "type": "object",
+      "properties": {
+        "bbox": { "$ref": "#/definitions/BBox" },
+        "since": { "$ref": "common.types.schema.json#/definitions/ISODateTime" },
+        "limit": { "type": "integer", "minimum": 1, "maximum": 5000, "default": 1000 },
+        "include_geom": { "type": "boolean", "default": false }
+      },
+      "additionalProperties": false
+    },
+
+    "IncidentsQuery": {
+      "type": "object",
+      "properties": {
+        "bbox": { "$ref": "#/definitions/BBox" },
+        "since": { "$ref": "common.types.schema.json#/definitions/ISODateTime" },
+        "types": { "type": "array", "items": { "$ref": "#/definitions/IncidentType" } },
+        "active_only": { "type": "boolean", "default": true },
+        "limit": { "type": "integer", "minimum": 1, "maximum": 2000, "default": 500 }
+      },
+      "additionalProperties": false
+    },
+
+    /* ---------- Responses ---------- */
+
+    "TrafficSnapshot": {
+      "type": "object",
+      "required": ["server_ts", "edges"],
+      "properties": {
+        "server_ts": { "$ref": "common.types.schema.json#/definitions/ISODateTime" },
+        "edges": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/TrafficEdge" }
+        },
+        "provider_meta": {
+          "type": "object",
+          "properties": {
+            "provider": { "type": "string" },
+            "ttl_sec": { "type": "integer", "minimum": 0 },
+            "coverage": { "type": "string" }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "IncidentsResponse": {
+      "type": "object",
+      "required": ["server_ts", "incidents"],
+      "properties": {
+        "server_ts": { "$ref": "common.types.schema.json#/definitions/ISODateTime" },
+        "incidents": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/Incident" }
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

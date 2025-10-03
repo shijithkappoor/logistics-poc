@@ -1,0 +1,130 @@
+{
+  "$id": "https://example.com/schemas/orders.api.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Orders – Models & API Contracts",
+  "type": "object",
+  "definitions": {
+    "OrderItem": {
+      "type": "object",
+      "required": ["item_id", "qty", "volume_cuft", "non_substitutable"],
+      "properties": {
+        "item_id": { "type": "string" },
+        "qty": { "type": "number", "minimum": 0 },
+        "volume_cuft": { "type": "number", "minimum": 0 },
+        "non_substitutable": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    },
+    "Order": {
+      "type": "object",
+      "required": [
+        "id",
+        "franchisee_id",
+        "created_ts",
+        "window_start",
+        "window_end",
+        "status",
+        "items"
+      ],
+      "properties": {
+        "id": { "type": "string" },
+        "franchisee_id": { "type": "string" },
+        "created_ts": { "$ref": "common.types.schema.json#/definitions/ISODateTime" },
+        "window_start": { "type": "string", "pattern": "^\\d{2}:\\d{2}$", "description": "HH:MM local (e.g., 04:00)" },
+        "window_end": { "type": "string", "pattern": "^\\d{2}:\\d{2}$", "description": "HH:MM local (e.g., 10:00)" },
+        "status": {
+          "type": "string",
+          "enum": ["PENDING", "PLANNED", "LOCKED", "ROUTED", "DELIVERED", "QUEUED_NEXT_DAY", "EXCEPTION"]
+        },
+        "notes": { "type": "string" },
+        "items": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/definitions/OrderItem" }
+        }
+      },
+      "additionalProperties": false
+    },
+
+    /* ---------- Requests / Responses ---------- */
+
+    "GenerateOrdersRequest": {
+      "type": "object",
+      "required": ["count"],
+      "properties": {
+        "count": { "type": "integer", "minimum": 1, "maximum": 5000 },
+        "date": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$", "description": "Service date for which orders are generated" },
+        "window_start": { "type": "string", "pattern": "^\\d{2}:\\d{2}$", "default": "04:00" },
+        "window_end": { "type": "string", "pattern": "^\\d{2}:\\d{2}$", "default": "10:00" },
+        "distributions": {
+          "type": "object",
+          "description": "Optional knobs for generator",
+          "properties": {
+            "cluster_strength": { "type": "number", "minimum": 0, "maximum": 1, "default": 0.6 },
+            "item_mix_bias": { "type": "object", "additionalProperties": { "type": "number", "minimum": 0 } },
+            "qty_scale": { "type": "number", "minimum": 0.1, "maximum": 10, "default": 1.0 }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "GenerateOrdersResponse": {
+      "type": "object",
+      "required": ["orders_created"],
+      "properties": {
+        "orders_created": { "type": "integer", "minimum": 0 },
+        "order_ids": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": false
+    },
+
+    "ListOrdersQuery": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": ["PENDING", "PLANNED", "LOCKED", "ROUTED", "DELIVERED", "QUEUED_NEXT_DAY", "EXCEPTION"]
+        },
+        "franchisee_id": { "type": "string" },
+        "created_after": { "$ref": "common.types.schema.json#/definitions/ISODateTime" },
+        "created_before": { "$ref": "common.types.schema.json#/definitions/ISODateTime" },
+        "limit": { "type": "integer", "minimum": 1, "maximum": 500, "default": 100 },
+        "offset": { "type": "integer", "minimum": 0, "default": 0 }
+      },
+      "additionalProperties": false
+    },
+    "ListOrdersResponse": {
+      "type": "object",
+      "required": ["total", "orders"],
+      "properties": {
+        "total": { "type": "integer", "minimum": 0 },
+        "orders": { "type": "array", "items": { "$ref": "#/definitions/Order" } }
+      },
+      "additionalProperties": false
+    },
+
+    "GetOrderResponse": { "$ref": "#/definitions/Order" },
+
+    "LateOrderIntakeRequest": {
+      "type": "object",
+      "required": ["items", "franchisee_id", "received_ts"],
+      "properties": {
+        "items": { "type": "array", "minItems": 1, "items": { "$ref": "#/definitions/OrderItem" } },
+        "franchisee_id": { "type": "string" },
+        "received_ts": { "$ref": "common.types.schema.json#/definitions/ISODateTime" },
+        "is_standalone_item": { "type": "boolean", "description": "If true and after 23:00, auto-queue for next day" }
+      },
+      "additionalProperties": false
+    },
+    "LateOrderIntakeResponse": {
+      "type": "object",
+      "required": ["status", "order_id"],
+      "properties": {
+        "status": { "type": "string", "enum": ["QUEUED_NEXT_DAY", "EXCEPTION"] },
+        "order_id": { "type": "string" }
+      },
+      "additionalProperties": false
+    }
+  }
+}

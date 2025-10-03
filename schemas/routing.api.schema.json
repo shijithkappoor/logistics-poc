@@ -1,0 +1,229 @@
+{
+  "$id": "https://example.com/schemas/routing.api.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Routing – Requests, Responses, Overlap & Pick/Pack",
+  "type": "object",
+  "definitions": {
+    /* ---------- Core types ---------- */
+    "Lat": { "$ref": "common.types.schema.json#/definitions/Lat" },
+    "Lon": { "$ref": "common.types.schema.json#/definitions/Lon" },
+    "ISO": { "$ref": "common.types.schema.json#/definitions/ISODateTime" },
+    "H3": { "$ref": "common.types.schema.json#/definitions/H3Cell" },
+    "Minutes": { "$ref": "common.types.schema.json#/definitions/Minutes" },
+    "Km": { "$ref": "common.types.schema.json#/definitions/Kilometers" },
+    "Pct": { "$ref": "common.types.schema.json#/definitions/Percent0to1" },
+
+    "Location": {
+      "type": "object",
+      "required": ["lat", "lon"],
+      "properties": {
+        "lat": { "$ref": "#/definitions/Lat" },
+        "lon": { "$ref": "#/definitions/Lon" }
+      },
+      "additionalProperties": false
+    },
+
+    /* ---------- Inputs to planner ---------- */
+
+    "OrderStop": {
+      "type": "object",
+      "required": ["order_id", "franchisee_id", "location", "items_volume_cuft"],
+      "properties": {
+        "order_id": { "type": "string" },
+        "franchisee_id": { "type": "string" },
+        "location": { "$ref": "#/definitions/Location" },
+        "items_volume_cuft": { "type": "number", "minimum": 0 },
+        "service_min": { "type": "number", "minimum": 0, "default": 15 },
+        "window_start": { "type": "string", "pattern": "^\\d{2}:\\d{2}$", "default": "04:00" },
+        "window_end": { "type": "string", "pattern": "^\\d{2}:\\d{2}$", "default": "10:00" },
+        "non_substitutable_present": { "type": "boolean", "default": false }
+      },
+      "additionalProperties": false
+    },
+
+    "Depot": {
+      "type": "object",
+      "required": ["id", "location"],
+      "properties": {
+        "id": { "type": "string" },
+        "location": { "$ref": "#/definitions/Location" }
+      },
+      "additionalProperties": false
+    },
+
+    "TruckSpec": {
+      "type": "object",
+      "required": ["id", "depot_id", "capacity_cuft"],
+      "properties": {
+        "id": { "type": "string" },
+        "depot_id": { "type": "string" },
+        "capacity_cuft": { "type": "number", "minimum": 0 }
+      },
+      "additionalProperties": false
+    },
+
+    "RoutingParams": {
+      "type": "object",
+      "properties": {
+        "delivery_window_start": { "type": "string", "pattern": "^\\d{2}:\\d{2}$", "default": "04:00" },
+        "delivery_window_end": { "type": "string", "pattern": "^\\d{2}:\\d{2}$", "default": "10:00" },
+        "service_time_min": { "type": "number", "minimum": 0, "default": 15 },
+        "overlap_h3_res": { "type": "integer", "minimum": 4, "maximum": 15, "default": 8 },
+        "avoid_overlap_weight": { "type": "number", "minimum": 0, "default": 1.0 },
+        "unused_truck_weight": { "type": "number", "minimum": 0, "default": 0.3 },
+        "change_cost_weight": { "type": "number", "minimum": 0, "default": 2.0 },
+        "max_change_ratio": { "type": "number", "minimum": 0, "maximum": 0.6, "description": "for re-route; 0..0.6" }
+      },
+      "additionalProperties": false
+    },
+
+    /* ---------- Requests ---------- */
+
+    "PlanRunRequest": {
+      "type": "object",
+      "required": ["for_date", "depots", "trucks", "stops"],
+      "properties": {
+        "for_date": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+        "depots": { "type": "array", "items": { "$ref": "#/definitions/Depot" }, "minItems": 1 },
+        "trucks": { "type": "array", "items": { "$ref": "#/definitions/TruckSpec" }, "minItems": 1 },
+        "stops": { "type": "array", "items": { "$ref": "#/definitions/OrderStop" }, "minItems": 1 },
+        "params": { "$ref": "#/definitions/RoutingParams" },
+        "traffic_profile_id": { "type": "string", "description": "Use current or forecasted profile id" }
+      },
+      "additionalProperties": false
+    },
+
+    "ReRouteRequest": {
+      "type": "object",
+      "required": ["plan_id", "scope", "change_limit", "lock_hops"],
+      "properties": {
+        "plan_id": { "type": "string" },
+        "scope": { "type": "string", "enum": ["global", "truck"] },
+        "truck_id": { "type": "string", "description": "required when scope=truck" },
+        "change_limit": { "type": "number", "minimum": 0, "maximum": 0.6 },
+        "lock_hops": { "type": "integer", "minimum": 1, "maximum": 3 },
+        "params": { "$ref": "#/definitions/RoutingParams" },
+        "reason": { "type": "string", "enum": ["incident", "eta_risk", "stock", "manual", "other"] }
+      },
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": { "properties": { "scope": { "const": "truck" } } },
+          "then": { "required": ["truck_id"] }
+        }
+      ]
+    },
+
+    /* ---------- Outputs ---------- */
+
+    "OverlapIncident": {
+      "type": "object",
+      "required": ["h3", "start_ts", "end_ts", "truck_ids"],
+      "properties": {
+        "h3": { "$ref": "#/definitions/H3" },
+        "start_ts": { "$ref": "#/definitions/ISO" },
+        "end_ts": { "$ref": "#/definitions/ISO" },
+        "truck_ids": { "type": "array", "items": { "type": "string" }, "minItems": 2 }
+      },
+      "additionalProperties": false
+    },
+
+    "RouteStop": {
+      "type": "object",
+      "required": ["stop_id", "type", "location", "eta", "service_min", "load_cuft"],
+      "properties": {
+        "stop_id": { "type": "string", "description": "Order id or internal stop id" },
+        "type": { "type": "string", "enum": ["delivery", "pickup", "depot"] },
+        "location": { "$ref": "#/definitions/Location" },
+        "eta": { "$ref": "#/definitions/ISO" },
+        "eta_ci_low_min": { "type": "number" },
+        "eta_ci_high_min": { "type": "number" },
+        "service_min": { "$ref": "#/definitions/Minutes" },
+        "load_cuft": { "type": "number", "minimum": 0 },
+        "h3": { "$ref": "#/definitions/H3" }
+      },
+      "additionalProperties": false
+    },
+
+    "RouteSummary": {
+      "type": "object",
+      "required": ["truck_id", "stops", "distance_km", "drive_time_min", "utilization_pct"],
+      "properties": {
+        "truck_id": { "type": "string" },
+        "stops": { "type": "array", "items": { "$ref": "#/definitions/RouteStop" } },
+        "distance_km": { "$ref": "#/definitions/Km" },
+        "drive_time_min": { "$ref": "#/definitions/Minutes" },
+        "utilization_pct": { "$ref": "#/definitions/Pct" }
+      },
+      "additionalProperties": false
+    },
+
+    "PickTask": {
+      "type": "object",
+      "required": ["seq", "aisle", "bin", "item_id", "qty"],
+      "properties": {
+        "seq": { "type": "integer", "minimum": 1 },
+        "aisle": { "type": "string" },
+        "bin": { "type": "string" },
+        "item_id": { "type": "string" },
+        "qty": { "type": "number", "minimum": 0 }
+      },
+      "additionalProperties": false
+    },
+
+    "PickPackOutput": {
+      "type": "object",
+      "required": ["truck_id", "pick_sequence", "loading_order"],
+      "properties": {
+        "truck_id": { "type": "string" },
+        "pick_sequence": { "type": "array", "items": { "$ref": "#/definitions/PickTask" } },
+        "loading_order": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Stop ids in reverse delivery order for last-out-first-in loading"
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "PlanKPI": {
+      "type": "object",
+      "required": ["on_time_pct", "overlap_pct", "miles_per_order"],
+      "properties": {
+        "on_time_pct": { "$ref": "#/definitions/Pct" },
+        "overlap_pct": { "$ref": "#/definitions/Pct" },
+        "miles_per_order": { "type": "number", "minimum": 0 },
+        "runtime_s": { "type": "number", "minimum": 0 }
+      },
+      "additionalProperties": false
+    },
+
+    "PlanRunResponse": {
+      "type": "object",
+      "required": ["plan_id", "runtime_s", "routes", "overlap_incidents", "kpi", "pickpack"],
+      "properties": {
+        "plan_id": { "type": "string" },
+        "runtime_s": { "type": "number", "minimum": 0 },
+        "routes": { "type": "array", "items": { "$ref": "#/definitions/RouteSummary" } },
+        "overlap_incidents": { "type": "array", "items": { "$ref": "#/definitions/OverlapIncident" } },
+        "kpi": { "$ref": "#/definitions/PlanKPI" },
+        "pickpack": { "type": "array", "items": { "$ref": "#/definitions/PickPackOutput" } }
+      },
+      "additionalProperties": false
+    },
+
+    "ReRouteResponse": {
+      "type": "object",
+      "required": ["plan_id", "changed_stops_pct", "runtime_s", "routes", "overlap_incidents", "kpi"],
+      "properties": {
+        "plan_id": { "type": "string" },
+        "changed_stops_pct": { "type": "number", "minimum": 0, "maximum": 1 },
+        "runtime_s": { "type": "number", "minimum": 0 },
+        "routes": { "type": "array", "items": { "$ref": "#/definitions/RouteSummary" } },
+        "overlap_incidents": { "type": "array", "items": { "$ref": "#/definitions/OverlapIncident" } },
+        "kpi": { "$ref": "#/definitions/PlanKPI" }
+      },
+      "additionalProperties": false
+    }
+  }
+}

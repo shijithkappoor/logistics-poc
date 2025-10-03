@@ -1,0 +1,237 @@
+{
+  "$id": "https://example.com/schemas/inventory.api.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Inventory & Stock – Snapshots, Reservations, Events, Feasibility",
+  "type": "object",
+  "definitions": {
+    /* ---------- Core refs ---------- */
+    "ISO": { "$ref": "common.types.schema.json#/definitions/ISODateTime" },
+
+    /* ---------- Records ---------- */
+    "StockRecord": {
+      "type": "object",
+      "required": ["location_type", "location_id", "item_id", "qty"],
+      "properties": {
+        "location_type": { "type": "string", "enum": ["warehouse", "franchisee"] },
+        "location_id": { "type": "string" },
+        "item_id": { "type": "string" },
+        "qty": { "type": "number", "minimum": 0 }
+      },
+      "additionalProperties": false
+    },
+
+    "ReservationRecord": {
+      "type": "object",
+      "required": ["reservation_id", "warehouse_id", "order_id", "item_id", "qty", "ts"],
+      "properties": {
+        "reservation_id": { "type": "string" },
+        "warehouse_id": { "type": "string" },
+        "order_id": { "type": "string" },
+        "item_id": { "type": "string" },
+        "qty": { "type": "number", "minimum": 0 },
+        "ts": { "$ref": "#/definitions/ISO" },
+        "expires_ts": { "$ref": "#/definitions/ISO" }
+      },
+      "additionalProperties": false
+    },
+
+    /* ---------- Snapshot ---------- */
+    "SnapshotQuery": {
+      "type": "object",
+      "properties": {
+        "as_of": { "$ref": "#/definitions/ISO" },
+        "location_type": { "type": "string", "enum": ["warehouse", "franchisee"] },
+        "location_id": { "type": "string" },
+        "item_ids": { "type": "array", "items": { "type": "string" } },
+        "include_reservations": { "type": "boolean", "default": true }
+      },
+      "additionalProperties": false
+    },
+    "SnapshotResponse": {
+      "type": "object",
+      "required": ["server_ts", "stock"],
+      "properties": {
+        "server_ts": { "$ref": "#/definitions/ISO" },
+        "stock": { "type": "array", "items": { "$ref": "#/definitions/StockRecord" } },
+        "reservations": { "type": "array", "items": { "$ref": "#/definitions/ReservationRecord" } }
+      },
+      "additionalProperties": false
+    },
+
+    /* ---------- Reservations (plan lock) ---------- */
+    "ReserveRequest": {
+      "type": "object",
+      "required": ["plan_id", "lines"],
+      "properties": {
+        "plan_id": { "type": "string" },
+        "lines": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["warehouse_id", "order_id", "item_id", "qty", "non_substitutable"],
+            "properties": {
+              "warehouse_id": { "type": "string" },
+              "order_id": { "type": "string" },
+              "item_id": { "type": "string" },
+              "qty": { "type": "number", "minimum": 0 },
+              "non_substitutable": { "type": "boolean" }
+            },
+            "additionalProperties": false
+          }
+        },
+        "ttl_minutes": { "type": "integer", "minimum": 5, "maximum": 720, "default": 480 }
+      },
+      "additionalProperties": false
+    },
+    "ReserveResponse": {
+      "type": "object",
+      "required": ["status", "reservations", "insufficient"],
+      "properties": {
+        "status": { "type": "string", "enum": ["ok", "partial", "failed"] },
+        "reservations": { "type": "array", "items": { "$ref": "#/definitions/ReservationRecord" } },
+        "insufficient": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["warehouse_id", "item_id", "requested", "available"],
+            "properties": {
+              "warehouse_id": { "type": "string" },
+              "item_id": { "type": "string" },
+              "requested": { "type": "number", "minimum": 0 },
+              "available": { "type": "number", "minimum": 0 }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "ReleaseRequest": {
+      "type": "object",
+      "properties": {
+        "plan_id": { "type": "string" },
+        "reservation_ids": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": false
+    },
+    "ReleaseResponse": {
+      "type": "object",
+      "required": ["released", "not_found"],
+      "properties": {
+        "released": { "type": "array", "items": { "type": "string" } },
+        "not_found": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": false
+    },
+
+    /* ---------- Stock events (mid-run) ---------- */
+    "StockEventType": {
+      "type": "string",
+      "enum": ["replenish", "transfer", "consume", "correction"]
+    },
+    "StockEvent": {
+      "type": "object",
+      "required": ["id", "type", "ts", "item_id", "qty"],
+      "properties": {
+        "id": { "type": "string" },
+        "type": { "$ref": "#/definitions/StockEventType" },
+        "ts": { "$ref": "#/definitions/ISO" },
+        "warehouse_id": { "type": "string" },
+        "from_warehouse_id": { "type": "string" },
+        "to_warehouse_id": { "type": "string" },
+        "franchisee_id": { "type": "string" },
+        "item_id": { "type": "string" },
+        "qty": { "type": "number", "minimum": 0 },
+        "reason": { "type": "string" }
+      },
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": { "properties": { "type": { "const": "transfer" } } },
+          "then": { "required": ["from_warehouse_id", "to_warehouse_id"] }
+        },
+        {
+          "if": { "properties": { "type": { "const": "replenish" } } },
+          "then": { "required": ["warehouse_id"] }
+        },
+        {
+          "if": { "properties": { "type": { "const": "consume" } } },
+          "then": { "required": ["franchisee_id"] }
+        }
+      ]
+    },
+    "PostEventsRequest": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/definitions/StockEvent" }
+    },
+    "PostEventsResponse": {
+      "type": "object",
+      "required": ["accepted", "rejected"],
+      "properties": {
+        "accepted": { "type": "integer", "minimum": 0 },
+        "rejected": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "error"],
+            "properties": {
+              "id": { "type": "string" },
+              "error": { "type": "string" }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+
+    /* ---------- Feasibility & alerts ---------- */
+    "FeasibilityLine": {
+      "type": "object",
+      "required": ["order_id", "warehouse_id", "item_id", "qty", "non_substitutable"],
+      "properties": {
+        "order_id": { "type": "string" },
+        "warehouse_id": { "type": "string" },
+        "item_id": { "type": "string" },
+        "qty": { "type": "number", "minimum": 0 },
+        "non_substitutable": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    },
+    "FeasibilityRequest": {
+      "type": "object",
+      "required": ["lines"],
+      "properties": {
+        "lines": { "type": "array", "items": { "$ref": "#/definitions/FeasibilityLine" }, "minItems": 1 }
+      },
+      "additionalProperties": false
+    },
+    "FeasibilityResponse": {
+      "type": "object",
+      "required": ["ok", "insufficient"],
+      "properties": {
+        "ok": { "type": "boolean" },
+        "insufficient": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["order_id", "warehouse_id", "item_id", "required", "available"],
+            "properties": {
+              "order_id": { "type": "string" },
+              "warehouse_id": { "type": "string" },
+              "item_id": { "type": "string" },
+              "required": { "type": "number", "minimum": 0 },
+              "available": { "type": "number", "minimum": 0 },
+              "non_substitutable_blocked": { "type": "boolean", "default": false }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
