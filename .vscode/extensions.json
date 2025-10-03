@@ -1,0 +1,7 @@
+{
+  "recommendations": [
+    "ms-python.python","charliermarsh.ruff","ms-azuretools.vscode-docker",
+    "esbenp.prettier-vscode","dbaeumer.vscode-eslint",
+    "ms-vscode.vscode-typescript-next","github.copilot","rangav.vscode-thunder-client"
+  ]
+}
