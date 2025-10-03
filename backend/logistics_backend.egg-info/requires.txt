@@ -1,0 +1,9 @@
+fastapi
+uvicorn[standard]
+pydantic-settings
+orjson
+sqlalchemy
+asyncpg
+alembic
+websockets
+python-dotenv
