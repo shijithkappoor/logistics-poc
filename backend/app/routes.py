@@ -8,6 +8,53 @@ from .models import (
     ListOrdersResponse, LateOrderIntakeRequest, LateOrderIntakeResponse,
     LateIntakeStatus, generate_mock_order, mock_orders
 )
+from seed_mcdonalds_inventory import get_db_connection
+import psycopg2
+import logging
+
+logger = logging.getLogger(__name__)
+
+
+def _ensure_orders_tables():
+    """Create orders and order_items tables if they don't exist."""
+    conn = None
+    try:
+        conn = get_db_connection()
+        cur = conn.cursor()
+        cur.execute("""
+        CREATE TABLE IF NOT EXISTS orders (
+            id TEXT PRIMARY KEY,
+            franchisee_id TEXT,
+            created_ts TIMESTAMP,
+            window_start TEXT,
+            window_end TEXT,
+            status TEXT,
+            notes TEXT
+        )
+        """)
+
+        cur.execute("""
+        CREATE TABLE IF NOT EXISTS order_items (
+            id SERIAL PRIMARY KEY,
+            order_id TEXT REFERENCES orders(id) ON DELETE CASCADE,
+            item_id TEXT,
+            qty NUMERIC,
+            volume_cuft NUMERIC,
+            non_substitutable BOOLEAN
+        )
+        """)
+
+        conn.commit()
+        cur.close()
+    except Exception as e:
+        logger.exception("Failed to ensure orders tables: %s", e)
+    finally:
+        if conn:
+            conn.close()
+
+
+# Ensure tables on import
+_ensure_orders_tables()
 
 router = APIRouter(prefix="/orders", tags=["orders"])
 
@@ -15,33 +62,62 @@ router = APIRouter(prefix="/orders", tags=["orders"])
 @router.post("/generate", response_model=GenerateOrdersResponse)
 async def generate_orders(request: GenerateOrdersRequest):
     """Generate mock orders for testing purposes"""
-    
-    # Generate the requested number of orders
-    generated_orders = []
-    order_ids = []
-    
-    for _ in range(request.count):
-        # Vary the status for more realistic mock data
-        status = random.choice([
-            OrderStatus.PENDING, OrderStatus.PLANNED, OrderStatus.LOCKED,
-            OrderStatus.ROUTED, OrderStatus.DELIVERED
-        ])
-        
-        order = generate_mock_order(
-            status=status,
-            window_start=request.window_start,
-            window_end=request.window_end
+    generated_ids = []
+    conn = None
+    try:
+        conn = get_db_connection()
+        cur = conn.cursor()
+
+        for _ in range(request.count):
+            status = random.choice([
+                OrderStatus.PENDING, OrderStatus.PLANNED, OrderStatus.LOCKED,
+                OrderStatus.ROUTED, OrderStatus.DELIVERED
+            ])
+            order = generate_mock_order(
+                status=status,
+                window_start=request.window_start,
+                window_end=request.window_end
+            )
+
+            # Persist to DB
+            cur.execute(
+                "INSERT INTO orders (id, franchisee_id, created_ts, window_start, window_end, status, notes) VALUES (%s,%s,%s,%s,%s,%s,%s)",
+                (order.id, order.franchisee_id, order.created_ts, order.window_start, order.window_end, order.status.value, order.notes)
+            )
+
+            # Insert items
+            for it in order.items:
+                cur.execute(
+                    "INSERT INTO order_items (order_id, item_id, qty, volume_cuft, non_substitutable) VALUES (%s,%s,%s,%s,%s)",
+                    (order.id, it.item_id, it.qty, it.volume_cuft, it.non_substitutable)
+                )
+
+            generated_ids.append(order.id)
+
+        conn.commit()
+        cur.close()
+    except Exception as e:
+        logger.exception("Failed to persist generated orders: %s", e)
+        raise HTTPException(status_code=500, detail="Failed to generate orders")
+    finally:
+        if conn:
+            conn.close()
+
+    # Also keep in-memory for backward compatibility - store minimal placeholders
+    from .models import Order as OrderModel, OrderItem as OrderItemModel
+    for oid in generated_ids:
+        mock_orders[oid] = OrderModel(
+            id=oid,
+            franchisee_id="",
+            created_ts=datetime.now(),
+            window_start="00:00",
+            window_end="00:00",
+            status=OrderStatus.PENDING,
+            notes=None,
+            items=[OrderItemModel(item_id="PLACEHOLDER", qty=0, volume_cuft=0.0, non_substitutable=False)]
         )
-        
-        # Store in mock database
-        mock_orders[order.id] = order
-        generated_orders.append(order)
-        order_ids.append(order.id)
-    
-    return GenerateOrdersResponse(
-        orders_created=len(generated_orders),
-        order_ids=order_ids
-    )
+
+    return GenerateOrdersResponse(orders_created=len(generated_ids), order_ids=generated_ids)
 
 
 @router.get("", response_model=ListOrdersResponse)
@@ -55,43 +131,103 @@ async def list_orders(
 ):
     """List orders with optional filtering"""
     
-    # Start with all orders
-    filtered_orders = list(mock_orders.values())
-    
-    # Apply filters
-    if status:
-        filtered_orders = [o for o in filtered_orders if o.status == status]
-    
-    if franchisee_id:
-        filtered_orders = [o for o in filtered_orders if o.franchisee_id == franchisee_id]
-    
-    if created_after:
-        filtered_orders = [o for o in filtered_orders if o.created_ts >= created_after]
-    
-    if created_before:
-        filtered_orders = [o for o in filtered_orders if o.created_ts <= created_before]
-    
-    # Sort by created timestamp (newest first)
-    filtered_orders.sort(key=lambda x: x.created_ts, reverse=True)
-    
-    # Apply pagination
-    total = len(filtered_orders)
-    paginated_orders = filtered_orders[offset:offset + limit]
-    
-    return ListOrdersResponse(
-        total=total,
-        orders=paginated_orders
-    )
+    # Query DB for orders
+    conn = None
+    results = []
+    total = 0
+    try:
+        conn = get_db_connection()
+        cur = conn.cursor()
+
+        where_clauses = []
+        params = []
+        if status:
+            where_clauses.append("status = %s")
+            params.append(status.value)
+        if franchisee_id:
+            where_clauses.append("franchisee_id = %s")
+            params.append(franchisee_id)
+        if created_after:
+            where_clauses.append("created_ts >= %s")
+            params.append(created_after)
+        if created_before:
+            where_clauses.append("created_ts <= %s")
+            params.append(created_before)
+
+        where_sql = " AND ".join(where_clauses)
+        if where_sql:
+            where_sql = "WHERE " + where_sql
+
+        # Count total
+        cur.execute(f"SELECT COUNT(*) FROM orders {where_sql}", tuple(params))
+        cnt_row = cur.fetchone()
+        total = cnt_row[0] if cnt_row and len(cnt_row) > 0 else 0
+
+        # Fetch paginated
+        cur.execute(f"SELECT id, franchisee_id, created_ts, window_start, window_end, status, notes FROM orders {where_sql} ORDER BY created_ts DESC LIMIT %s OFFSET %s", tuple(params + [limit, offset]))
+        rows = cur.fetchall()
+
+        for r in rows:
+            oid, franchisee, created_ts, ws, we, st, notes = r
+            # Fetch items
+            cur.execute("SELECT item_id, qty, volume_cuft, non_substitutable FROM order_items WHERE order_id = %s", (oid,))
+            items = []
+            for it in cur.fetchall():
+                item_id, qty, vol, non_sub = it
+                items.append({"item_id": item_id, "qty": float(qty), "volume_cuft": float(vol) if vol is not None else 0.0, "non_substitutable": bool(non_sub)})
+
+            # Build Order and its items
+            from .models import OrderItem
+            order_obj = Order(
+                id=oid,
+                franchisee_id=franchisee,
+                created_ts=created_ts,
+                window_start=ws,
+                window_end=we,
+                status=OrderStatus(st),
+                notes=notes,
+                items=[OrderItem(**it) for it in items]
+            )
+            results.append(order_obj)
+
+        cur.close()
+    except Exception as e:
+        logger.exception("Failed to list orders: %s", e)
+        raise HTTPException(status_code=500, detail="Failed to list orders")
+    finally:
+        if conn:
+            conn.close()
+
+    return ListOrdersResponse(total=total, orders=results)
 
 
 @router.get("/{order_id}", response_model=Order)
 async def get_order(order_id: str):
     """Get a specific order by ID"""
-    
-    if order_id not in mock_orders:
-        raise HTTPException(status_code=404, detail=f"Order {order_id} not found")
-    
-    return mock_orders[order_id]
+    conn = None
+    try:
+        conn = get_db_connection()
+        cur = conn.cursor()
+        cur.execute("SELECT id, franchisee_id, created_ts, window_start, window_end, status, notes FROM orders WHERE id = %s", (order_id,))
+        row = cur.fetchone()
+        if not row:
+            raise HTTPException(status_code=404, detail=f"Order {order_id} not found")
+
+        oid, franchisee, created_ts, ws, we, st, notes = row
+        cur.execute("SELECT item_id, qty, volume_cuft, non_substitutable FROM order_items WHERE order_id = %s", (order_id,))
+        items = [dict(item_id=r[0], qty=float(r[1]), volume_cuft=float(r[2]) if r[2] is not None else 0.0, non_substitutable=bool(r[3])) for r in cur.fetchall()]
+        from .models import OrderItem
+        order_obj = Order(id=oid, franchisee_id=franchisee, created_ts=created_ts, window_start=ws, window_end=we, status=OrderStatus(st), notes=notes, items=[OrderItem(**it) for it in items])
+        cur.close()
+        return order_obj
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.exception("Failed to fetch order %s: %s", order_id, e)
+        raise HTTPException(status_code=500, detail="Failed to fetch order")
+    finally:
+        if conn:
+            conn.close()
 
 
 @router.post("/late-intake", response_model=LateOrderIntakeResponse)
@@ -128,9 +264,23 @@ async def late_order_intake(request: LateOrderIntakeRequest):
     )
     
     # Store the order
+    conn = None
+    try:
+        conn = get_db_connection()
+        cur = conn.cursor()
+        cur.execute("INSERT INTO orders (id, franchisee_id, created_ts, window_start, window_end, status, notes) VALUES (%s,%s,%s,%s,%s,%s,%s)", (order.id, order.franchisee_id, order.created_ts, order.window_start, order.window_end, order.status.value, order.notes))
+        for it in order.items:
+            cur.execute("INSERT INTO order_items (order_id, item_id, qty, volume_cuft, non_substitutable) VALUES (%s,%s,%s,%s,%s)", (order.id, it.item_id, it.qty, it.volume_cuft, it.non_substitutable))
+        conn.commit()
+        cur.close()
+    except Exception as e:
+        logger.exception("Failed to persist late intake order: %s", e)
+        raise HTTPException(status_code=500, detail="Failed to persist late intake order")
+    finally:
+        if conn:
+            conn.close()
+
+    # keep in-memory reference
     mock_orders[order.id] = order
-    
-    return LateOrderIntakeResponse(
-        status=status,
-        order_id=order.id
-    )
+
+    return LateOrderIntakeResponse(status=status, order_id=order.id)

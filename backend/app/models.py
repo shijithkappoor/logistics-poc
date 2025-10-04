@@ -125,7 +125,7 @@ def generate_mock_order(
     window_end: str = "10:00"
 ) -> Order:
     """Generate a mock order"""
-    franchisees = ["FRAN-001", "FRAN-002", "FRAN-003", "FRAN-004", "FRAN-005"]
+    franchisees = ["FRAN_001", "FRAN_002", "FRAN_003", "FRAN_004", "FRAN_005"]
     
     return Order(
         id=f"ORD-{uuid.uuid4().hex[:8].upper()}",

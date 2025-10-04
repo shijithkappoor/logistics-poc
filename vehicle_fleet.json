@@ -1,0 +1,162 @@
+[
+  {
+    "truck_id": "TRK001",
+    "type": "refrigerated",
+    "capacity_kg": 15000,
+    "capacity_m3": 45,
+    "fuel_efficiency": 8.5,
+    "status": "available"
+  },
+  {
+    "truck_id": "TRK002",
+    "type": "refrigerated",
+    "capacity_kg": 15000,
+    "capacity_m3": 45,
+    "fuel_efficiency": 8.2,
+    "status": "available"
+  },
+  {
+    "truck_id": "TRK003",
+    "type": "refrigerated",
+    "capacity_kg": 15000,
+    "capacity_m3": 45,
+    "fuel_efficiency": 8.7,
+    "status": "available"
+  },
+  {
+    "truck_id": "TRK004",
+    "type": "refrigerated",
+    "capacity_kg": 15000,
+    "capacity_m3": 45,
+    "fuel_efficiency": 8.4,
+    "status": "available"
+  },
+  {
+    "truck_id": "TRK005",
+    "type": "refrigerated",
+    "capacity_kg": 15000,
+    "capacity_m3": 45,
+    "fuel_efficiency": 8.6,
+    "status": "available"
+  },
+  {
+    "truck_id": "TRK006",
+    "type": "dry_goods",
+    "capacity_kg": 8000,
+    "capacity_m3": 30,
+    "fuel_efficiency": 12.5,
+    "status": "available"
+  },
+  {
+    "truck_id": "TRK007",
+    "type": "dry_goods",
+    "capacity_kg": 8000,
+    "capacity_m3": 30,
+    "fuel_efficiency": 12.8,
+    "status": "available"
+  },
+  {
+    "truck_id": "TRK008",
+    "type": "dry_goods",
+    "capacity_kg": 8000,
+    "capacity_m3": 30,
+    "fuel_efficiency": 12.3,
+    "status": "available"
+  },
+  {
+    "truck_id": "TRK009",
+    "type": "refrigerated",
+    "capacity_kg": 8000,
+    "capacity_m3": 30,
+    "fuel_efficiency": 11.5,
+    "status": "available"
+  },
+  {
+    "truck_id": "TRK010",
+    "type": "refrigerated",
+    "capacity_kg": 8000,
+    "capacity_m3": 30,
+    "fuel_efficiency": 11.8,
+    "status": "available"
+  },
+  {
+    "truck_id": "TRK011",
+    "type": "dry_goods",
+    "capacity_kg": 3500,
+    "capacity_m3": 18,
+    "fuel_efficiency": 15.2,
+    "status": "available"
+  },
+  {
+    "truck_id": "TRK012",
+    "type": "dry_goods",
+    "capacity_kg": 3500,
+    "capacity_m3": 18,
+    "fuel_efficiency": 15.5,
+    "status": "available"
+  },
+  {
+    "truck_id": "TRK013",
+    "type": "refrigerated",
+    "capacity_kg": 3500,
+    "capacity_m3": 18,
+    "fuel_efficiency": 14.8,
+    "status": "available"
+  },
+  {
+    "truck_id": "TRK014",
+    "type": "refrigerated",
+    "capacity_kg": 3500,
+    "capacity_m3": 18,
+    "fuel_efficiency": 14.5,
+    "status": "available"
+  },
+  {
+    "truck_id": "TRK015",
+    "type": "refrigerated",
+    "capacity_kg": 3500,
+    "capacity_m3": 18,
+    "fuel_efficiency": 14.9,
+    "status": "available"
+  },
+  {
+    "truck_id": "TRK016",
+    "type": "frozen",
+    "capacity_kg": 6000,
+    "capacity_m3": 25,
+    "fuel_efficiency": 10.2,
+    "status": "available"
+  },
+  {
+    "truck_id": "TRK017",
+    "type": "frozen",
+    "capacity_kg": 6000,
+    "capacity_m3": 25,
+    "fuel_efficiency": 10.5,
+    "status": "available"
+  },
+  {
+    "truck_id": "TRK018",
+    "type": "multi_temp",
+    "capacity_kg": 12000,
+    "capacity_m3": 40,
+    "fuel_efficiency": 9.8,
+    "status": "available"
+  },
+  {
+    "truck_id": "TRK019",
+    "type": "multi_temp",
+    "capacity_kg": 12000,
+    "capacity_m3": 40,
+    "fuel_efficiency": 9.5,
+    "status": "available"
+  },
+  {
+    "truck_id": "TRK020",
+    "type": "multi_temp",
+    "capacity_kg": 12000,
+    "capacity_m3": 40,
+    "fuel_efficiency": 9.9,
+    "status": "available"
+  }
+]

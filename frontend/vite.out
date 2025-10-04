@@ -1,0 +1,1407 @@
+
+> frontend@0.0.0 dev
+> vite
+
+
+  VITE v7.1.9  ready in 263 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+4:42:32 PM [vite] (client) hmr update /src/components/widgets/KPIsWidget.tsx, /src/components/widgets/RoutesTableWidget.tsx, /src/components/widgets/ExceptionsWidget.tsx, /src/components/widgets/MapWidget.tsx, /src/components/widgets/OrdersInventoryLiveWidget.tsx, /src/components/widgets/OrdersInventoryPanel.tsx
+5:51:25 PM [vite] (client) hmr update /src/components/widgets/OrdersInventoryLiveWidget.tsx
+5:51:36 PM [vite] (client) hmr update /src/components/widgets/OrdersInventoryLiveWidget.tsx
+5:51:43 PM [vite] (client) hmr update /src/components/widgets/OrdersInventoryLiveWidget.tsx
+5:51:53 PM [vite] (client) hmr update /src/components/widgets/MapWidget.tsx
+5:51:53 PM [vite] Internal server error: /Users/shijithk/Desktop/poc/logistics/frontend/src/components/widgets/MapWidget.tsx: Unexpected reserved word 'await'. (487:20)
+
+  485 | 			});
+  486 |
+> 487 | 			const features = await Promise.all(routeGeomPromises);
+      | 			                 ^
+  488 | 			const src = map.current.getSource('routes') as any;
+  489 | 			if (src) {
+  490 | 				// merge with existing features
+  Plugin: vite:react-babel
+  File: /Users/shijithk/Desktop/poc/logistics/frontend/src/components/widgets/MapWidget.tsx:487:20
+  485 |  			});
+  486 |  
+  487 |  			const features = await Promise.all(routeGeomPromises);
+      |                      ^
+  488 |  			const src = map.current.getSource('routes') as any;
+  489 |  			if (src) {
+      at constructor (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:367:19)
+      at TypeScriptParserMixin.raise (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:6630:19)
+      at TypeScriptParserMixin.checkReservedWord (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12241:12)
+      at TypeScriptParserMixin.checkReservedWord (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:9398:13)
+      at TypeScriptParserMixin.parseIdentifierName (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12221:12)
+      at TypeScriptParserMixin.parseIdentifier (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12191:23)
+      at TypeScriptParserMixin.parseExprAtom (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:11425:27)
+      at TypeScriptParserMixin.parseExprAtom (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:4797:20)
+      at TypeScriptParserMixin.parseExprSubscripts (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:11085:23)
+      at TypeScriptParserMixin.parseUpdate (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:11070:21)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:11050:23)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:9857:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:10903:61)
+      at TypeScriptParserMixin.parseExprOps (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:10908:23)
+      at TypeScriptParserMixin.parseMaybeConditional (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:10885:23)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:10835:21)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:9806:20)
+      at /Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:10804:39
+      at TypeScriptParserMixin.allowInAnd (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12431:16)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:10804:17)
+      at TypeScriptParserMixin.parseVar (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13393:91)
+      at TypeScriptParserMixin.parseVarStatement (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13239:10)
+      at TypeScriptParserMixin.parseVarStatement (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:9498:31)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12860:23)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:9532:18)
+      at TypeScriptParserMixin.parseStatementLike (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12776:17)
+      at TypeScriptParserMixin.parseStatementListItem (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12756:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13325:61)
+      at TypeScriptParserMixin.parseBlockBody (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13318:10)
+      at TypeScriptParserMixin.parseBlock (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13306:10)
+      at TypeScriptParserMixin.parseTryStatement (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13214:23)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12813:21)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:9532:18)
+      at TypeScriptParserMixin.parseStatementLike (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12776:17)
+      at TypeScriptParserMixin.parseStatementListItem (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12756:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13325:61)
+      at TypeScriptParserMixin.parseBlockBody (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13318:10)
+      at TypeScriptParserMixin.parseBlock (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13306:10)
+      at TypeScriptParserMixin.parseFunctionBody (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12110:24)
+      at TypeScriptParserMixin.parseArrowExpression (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12085:10)
+      at TypeScriptParserMixin.parseParenAndDistinguishExpression (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:11695:12)
+      at TypeScriptParserMixin.parseExprAtom (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:11335:23)
+      at TypeScriptParserMixin.parseExprAtom (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:4797:20)
+      at TypeScriptParserMixin.parseExprSubscripts (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:11085:23)
+      at TypeScriptParserMixin.parseUpdate (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:11070:21)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:11050:23)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:9857:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:10903:61)
+      at TypeScriptParserMixin.parseExprOps (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:10908:23)
+      at TypeScriptParserMixin.parseMaybeConditional (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:10885:23)
+5:52:14 PM [vite] (client) hmr update /src/components/widgets/MapWidget.tsx
+5:52:14 PM [vite] Internal server error: /Users/shijithk/Desktop/poc/logistics/frontend/src/components/widgets/MapWidget.tsx: Unexpected token (16:12)
+
+  14 | 	config: {
+  15 |
+> 16 | 		useEffect(() => {
+     | 		          ^
+  17 | 				if (!map.current || !mapLoaded || !createdRoutes || (createdRoutes as any[]).length === 0) return;
+  18 | 				const doWork = async () => {
+  19 | 					try {
+  Plugin: vite:react-babel
+  File: /Users/shijithk/Desktop/poc/logistics/frontend/src/components/widgets/MapWidget.tsx:16:12
+  14 |  	config: {
+  15 |  
+  16 |  		useEffect(() => {
+     |              ^
+  17 |  				if (!map.current || !mapLoaded || !createdRoutes || (createdRoutes as any[]).length === 0) return;
+  18 |  				const doWork = async () => {
+      at constructor (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:367:19)
+      at TypeScriptParserMixin.raise (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:6630:19)
+      at TypeScriptParserMixin.unexpected (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:6650:16)
+      at TypeScriptParserMixin.parseIdentifierName (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12213:12)
+      at TypeScriptParserMixin.parseIdentifier (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12191:23)
+      at TypeScriptParserMixin.parseBindingAtom (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:7389:17)
+      at TypeScriptParserMixin.parseBindingAtom (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:9962:18)
+      at TypeScriptParserMixin.parseMaybeDefault (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:7477:39)
+      at TypeScriptParserMixin.parseMaybeDefault (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:9992:24)
+      at TypeScriptParserMixin.parseBindingElement (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:9199:23)
+      at TypeScriptParserMixin.parseBindingList (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:7425:24)
+      at TypeScriptParserMixin.tsParseBindingListForSignature (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8130:24)
+      at TypeScriptParserMixin.tsFillSignature (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8122:33)
+      at TypeScriptParserMixin.tsParsePropertyOrMethodSignature (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8186:12)
+      at TypeScriptParserMixin.tsParseTypeMember (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8259:17)
+      at TypeScriptParserMixin.tsParseList (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:7904:19)
+      at TypeScriptParserMixin.tsParseObjectTypeMembers (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8268:26)
+      at TypeScriptParserMixin.tsParseTypeLiteral (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8263:25)
+      at TypeScriptParserMixin.tsParseNonArrayType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8482:106)
+      at TypeScriptParserMixin.tsParseArrayTypeOrHigher (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8512:21)
+      at /Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8568:158
+      at TypeScriptParserMixin.tsInAllowConditionalTypesContext (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8859:14)
+      at TypeScriptParserMixin.tsParseTypeOperatorOrHigher (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8568:114)
+      at TypeScriptParserMixin.tsParseUnionOrIntersectionType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8575:18)
+      at TypeScriptParserMixin.tsParseIntersectionTypeOrHigher (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8584:17)
+      at TypeScriptParserMixin.tsParseUnionOrIntersectionType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8575:18)
+      at TypeScriptParserMixin.tsParseUnionTypeOrHigher (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8587:17)
+      at TypeScriptParserMixin.tsParseNonConditionalType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8754:17)
+      at TypeScriptParserMixin.tsParseType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8729:23)
+      at /Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8723:31
+      at TypeScriptParserMixin.tsInType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8841:14)
+      at TypeScriptParserMixin.tsParseTypeAnnotation (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8721:10)
+      at TypeScriptParserMixin.tsTryParseTypeAnnotation (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8691:19)
+      at TypeScriptParserMixin.tsParsePropertyOrMethodSignature (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8222:25)
+      at TypeScriptParserMixin.tsParseTypeMember (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8259:17)
+      at TypeScriptParserMixin.tsParseList (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:7904:19)
+      at TypeScriptParserMixin.tsParseObjectTypeMembers (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8268:26)
+      at TypeScriptParserMixin.tsInType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8841:14)
+      at TypeScriptParserMixin.tsParseInterfaceDeclaration (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8804:22)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:9529:27)
+      at TypeScriptParserMixin.parseStatementLike (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12776:17)
+      at TypeScriptParserMixin.parseModuleItem (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12753:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13325:36)
+      at TypeScriptParserMixin.parseBlockBody (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13318:10)
+      at TypeScriptParserMixin.parseProgram (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12634:10)
+      at TypeScriptParserMixin.parseTopLevel (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12624:25)
+      at TypeScriptParserMixin.parse (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:14501:10)
+      at TypeScriptParserMixin.parse (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:10149:18)
+      at parse (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:14535:38)
+      at parser (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/core/lib/parser/index.js:41:34)
+5:52:40 PM [vite] (client) hmr update /src/components/widgets/MapWidget.tsx
+5:52:40 PM [vite] Internal server error: /Users/shijithk/Desktop/poc/logistics/frontend/src/components/widgets/MapWidget.tsx: Unexpected reserved word 'await'. (391:20)
+
+  389 | 			});
+  390 |
+> 391 | 			const features = await Promise.all(routeGeomPromises);
+      | 			                 ^
+  392 | 			const src = map.current.getSource('routes') as any;
+  393 | 			if (src) {
+  394 | 				// merge with existing features
+  Plugin: vite:react-babel
+  File: /Users/shijithk/Desktop/poc/logistics/frontend/src/components/widgets/MapWidget.tsx:391:20
+  389 |  			});
+  390 |  
+  391 |  			const features = await Promise.all(routeGeomPromises);
+      |                      ^
+  392 |  			const src = map.current.getSource('routes') as any;
+  393 |  			if (src) {
+      at constructor (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:367:19)
+      at TypeScriptParserMixin.raise (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:6630:19)
+      at TypeScriptParserMixin.checkReservedWord (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12241:12)
+      at TypeScriptParserMixin.checkReservedWord (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:9398:13)
+      at TypeScriptParserMixin.parseIdentifierName (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12221:12)
+      at TypeScriptParserMixin.parseIdentifier (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12191:23)
+      at TypeScriptParserMixin.parseExprAtom (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:11425:27)
+      at TypeScriptParserMixin.parseExprAtom (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:4797:20)
+      at TypeScriptParserMixin.parseExprSubscripts (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:11085:23)
+      at TypeScriptParserMixin.parseUpdate (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:11070:21)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:11050:23)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:9857:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:10903:61)
+      at TypeScriptParserMixin.parseExprOps (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:10908:23)
+      at TypeScriptParserMixin.parseMaybeConditional (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:10885:23)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:10835:21)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:9806:20)
+      at /Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:10804:39
+      at TypeScriptParserMixin.allowInAnd (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12431:16)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:10804:17)
+      at TypeScriptParserMixin.parseVar (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13393:91)
+      at TypeScriptParserMixin.parseVarStatement (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13239:10)
+      at TypeScriptParserMixin.parseVarStatement (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:9498:31)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12860:23)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:9532:18)
+      at TypeScriptParserMixin.parseStatementLike (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12776:17)
+      at TypeScriptParserMixin.parseStatementListItem (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12756:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13325:61)
+      at TypeScriptParserMixin.parseBlockBody (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13318:10)
+      at TypeScriptParserMixin.parseBlock (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13306:10)
+      at TypeScriptParserMixin.parseTryStatement (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13214:23)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12813:21)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:9532:18)
+      at TypeScriptParserMixin.parseStatementLike (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12776:17)
+      at TypeScriptParserMixin.parseStatementListItem (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12756:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13325:61)
+      at TypeScriptParserMixin.parseBlockBody (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13318:10)
+      at TypeScriptParserMixin.parseBlock (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13306:10)
+      at TypeScriptParserMixin.parseFunctionBody (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12110:24)
+      at TypeScriptParserMixin.parseArrowExpression (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12085:10)
+      at TypeScriptParserMixin.parseParenAndDistinguishExpression (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:11695:12)
+      at TypeScriptParserMixin.parseExprAtom (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:11335:23)
+      at TypeScriptParserMixin.parseExprAtom (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:4797:20)
+      at TypeScriptParserMixin.parseExprSubscripts (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:11085:23)
+      at TypeScriptParserMixin.parseUpdate (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:11070:21)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:11050:23)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:9857:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:10903:61)
+      at TypeScriptParserMixin.parseExprOps (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:10908:23)
+      at TypeScriptParserMixin.parseMaybeConditional (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:10885:23)
+5:53:25 PM [vite] (client) Pre-transform error: /Users/shijithk/Desktop/poc/logistics/frontend/src/components/widgets/MapWidget.tsx: Unexpected reserved word 'await'. (391:20)
+
+  389 | 			});
+  390 |
+> 391 | 			const features = await Promise.all(routeGeomPromises);
+      | 			                 ^
+  392 | 			const src = map.current.getSource('routes') as any;
+  393 | 			if (src) {
+  394 | 				// merge with existing features
+  Plugin: vite:react-babel
+  File: /Users/shijithk/Desktop/poc/logistics/frontend/src/components/widgets/MapWidget.tsx:391:20
+  389 |  			});
+  390 |  
+  391 |  			const features = await Promise.all(routeGeomPromises);
+      |                      ^
+  392 |  			const src = map.current.getSource('routes') as any;
+  393 |  			if (src) {
+5:53:25 PM [vite] Internal server error: /Users/shijithk/Desktop/poc/logistics/frontend/src/components/widgets/MapWidget.tsx: Unexpected reserved word 'await'. (391:20)
+
+  389 | 			});
+  390 |
+> 391 | 			const features = await Promise.all(routeGeomPromises);
+      | 			                 ^
+  392 | 			const src = map.current.getSource('routes') as any;
+  393 | 			if (src) {
+  394 | 				// merge with existing features
+  Plugin: vite:react-babel
+  File: /Users/shijithk/Desktop/poc/logistics/frontend/src/components/widgets/MapWidget.tsx:391:20
+  389 |  			});
+  390 |  
+  391 |  			const features = await Promise.all(routeGeomPromises);
+      |                      ^
+  392 |  			const src = map.current.getSource('routes') as any;
+  393 |  			if (src) {
+      at constructor (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:367:19)
+      at TypeScriptParserMixin.raise (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:6630:19)
+      at TypeScriptParserMixin.checkReservedWord (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12241:12)
+      at TypeScriptParserMixin.checkReservedWord (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:9398:13)
+      at TypeScriptParserMixin.parseIdentifierName (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12221:12)
+      at TypeScriptParserMixin.parseIdentifier (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12191:23)
+      at TypeScriptParserMixin.parseExprAtom (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:11425:27)
+      at TypeScriptParserMixin.parseExprAtom (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:4797:20)
+      at TypeScriptParserMixin.parseExprSubscripts (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:11085:23)
+      at TypeScriptParserMixin.parseUpdate (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:11070:21)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:11050:23)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:9857:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:10903:61)
+      at TypeScriptParserMixin.parseExprOps (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:10908:23)
+      at TypeScriptParserMixin.parseMaybeConditional (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:10885:23)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:10835:21)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:9806:20)
+      at /Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:10804:39
+      at TypeScriptParserMixin.allowInAnd (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12431:16)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:10804:17)
+      at TypeScriptParserMixin.parseVar (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13393:91)
+      at TypeScriptParserMixin.parseVarStatement (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13239:10)
+      at TypeScriptParserMixin.parseVarStatement (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:9498:31)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12860:23)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:9532:18)
+      at TypeScriptParserMixin.parseStatementLike (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12776:17)
+      at TypeScriptParserMixin.parseStatementListItem (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12756:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13325:61)
+      at TypeScriptParserMixin.parseBlockBody (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13318:10)
+      at TypeScriptParserMixin.parseBlock (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13306:10)
+      at TypeScriptParserMixin.parseTryStatement (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13214:23)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12813:21)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:9532:18)
+      at TypeScriptParserMixin.parseStatementLike (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12776:17)
+      at TypeScriptParserMixin.parseStatementListItem (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12756:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13325:61)
+      at TypeScriptParserMixin.parseBlockBody (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13318:10)
+      at TypeScriptParserMixin.parseBlock (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13306:10)
+      at TypeScriptParserMixin.parseFunctionBody (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12110:24)
+      at TypeScriptParserMixin.parseArrowExpression (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12085:10)
+      at TypeScriptParserMixin.parseParenAndDistinguishExpression (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:11695:12)
+      at TypeScriptParserMixin.parseExprAtom (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:11335:23)
+      at TypeScriptParserMixin.parseExprAtom (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:4797:20)
+      at TypeScriptParserMixin.parseExprSubscripts (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:11085:23)
+      at TypeScriptParserMixin.parseUpdate (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:11070:21)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:11050:23)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:9857:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:10903:61)
+      at TypeScriptParserMixin.parseExprOps (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:10908:23)
+      at TypeScriptParserMixin.parseMaybeConditional (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:10885:23)
+5:56:08 PM [vite] (client) hmr update /src/components/widgets/MapWidget.tsx
+5:56:09 PM [vite] (client) Pre-transform error: /Users/shijithk/Desktop/poc/logistics/frontend/src/components/widgets/MapWidget.tsx: Unexpected token, expected ";" (15:7)
+
+  13 | interface MapWidgetProps {
+  14 | 	config: {
+> 15 | export const MapWidget: React.FC<MapWidgetProps> = ({ config }) => {
+     |        ^
+  16 | 	const mapContainer = useRef<HTMLDivElement | null>(null);
+  17 | 	const map = useRef<maplibregl.Map | null>(null);
+  18 | 	const [mapLoaded, setMapLoaded] = useState(false);
+  Plugin: vite:react-babel
+  File: /Users/shijithk/Desktop/poc/logistics/frontend/src/components/widgets/MapWidget.tsx:15:7
+  13 |  interface MapWidgetProps {
+  14 |  	config: {
+  15 |  export const MapWidget: React.FC<MapWidgetProps> = ({ config }) => {
+     |         ^
+  16 |  	const mapContainer = useRef<HTMLDivElement | null>(null);
+  17 |  	const map = useRef<maplibregl.Map | null>(null);
+5:56:09 PM [vite] Internal server error: /Users/shijithk/Desktop/poc/logistics/frontend/src/components/widgets/MapWidget.tsx: Unexpected token, expected ";" (15:7)
+
+  13 | interface MapWidgetProps {
+  14 | 	config: {
+> 15 | export const MapWidget: React.FC<MapWidgetProps> = ({ config }) => {
+     |        ^
+  16 | 	const mapContainer = useRef<HTMLDivElement | null>(null);
+  17 | 	const map = useRef<maplibregl.Map | null>(null);
+  18 | 	const [mapLoaded, setMapLoaded] = useState(false);
+  Plugin: vite:react-babel
+  File: /Users/shijithk/Desktop/poc/logistics/frontend/src/components/widgets/MapWidget.tsx:15:7
+  13 |  interface MapWidgetProps {
+  14 |  	config: {
+  15 |  export const MapWidget: React.FC<MapWidgetProps> = ({ config }) => {
+     |         ^
+  16 |  	const mapContainer = useRef<HTMLDivElement | null>(null);
+  17 |  	const map = useRef<maplibregl.Map | null>(null);
+      at constructor (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:367:19)
+      at TypeScriptParserMixin.raise (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:6630:19)
+      at TypeScriptParserMixin.unexpected (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:6650:16)
+      at TypeScriptParserMixin.expect (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:6930:12)
+      at TypeScriptParserMixin.tsParseTypeMemberSemicolon (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8145:12)
+      at TypeScriptParserMixin.tsParsePropertyOrMethodSignature (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8224:12)
+      at TypeScriptParserMixin.tsParseTypeMember (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8259:17)
+      at TypeScriptParserMixin.tsParseList (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:7904:19)
+      at TypeScriptParserMixin.tsParseObjectTypeMembers (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8268:26)
+      at TypeScriptParserMixin.tsParseTypeLiteral (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8263:25)
+      at TypeScriptParserMixin.tsParseNonArrayType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8482:106)
+      at TypeScriptParserMixin.tsParseArrayTypeOrHigher (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8512:21)
+      at /Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8568:158
+      at TypeScriptParserMixin.tsInAllowConditionalTypesContext (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8859:14)
+      at TypeScriptParserMixin.tsParseTypeOperatorOrHigher (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8568:114)
+      at TypeScriptParserMixin.tsParseUnionOrIntersectionType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8575:18)
+      at TypeScriptParserMixin.tsParseIntersectionTypeOrHigher (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8584:17)
+      at TypeScriptParserMixin.tsParseUnionOrIntersectionType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8575:18)
+      at TypeScriptParserMixin.tsParseUnionTypeOrHigher (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8587:17)
+      at TypeScriptParserMixin.tsParseNonConditionalType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8754:17)
+      at TypeScriptParserMixin.tsParseType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8729:23)
+      at /Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8723:31
+      at TypeScriptParserMixin.tsInType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8841:14)
+      at TypeScriptParserMixin.tsParseTypeAnnotation (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8721:10)
+      at TypeScriptParserMixin.tsTryParseTypeAnnotation (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8691:19)
+      at TypeScriptParserMixin.tsParsePropertyOrMethodSignature (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8222:25)
+      at TypeScriptParserMixin.tsParseTypeMember (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8259:17)
+      at TypeScriptParserMixin.tsParseList (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:7904:19)
+      at TypeScriptParserMixin.tsParseObjectTypeMembers (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8268:26)
+      at TypeScriptParserMixin.tsInType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8841:14)
+      at TypeScriptParserMixin.tsParseInterfaceDeclaration (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8804:22)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:9529:27)
+      at TypeScriptParserMixin.parseStatementLike (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12776:17)
+      at TypeScriptParserMixin.parseModuleItem (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12753:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13325:36)
+      at TypeScriptParserMixin.parseBlockBody (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13318:10)
+      at TypeScriptParserMixin.parseProgram (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12634:10)
+      at TypeScriptParserMixin.parseTopLevel (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12624:25)
+      at TypeScriptParserMixin.parse (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:14501:10)
+      at TypeScriptParserMixin.parse (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:10149:18)
+      at parse (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:14535:38)
+      at parser (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/core/lib/parser/index.js:41:34)
+      at parser.next (<anonymous>)
+      at normalizeFile (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/core/lib/transformation/normalize-file.js:64:37)
+      at normalizeFile.next (<anonymous>)
+      at run (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/core/lib/transformation/index.js:22:50)
+      at run.next (<anonymous>)
+      at transform (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/core/lib/transform.js:22:33)
+      at transform.next (<anonymous>)
+      at step (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/gensync/index.js:261:32)
+6:53:43 PM [vite] Internal server error: /Users/shijithk/Desktop/poc/logistics/frontend/src/components/widgets/MapWidget.tsx: Unexpected token, expected ";" (15:7)
+
+  13 | interface MapWidgetProps {
+  14 | 	config: {
+> 15 | export const MapWidget: React.FC<MapWidgetProps> = ({ config }) => {
+     |        ^
+  16 | 	const mapContainer = useRef<HTMLDivElement | null>(null);
+  17 | 	const map = useRef<maplibregl.Map | null>(null);
+  18 | 	const [mapLoaded, setMapLoaded] = useState(false);
+  Plugin: vite:react-babel
+  File: /Users/shijithk/Desktop/poc/logistics/frontend/src/components/widgets/MapWidget.tsx:15:7
+  13 |  interface MapWidgetProps {
+  14 |  	config: {
+  15 |  export const MapWidget: React.FC<MapWidgetProps> = ({ config }) => {
+     |         ^
+  16 |  	const mapContainer = useRef<HTMLDivElement | null>(null);
+  17 |  	const map = useRef<maplibregl.Map | null>(null);
+      at constructor (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:367:19)
+      at TypeScriptParserMixin.raise (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:6630:19)
+      at TypeScriptParserMixin.unexpected (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:6650:16)
+      at TypeScriptParserMixin.expect (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:6930:12)
+      at TypeScriptParserMixin.tsParseTypeMemberSemicolon (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8145:12)
+      at TypeScriptParserMixin.tsParsePropertyOrMethodSignature (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8224:12)
+      at TypeScriptParserMixin.tsParseTypeMember (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8259:17)
+      at TypeScriptParserMixin.tsParseList (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:7904:19)
+      at TypeScriptParserMixin.tsParseObjectTypeMembers (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8268:26)
+      at TypeScriptParserMixin.tsParseTypeLiteral (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8263:25)
+      at TypeScriptParserMixin.tsParseNonArrayType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8482:106)
+      at TypeScriptParserMixin.tsParseArrayTypeOrHigher (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8512:21)
+      at /Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8568:158
+      at TypeScriptParserMixin.tsInAllowConditionalTypesContext (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8859:14)
+      at TypeScriptParserMixin.tsParseTypeOperatorOrHigher (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8568:114)
+      at TypeScriptParserMixin.tsParseUnionOrIntersectionType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8575:18)
+      at TypeScriptParserMixin.tsParseIntersectionTypeOrHigher (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8584:17)
+      at TypeScriptParserMixin.tsParseUnionOrIntersectionType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8575:18)
+      at TypeScriptParserMixin.tsParseUnionTypeOrHigher (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8587:17)
+      at TypeScriptParserMixin.tsParseNonConditionalType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8754:17)
+      at TypeScriptParserMixin.tsParseType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8729:23)
+      at /Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8723:31
+      at TypeScriptParserMixin.tsInType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8841:14)
+      at TypeScriptParserMixin.tsParseTypeAnnotation (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8721:10)
+      at TypeScriptParserMixin.tsTryParseTypeAnnotation (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8691:19)
+      at TypeScriptParserMixin.tsParsePropertyOrMethodSignature (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8222:25)
+      at TypeScriptParserMixin.tsParseTypeMember (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8259:17)
+      at TypeScriptParserMixin.tsParseList (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:7904:19)
+      at TypeScriptParserMixin.tsParseObjectTypeMembers (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8268:26)
+      at TypeScriptParserMixin.tsInType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8841:14)
+      at TypeScriptParserMixin.tsParseInterfaceDeclaration (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8804:22)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:9529:27)
+      at TypeScriptParserMixin.parseStatementLike (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12776:17)
+      at TypeScriptParserMixin.parseModuleItem (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12753:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13325:36)
+      at TypeScriptParserMixin.parseBlockBody (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13318:10)
+      at TypeScriptParserMixin.parseProgram (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12634:10)
+      at TypeScriptParserMixin.parseTopLevel (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12624:25)
+      at TypeScriptParserMixin.parse (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:14501:10)
+      at TypeScriptParserMixin.parse (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:10149:18)
+      at parse (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:14535:38)
+      at parser (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/core/lib/parser/index.js:41:34)
+      at parser.next (<anonymous>)
+      at normalizeFile (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/core/lib/transformation/normalize-file.js:64:37)
+      at normalizeFile.next (<anonymous>)
+      at run (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/core/lib/transformation/index.js:22:50)
+      at run.next (<anonymous>)
+      at transform (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/core/lib/transform.js:22:33)
+      at transform.next (<anonymous>)
+      at step (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/gensync/index.js:261:32)
+6:55:37 PM [vite] Internal server error: /Users/shijithk/Desktop/poc/logistics/frontend/src/components/widgets/MapWidget.tsx: Unexpected token, expected ";" (15:7)
+
+  13 | interface MapWidgetProps {
+  14 | 	config: {
+> 15 | export const MapWidget: React.FC<MapWidgetProps> = ({ config }) => {
+     |        ^
+  16 | 	const mapContainer = useRef<HTMLDivElement | null>(null);
+  17 | 	const map = useRef<maplibregl.Map | null>(null);
+  18 | 	const [mapLoaded, setMapLoaded] = useState(false);
+  Plugin: vite:react-babel
+  File: /Users/shijithk/Desktop/poc/logistics/frontend/src/components/widgets/MapWidget.tsx:15:7
+  13 |  interface MapWidgetProps {
+  14 |  	config: {
+  15 |  export const MapWidget: React.FC<MapWidgetProps> = ({ config }) => {
+     |         ^
+  16 |  	const mapContainer = useRef<HTMLDivElement | null>(null);
+  17 |  	const map = useRef<maplibregl.Map | null>(null);
+      at constructor (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:367:19)
+      at TypeScriptParserMixin.raise (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:6630:19)
+      at TypeScriptParserMixin.unexpected (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:6650:16)
+      at TypeScriptParserMixin.expect (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:6930:12)
+      at TypeScriptParserMixin.tsParseTypeMemberSemicolon (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8145:12)
+      at TypeScriptParserMixin.tsParsePropertyOrMethodSignature (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8224:12)
+      at TypeScriptParserMixin.tsParseTypeMember (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8259:17)
+      at TypeScriptParserMixin.tsParseList (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:7904:19)
+      at TypeScriptParserMixin.tsParseObjectTypeMembers (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8268:26)
+      at TypeScriptParserMixin.tsParseTypeLiteral (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8263:25)
+      at TypeScriptParserMixin.tsParseNonArrayType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8482:106)
+      at TypeScriptParserMixin.tsParseArrayTypeOrHigher (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8512:21)
+      at /Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8568:158
+      at TypeScriptParserMixin.tsInAllowConditionalTypesContext (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8859:14)
+      at TypeScriptParserMixin.tsParseTypeOperatorOrHigher (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8568:114)
+      at TypeScriptParserMixin.tsParseUnionOrIntersectionType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8575:18)
+      at TypeScriptParserMixin.tsParseIntersectionTypeOrHigher (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8584:17)
+      at TypeScriptParserMixin.tsParseUnionOrIntersectionType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8575:18)
+      at TypeScriptParserMixin.tsParseUnionTypeOrHigher (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8587:17)
+      at TypeScriptParserMixin.tsParseNonConditionalType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8754:17)
+      at TypeScriptParserMixin.tsParseType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8729:23)
+      at /Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8723:31
+      at TypeScriptParserMixin.tsInType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8841:14)
+      at TypeScriptParserMixin.tsParseTypeAnnotation (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8721:10)
+      at TypeScriptParserMixin.tsTryParseTypeAnnotation (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8691:19)
+      at TypeScriptParserMixin.tsParsePropertyOrMethodSignature (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8222:25)
+      at TypeScriptParserMixin.tsParseTypeMember (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8259:17)
+      at TypeScriptParserMixin.tsParseList (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:7904:19)
+      at TypeScriptParserMixin.tsParseObjectTypeMembers (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8268:26)
+      at TypeScriptParserMixin.tsInType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8841:14)
+      at TypeScriptParserMixin.tsParseInterfaceDeclaration (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8804:22)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:9529:27)
+      at TypeScriptParserMixin.parseStatementLike (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12776:17)
+      at TypeScriptParserMixin.parseModuleItem (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12753:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13325:36)
+      at TypeScriptParserMixin.parseBlockBody (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13318:10)
+      at TypeScriptParserMixin.parseProgram (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12634:10)
+      at TypeScriptParserMixin.parseTopLevel (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12624:25)
+      at TypeScriptParserMixin.parse (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:14501:10)
+      at TypeScriptParserMixin.parse (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:10149:18)
+      at parse (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:14535:38)
+      at parser (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/core/lib/parser/index.js:41:34)
+      at parser.next (<anonymous>)
+      at normalizeFile (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/core/lib/transformation/normalize-file.js:64:37)
+      at normalizeFile.next (<anonymous>)
+      at run (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/core/lib/transformation/index.js:22:50)
+      at run.next (<anonymous>)
+      at transform (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/core/lib/transform.js:22:33)
+      at transform.next (<anonymous>)
+      at step (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/gensync/index.js:261:32)
+7:22:28 AM [vite] Internal server error: /Users/shijithk/Desktop/poc/logistics/frontend/src/components/widgets/MapWidget.tsx: Unexpected token, expected ";" (15:7)
+
+  13 | interface MapWidgetProps {
+  14 | 	config: {
+> 15 | export const MapWidget: React.FC<MapWidgetProps> = ({ config }) => {
+     |        ^
+  16 | 	const mapContainer = useRef<HTMLDivElement | null>(null);
+  17 | 	const map = useRef<maplibregl.Map | null>(null);
+  18 | 	const [mapLoaded, setMapLoaded] = useState(false);
+  Plugin: vite:react-babel
+  File: /Users/shijithk/Desktop/poc/logistics/frontend/src/components/widgets/MapWidget.tsx:15:7
+  13 |  interface MapWidgetProps {
+  14 |  	config: {
+  15 |  export const MapWidget: React.FC<MapWidgetProps> = ({ config }) => {
+     |         ^
+  16 |  	const mapContainer = useRef<HTMLDivElement | null>(null);
+  17 |  	const map = useRef<maplibregl.Map | null>(null);
+      at constructor (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:367:19)
+      at TypeScriptParserMixin.raise (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:6630:19)
+      at TypeScriptParserMixin.unexpected (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:6650:16)
+      at TypeScriptParserMixin.expect (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:6930:12)
+      at TypeScriptParserMixin.tsParseTypeMemberSemicolon (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8145:12)
+      at TypeScriptParserMixin.tsParsePropertyOrMethodSignature (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8224:12)
+      at TypeScriptParserMixin.tsParseTypeMember (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8259:17)
+      at TypeScriptParserMixin.tsParseList (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:7904:19)
+      at TypeScriptParserMixin.tsParseObjectTypeMembers (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8268:26)
+      at TypeScriptParserMixin.tsParseTypeLiteral (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8263:25)
+      at TypeScriptParserMixin.tsParseNonArrayType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8482:106)
+      at TypeScriptParserMixin.tsParseArrayTypeOrHigher (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8512:21)
+      at /Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8568:158
+      at TypeScriptParserMixin.tsInAllowConditionalTypesContext (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8859:14)
+      at TypeScriptParserMixin.tsParseTypeOperatorOrHigher (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8568:114)
+      at TypeScriptParserMixin.tsParseUnionOrIntersectionType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8575:18)
+      at TypeScriptParserMixin.tsParseIntersectionTypeOrHigher (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8584:17)
+      at TypeScriptParserMixin.tsParseUnionOrIntersectionType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8575:18)
+      at TypeScriptParserMixin.tsParseUnionTypeOrHigher (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8587:17)
+      at TypeScriptParserMixin.tsParseNonConditionalType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8754:17)
+      at TypeScriptParserMixin.tsParseType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8729:23)
+      at /Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8723:31
+      at TypeScriptParserMixin.tsInType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8841:14)
+      at TypeScriptParserMixin.tsParseTypeAnnotation (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8721:10)
+      at TypeScriptParserMixin.tsTryParseTypeAnnotation (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8691:19)
+      at TypeScriptParserMixin.tsParsePropertyOrMethodSignature (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8222:25)
+      at TypeScriptParserMixin.tsParseTypeMember (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8259:17)
+      at TypeScriptParserMixin.tsParseList (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:7904:19)
+      at TypeScriptParserMixin.tsParseObjectTypeMembers (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8268:26)
+      at TypeScriptParserMixin.tsInType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8841:14)
+      at TypeScriptParserMixin.tsParseInterfaceDeclaration (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8804:22)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:9529:27)
+      at TypeScriptParserMixin.parseStatementLike (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12776:17)
+      at TypeScriptParserMixin.parseModuleItem (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12753:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13325:36)
+      at TypeScriptParserMixin.parseBlockBody (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13318:10)
+      at TypeScriptParserMixin.parseProgram (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12634:10)
+      at TypeScriptParserMixin.parseTopLevel (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12624:25)
+      at TypeScriptParserMixin.parse (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:14501:10)
+      at TypeScriptParserMixin.parse (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:10149:18)
+      at parse (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:14535:38)
+      at parser (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/core/lib/parser/index.js:41:34)
+      at parser.next (<anonymous>)
+      at normalizeFile (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/core/lib/transformation/normalize-file.js:64:37)
+      at normalizeFile.next (<anonymous>)
+      at run (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/core/lib/transformation/index.js:22:50)
+      at run.next (<anonymous>)
+      at transform (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/core/lib/transform.js:22:33)
+      at transform.next (<anonymous>)
+      at step (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/gensync/index.js:261:32)
+7:25:06 AM [vite] (client) hmr update /src/components/widgets/MapWidget.tsx
+7:25:06 AM [vite] (client) Pre-transform error: /Users/shijithk/Desktop/poc/logistics/frontend/src/components/widgets/MapWidget.tsx: Unexpected token, expected ";" (15:7)
+
+  13 | interface MapWidgetProps {
+  14 | 	config: {
+> 15 | export const MapWidget: React.FC<MapWidgetProps> = ({ config }) => {
+     |        ^
+  16 | 	const mapContainer = useRef<HTMLDivElement | null>(null);
+  17 | 	const map = useRef<maplibregl.Map | null>(null);
+  18 | 	const [mapLoaded, setMapLoaded] = useState(false);
+  Plugin: vite:react-babel
+  File: /Users/shijithk/Desktop/poc/logistics/frontend/src/components/widgets/MapWidget.tsx:15:7
+  13 |  interface MapWidgetProps {
+  14 |  	config: {
+  15 |  export const MapWidget: React.FC<MapWidgetProps> = ({ config }) => {
+     |         ^
+  16 |  	const mapContainer = useRef<HTMLDivElement | null>(null);
+  17 |  	const map = useRef<maplibregl.Map | null>(null);
+7:25:06 AM [vite] Internal server error: /Users/shijithk/Desktop/poc/logistics/frontend/src/components/widgets/MapWidget.tsx: Unexpected token, expected ";" (15:7)
+
+  13 | interface MapWidgetProps {
+  14 | 	config: {
+> 15 | export const MapWidget: React.FC<MapWidgetProps> = ({ config }) => {
+     |        ^
+  16 | 	const mapContainer = useRef<HTMLDivElement | null>(null);
+  17 | 	const map = useRef<maplibregl.Map | null>(null);
+  18 | 	const [mapLoaded, setMapLoaded] = useState(false);
+  Plugin: vite:react-babel
+  File: /Users/shijithk/Desktop/poc/logistics/frontend/src/components/widgets/MapWidget.tsx:15:7
+  13 |  interface MapWidgetProps {
+  14 |  	config: {
+  15 |  export const MapWidget: React.FC<MapWidgetProps> = ({ config }) => {
+     |         ^
+  16 |  	const mapContainer = useRef<HTMLDivElement | null>(null);
+  17 |  	const map = useRef<maplibregl.Map | null>(null);
+      at constructor (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:367:19)
+      at TypeScriptParserMixin.raise (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:6630:19)
+      at TypeScriptParserMixin.unexpected (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:6650:16)
+      at TypeScriptParserMixin.expect (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:6930:12)
+      at TypeScriptParserMixin.tsParseTypeMemberSemicolon (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8145:12)
+      at TypeScriptParserMixin.tsParsePropertyOrMethodSignature (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8224:12)
+      at TypeScriptParserMixin.tsParseTypeMember (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8259:17)
+      at TypeScriptParserMixin.tsParseList (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:7904:19)
+      at TypeScriptParserMixin.tsParseObjectTypeMembers (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8268:26)
+      at TypeScriptParserMixin.tsParseTypeLiteral (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8263:25)
+      at TypeScriptParserMixin.tsParseNonArrayType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8482:106)
+      at TypeScriptParserMixin.tsParseArrayTypeOrHigher (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8512:21)
+      at /Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8568:158
+      at TypeScriptParserMixin.tsInAllowConditionalTypesContext (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8859:14)
+      at TypeScriptParserMixin.tsParseTypeOperatorOrHigher (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8568:114)
+      at TypeScriptParserMixin.tsParseUnionOrIntersectionType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8575:18)
+      at TypeScriptParserMixin.tsParseIntersectionTypeOrHigher (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8584:17)
+      at TypeScriptParserMixin.tsParseUnionOrIntersectionType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8575:18)
+      at TypeScriptParserMixin.tsParseUnionTypeOrHigher (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8587:17)
+      at TypeScriptParserMixin.tsParseNonConditionalType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8754:17)
+      at TypeScriptParserMixin.tsParseType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8729:23)
+      at /Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8723:31
+      at TypeScriptParserMixin.tsInType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8841:14)
+      at TypeScriptParserMixin.tsParseTypeAnnotation (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8721:10)
+      at TypeScriptParserMixin.tsTryParseTypeAnnotation (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8691:19)
+      at TypeScriptParserMixin.tsParsePropertyOrMethodSignature (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8222:25)
+      at TypeScriptParserMixin.tsParseTypeMember (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8259:17)
+      at TypeScriptParserMixin.tsParseList (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:7904:19)
+      at TypeScriptParserMixin.tsParseObjectTypeMembers (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8268:26)
+      at TypeScriptParserMixin.tsInType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8841:14)
+      at TypeScriptParserMixin.tsParseInterfaceDeclaration (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8804:22)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:9529:27)
+      at TypeScriptParserMixin.parseStatementLike (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12776:17)
+      at TypeScriptParserMixin.parseModuleItem (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12753:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13325:36)
+      at TypeScriptParserMixin.parseBlockBody (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13318:10)
+      at TypeScriptParserMixin.parseProgram (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12634:10)
+      at TypeScriptParserMixin.parseTopLevel (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12624:25)
+      at TypeScriptParserMixin.parse (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:14501:10)
+      at TypeScriptParserMixin.parse (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:10149:18)
+      at parse (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:14535:38)
+      at parser (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/core/lib/parser/index.js:41:34)
+      at parser.next (<anonymous>)
+      at normalizeFile (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/core/lib/transformation/normalize-file.js:64:37)
+      at normalizeFile.next (<anonymous>)
+      at run (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/core/lib/transformation/index.js:22:50)
+      at run.next (<anonymous>)
+      at transform (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/core/lib/transform.js:22:33)
+      at transform.next (<anonymous>)
+      at step (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/gensync/index.js:261:32)
+7:26:39 AM [vite] (client) hmr update /src/components/widgets/MapWidget.tsx
+7:26:39 AM [vite] (client) Pre-transform error: /Users/shijithk/Desktop/poc/logistics/frontend/src/components/widgets/MapWidget.tsx: Unexpected token, expected ";" (15:7)
+
+  13 | interface MapWidgetProps {
+  14 | 	config: {
+> 15 | export const MapWidget: React.FC<MapWidgetProps> = ({ config }) => {
+     |        ^
+  16 | 	const mapContainer = useRef<HTMLDivElement | null>(null);
+  17 | 	const map = useRef<maplibregl.Map | null>(null);
+  18 | 	const [mapLoaded, setMapLoaded] = useState(false);
+  Plugin: vite:react-babel
+  File: /Users/shijithk/Desktop/poc/logistics/frontend/src/components/widgets/MapWidget.tsx:15:7
+  13 |  interface MapWidgetProps {
+  14 |  	config: {
+  15 |  export const MapWidget: React.FC<MapWidgetProps> = ({ config }) => {
+     |         ^
+  16 |  	const mapContainer = useRef<HTMLDivElement | null>(null);
+  17 |  	const map = useRef<maplibregl.Map | null>(null);
+7:26:39 AM [vite] Internal server error: /Users/shijithk/Desktop/poc/logistics/frontend/src/components/widgets/MapWidget.tsx: Unexpected token, expected ";" (15:7)
+
+  13 | interface MapWidgetProps {
+  14 | 	config: {
+> 15 | export const MapWidget: React.FC<MapWidgetProps> = ({ config }) => {
+     |        ^
+  16 | 	const mapContainer = useRef<HTMLDivElement | null>(null);
+  17 | 	const map = useRef<maplibregl.Map | null>(null);
+  18 | 	const [mapLoaded, setMapLoaded] = useState(false);
+  Plugin: vite:react-babel
+  File: /Users/shijithk/Desktop/poc/logistics/frontend/src/components/widgets/MapWidget.tsx:15:7
+  13 |  interface MapWidgetProps {
+  14 |  	config: {
+  15 |  export const MapWidget: React.FC<MapWidgetProps> = ({ config }) => {
+     |         ^
+  16 |  	const mapContainer = useRef<HTMLDivElement | null>(null);
+  17 |  	const map = useRef<maplibregl.Map | null>(null);
+      at constructor (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:367:19)
+      at TypeScriptParserMixin.raise (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:6630:19)
+      at TypeScriptParserMixin.unexpected (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:6650:16)
+      at TypeScriptParserMixin.expect (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:6930:12)
+      at TypeScriptParserMixin.tsParseTypeMemberSemicolon (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8145:12)
+      at TypeScriptParserMixin.tsParsePropertyOrMethodSignature (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8224:12)
+      at TypeScriptParserMixin.tsParseTypeMember (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8259:17)
+      at TypeScriptParserMixin.tsParseList (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:7904:19)
+      at TypeScriptParserMixin.tsParseObjectTypeMembers (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8268:26)
+      at TypeScriptParserMixin.tsParseTypeLiteral (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8263:25)
+      at TypeScriptParserMixin.tsParseNonArrayType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8482:106)
+      at TypeScriptParserMixin.tsParseArrayTypeOrHigher (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8512:21)
+      at /Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8568:158
+      at TypeScriptParserMixin.tsInAllowConditionalTypesContext (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8859:14)
+      at TypeScriptParserMixin.tsParseTypeOperatorOrHigher (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8568:114)
+      at TypeScriptParserMixin.tsParseUnionOrIntersectionType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8575:18)
+      at TypeScriptParserMixin.tsParseIntersectionTypeOrHigher (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8584:17)
+      at TypeScriptParserMixin.tsParseUnionOrIntersectionType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8575:18)
+      at TypeScriptParserMixin.tsParseUnionTypeOrHigher (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8587:17)
+      at TypeScriptParserMixin.tsParseNonConditionalType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8754:17)
+      at TypeScriptParserMixin.tsParseType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8729:23)
+      at /Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8723:31
+      at TypeScriptParserMixin.tsInType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8841:14)
+      at TypeScriptParserMixin.tsParseTypeAnnotation (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8721:10)
+      at TypeScriptParserMixin.tsTryParseTypeAnnotation (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8691:19)
+      at TypeScriptParserMixin.tsParsePropertyOrMethodSignature (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8222:25)
+      at TypeScriptParserMixin.tsParseTypeMember (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8259:17)
+      at TypeScriptParserMixin.tsParseList (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:7904:19)
+      at TypeScriptParserMixin.tsParseObjectTypeMembers (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8268:26)
+      at TypeScriptParserMixin.tsInType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8841:14)
+      at TypeScriptParserMixin.tsParseInterfaceDeclaration (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8804:22)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:9529:27)
+      at TypeScriptParserMixin.parseStatementLike (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12776:17)
+      at TypeScriptParserMixin.parseModuleItem (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12753:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13325:36)
+      at TypeScriptParserMixin.parseBlockBody (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13318:10)
+      at TypeScriptParserMixin.parseProgram (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12634:10)
+      at TypeScriptParserMixin.parseTopLevel (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12624:25)
+      at TypeScriptParserMixin.parse (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:14501:10)
+      at TypeScriptParserMixin.parse (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:10149:18)
+      at parse (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:14535:38)
+      at parser (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/core/lib/parser/index.js:41:34)
+      at parser.next (<anonymous>)
+      at normalizeFile (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/core/lib/transformation/normalize-file.js:64:37)
+      at normalizeFile.next (<anonymous>)
+      at run (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/core/lib/transformation/index.js:22:50)
+      at run.next (<anonymous>)
+      at transform (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/core/lib/transform.js:22:33)
+      at transform.next (<anonymous>)
+      at step (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/gensync/index.js:261:32)
+7:29:04 AM [vite] (client) hmr update /src/components/widgets/MapWidget.tsx
+7:29:04 AM [vite] (client) Pre-transform error: /Users/shijithk/Desktop/poc/logistics/frontend/src/components/widgets/MapWidget.tsx: Unexpected token, expected ";" (15:7)
+
+  13 | interface MapWidgetProps {
+  14 | 	config: {
+> 15 | export const MapWidget: React.FC<MapWidgetProps> = ({ config }) => {
+     |        ^
+  16 | 	const mapContainer = useRef<HTMLDivElement | null>(null);
+  17 | 	const map = useRef<maplibregl.Map | null>(null);
+  18 | 	const [mapLoaded, setMapLoaded] = useState(false);
+  Plugin: vite:react-babel
+  File: /Users/shijithk/Desktop/poc/logistics/frontend/src/components/widgets/MapWidget.tsx:15:7
+  13 |  interface MapWidgetProps {
+  14 |  	config: {
+  15 |  export const MapWidget: React.FC<MapWidgetProps> = ({ config }) => {
+     |         ^
+  16 |  	const mapContainer = useRef<HTMLDivElement | null>(null);
+  17 |  	const map = useRef<maplibregl.Map | null>(null);
+7:29:04 AM [vite] Internal server error: /Users/shijithk/Desktop/poc/logistics/frontend/src/components/widgets/MapWidget.tsx: Unexpected token, expected ";" (15:7)
+
+  13 | interface MapWidgetProps {
+  14 | 	config: {
+> 15 | export const MapWidget: React.FC<MapWidgetProps> = ({ config }) => {
+     |        ^
+  16 | 	const mapContainer = useRef<HTMLDivElement | null>(null);
+  17 | 	const map = useRef<maplibregl.Map | null>(null);
+  18 | 	const [mapLoaded, setMapLoaded] = useState(false);
+  Plugin: vite:react-babel
+  File: /Users/shijithk/Desktop/poc/logistics/frontend/src/components/widgets/MapWidget.tsx:15:7
+  13 |  interface MapWidgetProps {
+  14 |  	config: {
+  15 |  export const MapWidget: React.FC<MapWidgetProps> = ({ config }) => {
+     |         ^
+  16 |  	const mapContainer = useRef<HTMLDivElement | null>(null);
+  17 |  	const map = useRef<maplibregl.Map | null>(null);
+      at constructor (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:367:19)
+      at TypeScriptParserMixin.raise (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:6630:19)
+      at TypeScriptParserMixin.unexpected (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:6650:16)
+      at TypeScriptParserMixin.expect (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:6930:12)
+      at TypeScriptParserMixin.tsParseTypeMemberSemicolon (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8145:12)
+      at TypeScriptParserMixin.tsParsePropertyOrMethodSignature (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8224:12)
+      at TypeScriptParserMixin.tsParseTypeMember (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8259:17)
+      at TypeScriptParserMixin.tsParseList (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:7904:19)
+      at TypeScriptParserMixin.tsParseObjectTypeMembers (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8268:26)
+      at TypeScriptParserMixin.tsParseTypeLiteral (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8263:25)
+      at TypeScriptParserMixin.tsParseNonArrayType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8482:106)
+      at TypeScriptParserMixin.tsParseArrayTypeOrHigher (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8512:21)
+      at /Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8568:158
+      at TypeScriptParserMixin.tsInAllowConditionalTypesContext (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8859:14)
+      at TypeScriptParserMixin.tsParseTypeOperatorOrHigher (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8568:114)
+      at TypeScriptParserMixin.tsParseUnionOrIntersectionType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8575:18)
+      at TypeScriptParserMixin.tsParseIntersectionTypeOrHigher (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8584:17)
+      at TypeScriptParserMixin.tsParseUnionOrIntersectionType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8575:18)
+      at TypeScriptParserMixin.tsParseUnionTypeOrHigher (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8587:17)
+      at TypeScriptParserMixin.tsParseNonConditionalType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8754:17)
+      at TypeScriptParserMixin.tsParseType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8729:23)
+      at /Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8723:31
+      at TypeScriptParserMixin.tsInType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8841:14)
+      at TypeScriptParserMixin.tsParseTypeAnnotation (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8721:10)
+      at TypeScriptParserMixin.tsTryParseTypeAnnotation (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8691:19)
+      at TypeScriptParserMixin.tsParsePropertyOrMethodSignature (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8222:25)
+      at TypeScriptParserMixin.tsParseTypeMember (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8259:17)
+      at TypeScriptParserMixin.tsParseList (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:7904:19)
+      at TypeScriptParserMixin.tsParseObjectTypeMembers (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8268:26)
+      at TypeScriptParserMixin.tsInType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8841:14)
+      at TypeScriptParserMixin.tsParseInterfaceDeclaration (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8804:22)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:9529:27)
+      at TypeScriptParserMixin.parseStatementLike (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12776:17)
+      at TypeScriptParserMixin.parseModuleItem (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12753:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13325:36)
+      at TypeScriptParserMixin.parseBlockBody (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13318:10)
+      at TypeScriptParserMixin.parseProgram (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12634:10)
+      at TypeScriptParserMixin.parseTopLevel (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12624:25)
+      at TypeScriptParserMixin.parse (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:14501:10)
+      at TypeScriptParserMixin.parse (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:10149:18)
+      at parse (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:14535:38)
+      at parser (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/core/lib/parser/index.js:41:34)
+      at parser.next (<anonymous>)
+      at normalizeFile (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/core/lib/transformation/normalize-file.js:64:37)
+      at normalizeFile.next (<anonymous>)
+      at run (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/core/lib/transformation/index.js:22:50)
+      at run.next (<anonymous>)
+      at transform (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/core/lib/transform.js:22:33)
+      at transform.next (<anonymous>)
+      at step (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/gensync/index.js:261:32)
+7:29:22 AM [vite] Internal server error: /Users/shijithk/Desktop/poc/logistics/frontend/src/components/widgets/MapWidget.tsx: Unexpected token, expected ";" (15:7)
+
+  13 | interface MapWidgetProps {
+  14 | 	config: {
+> 15 | export const MapWidget: React.FC<MapWidgetProps> = ({ config }) => {
+     |        ^
+  16 | 	const mapContainer = useRef<HTMLDivElement | null>(null);
+  17 | 	const map = useRef<maplibregl.Map | null>(null);
+  18 | 	const [mapLoaded, setMapLoaded] = useState(false);
+  Plugin: vite:react-babel
+  File: /Users/shijithk/Desktop/poc/logistics/frontend/src/components/widgets/MapWidget.tsx:15:7
+  13 |  interface MapWidgetProps {
+  14 |  	config: {
+  15 |  export const MapWidget: React.FC<MapWidgetProps> = ({ config }) => {
+     |         ^
+  16 |  	const mapContainer = useRef<HTMLDivElement | null>(null);
+  17 |  	const map = useRef<maplibregl.Map | null>(null);
+      at constructor (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:367:19)
+      at TypeScriptParserMixin.raise (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:6630:19)
+      at TypeScriptParserMixin.unexpected (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:6650:16)
+      at TypeScriptParserMixin.expect (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:6930:12)
+      at TypeScriptParserMixin.tsParseTypeMemberSemicolon (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8145:12)
+      at TypeScriptParserMixin.tsParsePropertyOrMethodSignature (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8224:12)
+      at TypeScriptParserMixin.tsParseTypeMember (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8259:17)
+      at TypeScriptParserMixin.tsParseList (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:7904:19)
+      at TypeScriptParserMixin.tsParseObjectTypeMembers (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8268:26)
+      at TypeScriptParserMixin.tsParseTypeLiteral (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8263:25)
+      at TypeScriptParserMixin.tsParseNonArrayType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8482:106)
+      at TypeScriptParserMixin.tsParseArrayTypeOrHigher (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8512:21)
+      at /Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8568:158
+      at TypeScriptParserMixin.tsInAllowConditionalTypesContext (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8859:14)
+      at TypeScriptParserMixin.tsParseTypeOperatorOrHigher (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8568:114)
+      at TypeScriptParserMixin.tsParseUnionOrIntersectionType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8575:18)
+      at TypeScriptParserMixin.tsParseIntersectionTypeOrHigher (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8584:17)
+      at TypeScriptParserMixin.tsParseUnionOrIntersectionType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8575:18)
+      at TypeScriptParserMixin.tsParseUnionTypeOrHigher (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8587:17)
+      at TypeScriptParserMixin.tsParseNonConditionalType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8754:17)
+      at TypeScriptParserMixin.tsParseType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8729:23)
+      at /Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8723:31
+      at TypeScriptParserMixin.tsInType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8841:14)
+      at TypeScriptParserMixin.tsParseTypeAnnotation (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8721:10)
+      at TypeScriptParserMixin.tsTryParseTypeAnnotation (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8691:19)
+      at TypeScriptParserMixin.tsParsePropertyOrMethodSignature (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8222:25)
+      at TypeScriptParserMixin.tsParseTypeMember (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8259:17)
+      at TypeScriptParserMixin.tsParseList (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:7904:19)
+      at TypeScriptParserMixin.tsParseObjectTypeMembers (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8268:26)
+      at TypeScriptParserMixin.tsInType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8841:14)
+      at TypeScriptParserMixin.tsParseInterfaceDeclaration (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8804:22)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:9529:27)
+      at TypeScriptParserMixin.parseStatementLike (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12776:17)
+      at TypeScriptParserMixin.parseModuleItem (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12753:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13325:36)
+      at TypeScriptParserMixin.parseBlockBody (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13318:10)
+      at TypeScriptParserMixin.parseProgram (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12634:10)
+      at TypeScriptParserMixin.parseTopLevel (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12624:25)
+      at TypeScriptParserMixin.parse (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:14501:10)
+      at TypeScriptParserMixin.parse (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:10149:18)
+      at parse (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:14535:38)
+      at parser (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/core/lib/parser/index.js:41:34)
+      at parser.next (<anonymous>)
+      at normalizeFile (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/core/lib/transformation/normalize-file.js:64:37)
+      at normalizeFile.next (<anonymous>)
+      at run (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/core/lib/transformation/index.js:22:50)
+      at run.next (<anonymous>)
+      at transform (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/core/lib/transform.js:22:33)
+      at transform.next (<anonymous>)
+      at step (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/gensync/index.js:261:32)
+7:30:31 AM [vite] (client) hmr update /src/components/widgets/MapWidget.tsx
+7:30:31 AM [vite] (client) Pre-transform error: /Users/shijithk/Desktop/poc/logistics/frontend/src/components/widgets/MapWidget.tsx: Unexpected token, expected ";" (15:7)
+
+  13 | interface MapWidgetProps {
+  14 | 	config: {
+> 15 | export const MapWidget: React.FC<MapWidgetProps> = ({ config }) => {
+     |        ^
+  16 | 	const mapContainer = useRef<HTMLDivElement | null>(null);
+  17 | 	const map = useRef<maplibregl.Map | null>(null);
+  18 | 	const [mapLoaded, setMapLoaded] = useState(false);
+  Plugin: vite:react-babel
+  File: /Users/shijithk/Desktop/poc/logistics/frontend/src/components/widgets/MapWidget.tsx:15:7
+  13 |  interface MapWidgetProps {
+  14 |  	config: {
+  15 |  export const MapWidget: React.FC<MapWidgetProps> = ({ config }) => {
+     |         ^
+  16 |  	const mapContainer = useRef<HTMLDivElement | null>(null);
+  17 |  	const map = useRef<maplibregl.Map | null>(null);
+7:30:31 AM [vite] Internal server error: /Users/shijithk/Desktop/poc/logistics/frontend/src/components/widgets/MapWidget.tsx: Unexpected token, expected ";" (15:7)
+
+  13 | interface MapWidgetProps {
+  14 | 	config: {
+> 15 | export const MapWidget: React.FC<MapWidgetProps> = ({ config }) => {
+     |        ^
+  16 | 	const mapContainer = useRef<HTMLDivElement | null>(null);
+  17 | 	const map = useRef<maplibregl.Map | null>(null);
+  18 | 	const [mapLoaded, setMapLoaded] = useState(false);
+  Plugin: vite:react-babel
+  File: /Users/shijithk/Desktop/poc/logistics/frontend/src/components/widgets/MapWidget.tsx:15:7
+  13 |  interface MapWidgetProps {
+  14 |  	config: {
+  15 |  export const MapWidget: React.FC<MapWidgetProps> = ({ config }) => {
+     |         ^
+  16 |  	const mapContainer = useRef<HTMLDivElement | null>(null);
+  17 |  	const map = useRef<maplibregl.Map | null>(null);
+      at constructor (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:367:19)
+      at TypeScriptParserMixin.raise (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:6630:19)
+      at TypeScriptParserMixin.unexpected (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:6650:16)
+      at TypeScriptParserMixin.expect (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:6930:12)
+      at TypeScriptParserMixin.tsParseTypeMemberSemicolon (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8145:12)
+      at TypeScriptParserMixin.tsParsePropertyOrMethodSignature (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8224:12)
+      at TypeScriptParserMixin.tsParseTypeMember (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8259:17)
+      at TypeScriptParserMixin.tsParseList (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:7904:19)
+      at TypeScriptParserMixin.tsParseObjectTypeMembers (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8268:26)
+      at TypeScriptParserMixin.tsParseTypeLiteral (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8263:25)
+      at TypeScriptParserMixin.tsParseNonArrayType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8482:106)
+      at TypeScriptParserMixin.tsParseArrayTypeOrHigher (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8512:21)
+      at /Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8568:158
+      at TypeScriptParserMixin.tsInAllowConditionalTypesContext (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8859:14)
+      at TypeScriptParserMixin.tsParseTypeOperatorOrHigher (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8568:114)
+      at TypeScriptParserMixin.tsParseUnionOrIntersectionType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8575:18)
+      at TypeScriptParserMixin.tsParseIntersectionTypeOrHigher (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8584:17)
+      at TypeScriptParserMixin.tsParseUnionOrIntersectionType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8575:18)
+      at TypeScriptParserMixin.tsParseUnionTypeOrHigher (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8587:17)
+      at TypeScriptParserMixin.tsParseNonConditionalType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8754:17)
+      at TypeScriptParserMixin.tsParseType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8729:23)
+      at /Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8723:31
+      at TypeScriptParserMixin.tsInType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8841:14)
+      at TypeScriptParserMixin.tsParseTypeAnnotation (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8721:10)
+      at TypeScriptParserMixin.tsTryParseTypeAnnotation (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8691:19)
+      at TypeScriptParserMixin.tsParsePropertyOrMethodSignature (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8222:25)
+      at TypeScriptParserMixin.tsParseTypeMember (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8259:17)
+      at TypeScriptParserMixin.tsParseList (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:7904:19)
+      at TypeScriptParserMixin.tsParseObjectTypeMembers (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8268:26)
+      at TypeScriptParserMixin.tsInType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8841:14)
+      at TypeScriptParserMixin.tsParseInterfaceDeclaration (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8804:22)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:9529:27)
+      at TypeScriptParserMixin.parseStatementLike (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12776:17)
+      at TypeScriptParserMixin.parseModuleItem (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12753:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13325:36)
+      at TypeScriptParserMixin.parseBlockBody (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13318:10)
+      at TypeScriptParserMixin.parseProgram (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12634:10)
+      at TypeScriptParserMixin.parseTopLevel (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12624:25)
+      at TypeScriptParserMixin.parse (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:14501:10)
+      at TypeScriptParserMixin.parse (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:10149:18)
+      at parse (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:14535:38)
+      at parser (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/core/lib/parser/index.js:41:34)
+      at parser.next (<anonymous>)
+      at normalizeFile (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/core/lib/transformation/normalize-file.js:64:37)
+      at normalizeFile.next (<anonymous>)
+      at run (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/core/lib/transformation/index.js:22:50)
+      at run.next (<anonymous>)
+      at transform (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/core/lib/transform.js:22:33)
+      at transform.next (<anonymous>)
+      at step (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/gensync/index.js:261:32)
+7:30:32 AM [vite] Internal server error: /Users/shijithk/Desktop/poc/logistics/frontend/src/components/widgets/MapWidget.tsx: Unexpected token, expected ";" (15:7)
+
+  13 | interface MapWidgetProps {
+  14 | 	config: {
+> 15 | export const MapWidget: React.FC<MapWidgetProps> = ({ config }) => {
+     |        ^
+  16 | 	const mapContainer = useRef<HTMLDivElement | null>(null);
+  17 | 	const map = useRef<maplibregl.Map | null>(null);
+  18 | 	const [mapLoaded, setMapLoaded] = useState(false);
+  Plugin: vite:react-babel
+  File: /Users/shijithk/Desktop/poc/logistics/frontend/src/components/widgets/MapWidget.tsx:15:7
+  13 |  interface MapWidgetProps {
+  14 |  	config: {
+  15 |  export const MapWidget: React.FC<MapWidgetProps> = ({ config }) => {
+     |         ^
+  16 |  	const mapContainer = useRef<HTMLDivElement | null>(null);
+  17 |  	const map = useRef<maplibregl.Map | null>(null);
+      at constructor (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:367:19)
+      at TypeScriptParserMixin.raise (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:6630:19)
+      at TypeScriptParserMixin.unexpected (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:6650:16)
+      at TypeScriptParserMixin.expect (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:6930:12)
+      at TypeScriptParserMixin.tsParseTypeMemberSemicolon (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8145:12)
+      at TypeScriptParserMixin.tsParsePropertyOrMethodSignature (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8224:12)
+      at TypeScriptParserMixin.tsParseTypeMember (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8259:17)
+      at TypeScriptParserMixin.tsParseList (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:7904:19)
+      at TypeScriptParserMixin.tsParseObjectTypeMembers (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8268:26)
+      at TypeScriptParserMixin.tsParseTypeLiteral (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8263:25)
+      at TypeScriptParserMixin.tsParseNonArrayType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8482:106)
+      at TypeScriptParserMixin.tsParseArrayTypeOrHigher (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8512:21)
+      at /Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8568:158
+      at TypeScriptParserMixin.tsInAllowConditionalTypesContext (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8859:14)
+      at TypeScriptParserMixin.tsParseTypeOperatorOrHigher (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8568:114)
+      at TypeScriptParserMixin.tsParseUnionOrIntersectionType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8575:18)
+      at TypeScriptParserMixin.tsParseIntersectionTypeOrHigher (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8584:17)
+      at TypeScriptParserMixin.tsParseUnionOrIntersectionType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8575:18)
+      at TypeScriptParserMixin.tsParseUnionTypeOrHigher (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8587:17)
+      at TypeScriptParserMixin.tsParseNonConditionalType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8754:17)
+      at TypeScriptParserMixin.tsParseType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8729:23)
+      at /Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8723:31
+      at TypeScriptParserMixin.tsInType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8841:14)
+      at TypeScriptParserMixin.tsParseTypeAnnotation (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8721:10)
+      at TypeScriptParserMixin.tsTryParseTypeAnnotation (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8691:19)
+      at TypeScriptParserMixin.tsParsePropertyOrMethodSignature (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8222:25)
+      at TypeScriptParserMixin.tsParseTypeMember (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8259:17)
+      at TypeScriptParserMixin.tsParseList (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:7904:19)
+      at TypeScriptParserMixin.tsParseObjectTypeMembers (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8268:26)
+      at TypeScriptParserMixin.tsInType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8841:14)
+      at TypeScriptParserMixin.tsParseInterfaceDeclaration (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8804:22)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:9529:27)
+      at TypeScriptParserMixin.parseStatementLike (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12776:17)
+      at TypeScriptParserMixin.parseModuleItem (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12753:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13325:36)
+      at TypeScriptParserMixin.parseBlockBody (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13318:10)
+      at TypeScriptParserMixin.parseProgram (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12634:10)
+      at TypeScriptParserMixin.parseTopLevel (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12624:25)
+      at TypeScriptParserMixin.parse (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:14501:10)
+      at TypeScriptParserMixin.parse (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:10149:18)
+      at parse (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:14535:38)
+      at parser (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/core/lib/parser/index.js:41:34)
+      at parser.next (<anonymous>)
+      at normalizeFile (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/core/lib/transformation/normalize-file.js:64:37)
+      at normalizeFile.next (<anonymous>)
+      at run (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/core/lib/transformation/index.js:22:50)
+      at run.next (<anonymous>)
+      at transform (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/core/lib/transform.js:22:33)
+      at transform.next (<anonymous>)
+      at step (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/gensync/index.js:261:32)
+7:31:34 AM [vite] Internal server error: /Users/shijithk/Desktop/poc/logistics/frontend/src/components/widgets/MapWidget.tsx: Unexpected token, expected ";" (15:7)
+
+  13 | interface MapWidgetProps {
+  14 | 	config: {
+> 15 | export const MapWidget: React.FC<MapWidgetProps> = ({ config }) => {
+     |        ^
+  16 | 	const mapContainer = useRef<HTMLDivElement | null>(null);
+  17 | 	const map = useRef<maplibregl.Map | null>(null);
+  18 | 	const [mapLoaded, setMapLoaded] = useState(false);
+  Plugin: vite:react-babel
+  File: /Users/shijithk/Desktop/poc/logistics/frontend/src/components/widgets/MapWidget.tsx:15:7
+  13 |  interface MapWidgetProps {
+  14 |  	config: {
+  15 |  export const MapWidget: React.FC<MapWidgetProps> = ({ config }) => {
+     |         ^
+  16 |  	const mapContainer = useRef<HTMLDivElement | null>(null);
+  17 |  	const map = useRef<maplibregl.Map | null>(null);
+      at constructor (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:367:19)
+      at TypeScriptParserMixin.raise (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:6630:19)
+      at TypeScriptParserMixin.unexpected (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:6650:16)
+      at TypeScriptParserMixin.expect (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:6930:12)
+      at TypeScriptParserMixin.tsParseTypeMemberSemicolon (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8145:12)
+      at TypeScriptParserMixin.tsParsePropertyOrMethodSignature (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8224:12)
+      at TypeScriptParserMixin.tsParseTypeMember (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8259:17)
+      at TypeScriptParserMixin.tsParseList (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:7904:19)
+      at TypeScriptParserMixin.tsParseObjectTypeMembers (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8268:26)
+      at TypeScriptParserMixin.tsParseTypeLiteral (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8263:25)
+      at TypeScriptParserMixin.tsParseNonArrayType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8482:106)
+      at TypeScriptParserMixin.tsParseArrayTypeOrHigher (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8512:21)
+      at /Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8568:158
+      at TypeScriptParserMixin.tsInAllowConditionalTypesContext (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8859:14)
+      at TypeScriptParserMixin.tsParseTypeOperatorOrHigher (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8568:114)
+      at TypeScriptParserMixin.tsParseUnionOrIntersectionType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8575:18)
+      at TypeScriptParserMixin.tsParseIntersectionTypeOrHigher (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8584:17)
+      at TypeScriptParserMixin.tsParseUnionOrIntersectionType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8575:18)
+      at TypeScriptParserMixin.tsParseUnionTypeOrHigher (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8587:17)
+      at TypeScriptParserMixin.tsParseNonConditionalType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8754:17)
+      at TypeScriptParserMixin.tsParseType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8729:23)
+      at /Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8723:31
+      at TypeScriptParserMixin.tsInType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8841:14)
+      at TypeScriptParserMixin.tsParseTypeAnnotation (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8721:10)
+      at TypeScriptParserMixin.tsTryParseTypeAnnotation (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8691:19)
+      at TypeScriptParserMixin.tsParsePropertyOrMethodSignature (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8222:25)
+      at TypeScriptParserMixin.tsParseTypeMember (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8259:17)
+      at TypeScriptParserMixin.tsParseList (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:7904:19)
+      at TypeScriptParserMixin.tsParseObjectTypeMembers (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8268:26)
+      at TypeScriptParserMixin.tsInType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8841:14)
+      at TypeScriptParserMixin.tsParseInterfaceDeclaration (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8804:22)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:9529:27)
+      at TypeScriptParserMixin.parseStatementLike (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12776:17)
+      at TypeScriptParserMixin.parseModuleItem (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12753:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13325:36)
+      at TypeScriptParserMixin.parseBlockBody (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13318:10)
+      at TypeScriptParserMixin.parseProgram (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12634:10)
+      at TypeScriptParserMixin.parseTopLevel (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12624:25)
+      at TypeScriptParserMixin.parse (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:14501:10)
+      at TypeScriptParserMixin.parse (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:10149:18)
+      at parse (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:14535:38)
+      at parser (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/core/lib/parser/index.js:41:34)
+      at parser.next (<anonymous>)
+      at normalizeFile (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/core/lib/transformation/normalize-file.js:64:37)
+      at normalizeFile.next (<anonymous>)
+      at run (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/core/lib/transformation/index.js:22:50)
+      at run.next (<anonymous>)
+      at transform (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/core/lib/transform.js:22:33)
+      at transform.next (<anonymous>)
+      at step (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/gensync/index.js:261:32)
+7:32:50 AM [vite] (client) hmr update /src/components/widgets/MapWidget.tsx
+7:32:50 AM [vite] (client) Pre-transform error: /Users/shijithk/Desktop/poc/logistics/frontend/src/components/widgets/MapWidget.tsx: Unexpected token, expected ";" (15:7)
+
+  13 | interface MapWidgetProps {
+  14 | 	config: {
+> 15 | export const MapWidget: React.FC<MapWidgetProps> = ({ config }) => {
+     |        ^
+  16 | 	const mapContainer = useRef<HTMLDivElement | null>(null);
+  17 | 	const map = useRef<maplibregl.Map | null>(null);
+  18 | 	const [mapLoaded, setMapLoaded] = useState(false);
+  Plugin: vite:react-babel
+  File: /Users/shijithk/Desktop/poc/logistics/frontend/src/components/widgets/MapWidget.tsx:15:7
+  13 |  interface MapWidgetProps {
+  14 |  	config: {
+  15 |  export const MapWidget: React.FC<MapWidgetProps> = ({ config }) => {
+     |         ^
+  16 |  	const mapContainer = useRef<HTMLDivElement | null>(null);
+  17 |  	const map = useRef<maplibregl.Map | null>(null);
+7:32:51 AM [vite] Internal server error: /Users/shijithk/Desktop/poc/logistics/frontend/src/components/widgets/MapWidget.tsx: Unexpected token, expected ";" (15:7)
+
+  13 | interface MapWidgetProps {
+  14 | 	config: {
+> 15 | export const MapWidget: React.FC<MapWidgetProps> = ({ config }) => {
+     |        ^
+  16 | 	const mapContainer = useRef<HTMLDivElement | null>(null);
+  17 | 	const map = useRef<maplibregl.Map | null>(null);
+  18 | 	const [mapLoaded, setMapLoaded] = useState(false);
+  Plugin: vite:react-babel
+  File: /Users/shijithk/Desktop/poc/logistics/frontend/src/components/widgets/MapWidget.tsx:15:7
+  13 |  interface MapWidgetProps {
+  14 |  	config: {
+  15 |  export const MapWidget: React.FC<MapWidgetProps> = ({ config }) => {
+     |         ^
+  16 |  	const mapContainer = useRef<HTMLDivElement | null>(null);
+  17 |  	const map = useRef<maplibregl.Map | null>(null);
+      at constructor (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:367:19)
+      at TypeScriptParserMixin.raise (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:6630:19)
+      at TypeScriptParserMixin.unexpected (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:6650:16)
+      at TypeScriptParserMixin.expect (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:6930:12)
+      at TypeScriptParserMixin.tsParseTypeMemberSemicolon (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8145:12)
+      at TypeScriptParserMixin.tsParsePropertyOrMethodSignature (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8224:12)
+      at TypeScriptParserMixin.tsParseTypeMember (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8259:17)
+      at TypeScriptParserMixin.tsParseList (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:7904:19)
+      at TypeScriptParserMixin.tsParseObjectTypeMembers (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8268:26)
+      at TypeScriptParserMixin.tsParseTypeLiteral (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8263:25)
+      at TypeScriptParserMixin.tsParseNonArrayType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8482:106)
+      at TypeScriptParserMixin.tsParseArrayTypeOrHigher (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8512:21)
+      at /Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8568:158
+      at TypeScriptParserMixin.tsInAllowConditionalTypesContext (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8859:14)
+      at TypeScriptParserMixin.tsParseTypeOperatorOrHigher (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8568:114)
+      at TypeScriptParserMixin.tsParseUnionOrIntersectionType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8575:18)
+      at TypeScriptParserMixin.tsParseIntersectionTypeOrHigher (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8584:17)
+      at TypeScriptParserMixin.tsParseUnionOrIntersectionType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8575:18)
+      at TypeScriptParserMixin.tsParseUnionTypeOrHigher (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8587:17)
+      at TypeScriptParserMixin.tsParseNonConditionalType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8754:17)
+      at TypeScriptParserMixin.tsParseType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8729:23)
+      at /Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8723:31
+      at TypeScriptParserMixin.tsInType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8841:14)
+      at TypeScriptParserMixin.tsParseTypeAnnotation (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8721:10)
+      at TypeScriptParserMixin.tsTryParseTypeAnnotation (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8691:19)
+      at TypeScriptParserMixin.tsParsePropertyOrMethodSignature (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8222:25)
+      at TypeScriptParserMixin.tsParseTypeMember (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8259:17)
+      at TypeScriptParserMixin.tsParseList (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:7904:19)
+      at TypeScriptParserMixin.tsParseObjectTypeMembers (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8268:26)
+      at TypeScriptParserMixin.tsInType (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8841:14)
+      at TypeScriptParserMixin.tsParseInterfaceDeclaration (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:8804:22)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:9529:27)
+      at TypeScriptParserMixin.parseStatementLike (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12776:17)
+      at TypeScriptParserMixin.parseModuleItem (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12753:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13325:36)
+      at TypeScriptParserMixin.parseBlockBody (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13318:10)
+      at TypeScriptParserMixin.parseProgram (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12634:10)
+      at TypeScriptParserMixin.parseTopLevel (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12624:25)
+      at TypeScriptParserMixin.parse (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:14501:10)
+      at TypeScriptParserMixin.parse (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:10149:18)
+      at parse (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:14535:38)
+      at parser (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/core/lib/parser/index.js:41:34)
+      at parser.next (<anonymous>)
+      at normalizeFile (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/core/lib/transformation/normalize-file.js:64:37)
+      at normalizeFile.next (<anonymous>)
+      at run (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/core/lib/transformation/index.js:22:50)
+      at run.next (<anonymous>)
+      at transform (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/core/lib/transform.js:22:33)
+      at transform.next (<anonymous>)
+      at step (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/gensync/index.js:261:32)
+7:34:35 AM [vite] (client) hmr update /src/components/widgets/MapWidget.tsx
+7:34:35 AM [vite] (client) Pre-transform error: /Users/shijithk/Desktop/poc/logistics/frontend/src/components/widgets/MapWidget.tsx: 'import' and 'export' may only appear at the top level. (35:0)
+
+  33 | /* Temporary: allow explicit any in widget until we add proper types */
+  34 | /* eslint-disable @typescript-eslint/no-explicit-any */
+> 35 | import React, { useRef, useEffect, useState } from 'react';
+     | ^
+  36 | import { useQuery } from '@tanstack/react-query';
+  37 | import maplibregl from 'maplibre-gl';
+  38 | import 'maplibre-gl/dist/maplibre-gl.css';
+  Plugin: vite:react-babel
+  File: /Users/shijithk/Desktop/poc/logistics/frontend/src/components/widgets/MapWidget.tsx:35:0
+  33 |  /* Temporary: allow explicit any in widget until we add proper types */
+  34 |  /* eslint-disable @typescript-eslint/no-explicit-any */
+  35 |  import React, { useRef, useEffect, useState } from 'react';
+     |  ^
+  36 |  import { useQuery } from '@tanstack/react-query';
+  37 |  import maplibregl from 'maplibre-gl';
+7:34:35 AM [vite] Internal server error: /Users/shijithk/Desktop/poc/logistics/frontend/src/components/widgets/MapWidget.tsx: 'import' and 'export' may only appear at the top level. (35:0)
+
+  33 | /* Temporary: allow explicit any in widget until we add proper types */
+  34 | /* eslint-disable @typescript-eslint/no-explicit-any */
+> 35 | import React, { useRef, useEffect, useState } from 'react';
+     | ^
+  36 | import { useQuery } from '@tanstack/react-query';
+  37 | import maplibregl from 'maplibre-gl';
+  38 | import 'maplibre-gl/dist/maplibre-gl.css';
+  Plugin: vite:react-babel
+  File: /Users/shijithk/Desktop/poc/logistics/frontend/src/components/widgets/MapWidget.tsx:35:0
+  33 |  /* Temporary: allow explicit any in widget until we add proper types */
+  34 |  /* eslint-disable @typescript-eslint/no-explicit-any */
+  35 |  import React, { useRef, useEffect, useState } from 'react';
+     |  ^
+  36 |  import { useQuery } from '@tanstack/react-query';
+  37 |  import maplibregl from 'maplibre-gl';
+      at constructor (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:367:19)
+      at TypeScriptParserMixin.raise (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:6630:19)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12880:18)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:9532:18)
+      at TypeScriptParserMixin.parseStatementLike (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12776:17)
+      at TypeScriptParserMixin.parseStatementListItem (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12756:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13325:61)
+      at TypeScriptParserMixin.parseBlockBody (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13318:10)
+      at TypeScriptParserMixin.parseBlock (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13306:10)
+      at TypeScriptParserMixin.parseFunctionBody (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12110:24)
+      at TypeScriptParserMixin.parseArrowExpression (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12085:10)
+      at TypeScriptParserMixin.parseParenAndDistinguishExpression (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:11695:12)
+      at TypeScriptParserMixin.parseExprAtom (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:11335:23)
+      at TypeScriptParserMixin.parseExprAtom (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:4797:20)
+      at TypeScriptParserMixin.parseExprSubscripts (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:11085:23)
+      at TypeScriptParserMixin.parseUpdate (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:11070:21)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:11050:23)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:9857:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:10903:61)
+      at TypeScriptParserMixin.parseExprOps (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:10908:23)
+      at TypeScriptParserMixin.parseMaybeConditional (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:10885:23)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:10835:21)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:9806:20)
+      at /Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:10804:39
+      at TypeScriptParserMixin.allowInAnd (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12431:16)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:10804:17)
+      at TypeScriptParserMixin.parseVar (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13393:91)
+      at TypeScriptParserMixin.parseVarStatement (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13239:10)
+      at TypeScriptParserMixin.parseVarStatement (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:9498:31)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12860:23)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:9532:18)
+      at TypeScriptParserMixin.parseStatementLike (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12776:17)
+      at TypeScriptParserMixin.parseStatementListItem (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12756:17)
+      at TypeScriptParserMixin.parseExportDeclaration (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13943:17)
+      at TypeScriptParserMixin.parseExportDeclaration (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:9657:85)
+      at TypeScriptParserMixin.maybeParseExportDeclaration (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13902:31)
+      at TypeScriptParserMixin.parseExport (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13821:29)
+      at TypeScriptParserMixin.parseExport (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:9475:20)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12887:27)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:9532:18)
+      at TypeScriptParserMixin.parseStatementLike (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12776:17)
+      at TypeScriptParserMixin.parseModuleItem (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12753:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13325:36)
+      at TypeScriptParserMixin.parseBlockBody (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13318:10)
+      at TypeScriptParserMixin.parseProgram (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12634:10)
+      at TypeScriptParserMixin.parseTopLevel (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12624:25)
+      at TypeScriptParserMixin.parse (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:14501:10)
+      at TypeScriptParserMixin.parse (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:10149:18)
+      at parse (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:14535:38)
+      at parser (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/core/lib/parser/index.js:41:34)
+7:36:56 AM [vite] (client) hmr update /src/components/widgets/MapWidget.tsx
+7:36:56 AM [vite] (client) Pre-transform error: /Users/shijithk/Desktop/poc/logistics/frontend/src/components/widgets/MapWidget.tsx: 'import' and 'export' may only appear at the top level. (35:0)
+
+  33 | /* Temporary: allow explicit any in widget until we add proper types */
+  34 | /* eslint-disable @typescript-eslint/no-explicit-any */
+> 35 | import React, { useRef, useEffect } from 'react';
+     | ^
+  36 | import OrdersInventoryPanel from './OrdersInventoryPanel';
+  37 | import OrdersInventoryLiveWidget from './OrdersInventoryLiveWidget';
+  38 |
+  Plugin: vite:react-babel
+  File: /Users/shijithk/Desktop/poc/logistics/frontend/src/components/widgets/MapWidget.tsx:35:0
+  33 |  /* Temporary: allow explicit any in widget until we add proper types */
+  34 |  /* eslint-disable @typescript-eslint/no-explicit-any */
+  35 |  import React, { useRef, useEffect } from 'react';
+     |  ^
+  36 |  import OrdersInventoryPanel from './OrdersInventoryPanel';
+  37 |  import OrdersInventoryLiveWidget from './OrdersInventoryLiveWidget';
+7:36:56 AM [vite] Internal server error: /Users/shijithk/Desktop/poc/logistics/frontend/src/components/widgets/MapWidget.tsx: 'import' and 'export' may only appear at the top level. (35:0)
+
+  33 | /* Temporary: allow explicit any in widget until we add proper types */
+  34 | /* eslint-disable @typescript-eslint/no-explicit-any */
+> 35 | import React, { useRef, useEffect } from 'react';
+     | ^
+  36 | import OrdersInventoryPanel from './OrdersInventoryPanel';
+  37 | import OrdersInventoryLiveWidget from './OrdersInventoryLiveWidget';
+  38 |
+  Plugin: vite:react-babel
+  File: /Users/shijithk/Desktop/poc/logistics/frontend/src/components/widgets/MapWidget.tsx:35:0
+  33 |  /* Temporary: allow explicit any in widget until we add proper types */
+  34 |  /* eslint-disable @typescript-eslint/no-explicit-any */
+  35 |  import React, { useRef, useEffect } from 'react';
+     |  ^
+  36 |  import OrdersInventoryPanel from './OrdersInventoryPanel';
+  37 |  import OrdersInventoryLiveWidget from './OrdersInventoryLiveWidget';
+      at constructor (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:367:19)
+      at TypeScriptParserMixin.raise (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:6630:19)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12880:18)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:9532:18)
+      at TypeScriptParserMixin.parseStatementLike (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12776:17)
+      at TypeScriptParserMixin.parseStatementListItem (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12756:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13325:61)
+      at TypeScriptParserMixin.parseBlockBody (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13318:10)
+      at TypeScriptParserMixin.parseBlock (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13306:10)
+      at TypeScriptParserMixin.parseFunctionBody (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12110:24)
+      at TypeScriptParserMixin.parseArrowExpression (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12085:10)
+      at TypeScriptParserMixin.parseParenAndDistinguishExpression (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:11695:12)
+      at TypeScriptParserMixin.parseExprAtom (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:11335:23)
+      at TypeScriptParserMixin.parseExprAtom (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:4797:20)
+      at TypeScriptParserMixin.parseExprSubscripts (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:11085:23)
+      at TypeScriptParserMixin.parseUpdate (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:11070:21)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:11050:23)
+      at TypeScriptParserMixin.parseMaybeUnary (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:9857:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:10903:61)
+      at TypeScriptParserMixin.parseExprOps (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:10908:23)
+      at TypeScriptParserMixin.parseMaybeConditional (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:10885:23)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:10835:21)
+      at TypeScriptParserMixin.parseMaybeAssign (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:9806:20)
+      at /Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:10804:39
+      at TypeScriptParserMixin.allowInAnd (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12431:16)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:10804:17)
+      at TypeScriptParserMixin.parseVar (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13393:91)
+      at TypeScriptParserMixin.parseVarStatement (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13239:10)
+      at TypeScriptParserMixin.parseVarStatement (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:9498:31)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12860:23)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:9532:18)
+      at TypeScriptParserMixin.parseStatementLike (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12776:17)
+      at TypeScriptParserMixin.parseStatementListItem (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12756:17)
+      at TypeScriptParserMixin.parseExportDeclaration (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13943:17)
+      at TypeScriptParserMixin.parseExportDeclaration (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:9657:85)
+      at TypeScriptParserMixin.maybeParseExportDeclaration (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13902:31)
+      at TypeScriptParserMixin.parseExport (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13821:29)
+      at TypeScriptParserMixin.parseExport (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:9475:20)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12887:27)
+      at TypeScriptParserMixin.parseStatementContent (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:9532:18)
+      at TypeScriptParserMixin.parseStatementLike (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12776:17)
+      at TypeScriptParserMixin.parseModuleItem (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12753:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13325:36)
+      at TypeScriptParserMixin.parseBlockBody (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:13318:10)
+      at TypeScriptParserMixin.parseProgram (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12634:10)
+      at TypeScriptParserMixin.parseTopLevel (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:12624:25)
+      at TypeScriptParserMixin.parse (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:14501:10)
+      at TypeScriptParserMixin.parse (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:10149:18)
+      at parse (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/parser/lib/index.js:14535:38)
+      at parser (/Users/shijithk/Desktop/poc/logistics/frontend/node_modules/@babel/core/lib/parser/index.js:41:34)
+7:37:12 AM [vite] (client) hmr update /src/components/widgets/MapWidget.tsx
+7:38:09 AM [vite] (client) hmr update /src/components/widgets/MapWidget.tsx
+7:38:09 AM [vite] (client) hmr update /src/components/widgets/OrdersInventoryLiveWidget.tsx
+7:44:33 AM [vite] (client) hmr update /src/components/widgets/KPIsWidget.tsx, /src/components/widgets/RoutesTableWidget.tsx, /src/components/widgets/ExceptionsWidget.tsx, /src/components/widgets/OrdersInventoryLiveWidget.tsx, /src/components/widgets/OrdersInventoryPanel.tsx
+7:44:51 AM [vite] (client) hmr update /src/components/widgets/KPIsWidget.tsx, /src/components/widgets/RoutesTableWidget.tsx, /src/components/widgets/ExceptionsWidget.tsx, /src/components/widgets/OrdersInventoryLiveWidget.tsx, /src/components/widgets/OrdersInventoryPanel.tsx
+7:44:57 AM [vite] (client) hmr update /src/components/widgets/KPIsWidget.tsx, /src/components/widgets/RoutesTableWidget.tsx, /src/components/widgets/ExceptionsWidget.tsx, /src/components/widgets/OrdersInventoryLiveWidget.tsx, /src/components/widgets/OrdersInventoryPanel.tsx
+7:46:52 AM [vite] (client) hmr update /src/components/widgets/MapWidget.tsx
+7:46:59 AM [vite] (client) hmr update /src/components/widgets/MapWidget.tsx
+7:47:04 AM [vite] (client) hmr update /src/components/widgets/MapWidget.tsx
+7:47:22 AM [vite] (client) hmr update /src/components/widgets/KPIsWidget.tsx, /src/components/widgets/RoutesTableWidget.tsx, /src/components/widgets/ExceptionsWidget.tsx, /src/components/widgets/OrdersInventoryLiveWidget.tsx, /src/components/widgets/OrdersInventoryPanel.tsx, /src/components/widgets/MapWidget.tsx
+7:47:35 AM [vite] (client) hmr update /src/components/widgets/OrdersInventoryLiveWidget.tsx
+7:47:47 AM [vite] (client) hmr update /src/components/widgets/MapWidget.tsx
+7:48:05 AM [vite] (client) hmr update /src/components/widgets/OrdersInventoryLiveWidget.tsx
+7:48:05 AM [vite] (client) hmr update /src/components/widgets/MapWidget.tsx
+7:48:05 AM [vite] (client) hmr update /src/components/widgets/KPIsWidget.tsx, /src/components/widgets/RoutesTableWidget.tsx, /src/components/widgets/ExceptionsWidget.tsx, /src/components/widgets/OrdersInventoryLiveWidget.tsx, /src/components/widgets/OrdersInventoryPanel.tsx, /src/components/widgets/MapWidget.tsx
+7:50:54 AM [vite] (client) hmr update /src/components/widgets/OrdersInventoryPanel.tsx
+7:51:31 AM [vite] (client) hmr update /src/components/widgets/OrdersInventoryLiveWidget.tsx
+7:51:57 AM [vite] (client) hmr update /src/components/widgets/OrdersInventoryPanel.tsx
+7:51:57 AM [vite] (client) hmr update /src/components/widgets/OrdersInventoryLiveWidget.tsx
+7:51:57 AM [vite] (client) hmr update /src/components/ui/Resizable.tsx
+7:54:31 AM [vite] (client) hmr update /src/components/widgets/KPIsWidget.tsx, /src/components/widgets/RoutesTableWidget.tsx, /src/components/widgets/ExceptionsWidget.tsx, /src/components/widgets/OrdersInventoryLiveWidget.tsx, /src/components/widgets/OrdersInventoryPanel.tsx, /src/components/widgets/MapWidget.tsx
+7:54:45 AM [vite] (client) hmr update /src/components/widgets/KPIsWidget.tsx, /src/components/widgets/RoutesTableWidget.tsx, /src/components/widgets/ExceptionsWidget.tsx, /src/components/widgets/OrdersInventoryLiveWidget.tsx, /src/components/widgets/OrdersInventoryPanel.tsx, /src/components/widgets/MapWidget.tsx
+7:54:53 AM [vite] (client) hmr update /src/components/widgets/KPIsWidget.tsx, /src/components/widgets/RoutesTableWidget.tsx, /src/components/widgets/ExceptionsWidget.tsx, /src/components/widgets/OrdersInventoryLiveWidget.tsx, /src/components/widgets/OrdersInventoryPanel.tsx, /src/components/widgets/MapWidget.tsx
+7:56:47 AM [vite] (client) hmr update /src/components/widgets/KPIsWidget.tsx, /src/components/widgets/RoutesTableWidget.tsx, /src/components/widgets/ExceptionsWidget.tsx, /src/components/widgets/OrdersInventoryLiveWidget.tsx, /src/components/widgets/OrdersInventoryPanel.tsx, /src/components/widgets/MapWidget.tsx

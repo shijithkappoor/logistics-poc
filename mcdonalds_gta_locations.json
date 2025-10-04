@@ -1,0 +1,626 @@
+[
+  {
+    "name": "McDonald's Gerrard East",
+    "address": "970 Gerrard St E, Toronto, ON M4M 1Z3",
+    "coordinates": {
+      "lat": 43.6561,
+      "lon": -79.3485
+    },
+    "operating_hours": "6:00 AM - 11:00 PM",
+    "services": "Drive-thru, Mobile Order, McDelivery",
+    "phone": "(416) 472-4672",
+    "location_type": "restaurant"
+  },
+  {
+    "name": "McDonald's Pape Avenue",
+    "address": "1045 Pape Avenue, Toronto, ON M4K 3W3",
+    "coordinates": {
+      "lat": 43.6752,
+      "lon": -79.3453
+    },
+    "operating_hours": "24 hours",
+    "services": "Drive-thru, Mobile Order, McDelivery, 24/7",
+    "phone": "(416) 909-1145",
+    "location_type": "restaurant"
+  },
+  {
+    "name": "McDonald's Keele Street",
+    "address": "630 Keele Street, Toronto, ON M6N 3E5",
+    "coordinates": {
+      "lat": 43.6633,
+      "lon": -79.4636
+    },
+    "operating_hours": "6:00 AM - 12:00 AM",
+    "services": "Drive-thru, Mobile Order, McDelivery, McCaf\u00e9",
+    "phone": "(416) 327-1122",
+    "location_type": "restaurant"
+  },
+  {
+    "name": "McDonald's Yonge North",
+    "address": "3400 Yonge St, Toronto, ON M4N 2M7",
+    "coordinates": {
+      "lat": 43.7282,
+      "lon": -79.4108
+    },
+    "operating_hours": "6:00 AM - 11:00 PM",
+    "services": "Drive-thru, Mobile Order, McDelivery",
+    "phone": "(416) 889-1775",
+    "location_type": "restaurant"
+  },
+  {
+    "name": "McDonald's Gerrard West",
+    "address": "1000 Gerrard Street E, Toronto, ON M4M 3G6",
+    "coordinates": {
+      "lat": 43.6561,
+      "lon": -79.3478
+    },
+    "operating_hours": "5:00 AM - 11:00 PM",
+    "services": "Drive-thru, Mobile Order, McDelivery, PlayPlace",
+    "phone": "(416) 414-4067",
+    "location_type": "restaurant"
+  },
+  {
+    "name": "McDonald's St Clair West",
+    "address": "1168 St Clair Avenue West, Toronto, ON M6E 1B4",
+    "coordinates": {
+      "lat": 43.6781,
+      "lon": -79.4367
+    },
+    "operating_hours": "6:00 AM - 12:00 AM",
+    "services": "Drive-thru, Mobile Order, McDelivery, McCaf\u00e9, PlayPlace",
+    "phone": "(416) 771-6982",
+    "location_type": "restaurant"
+  },
+  {
+    "name": "McDonald's Ingram Drive",
+    "address": "2 Ingram Drive, Toronto, ON M6M 2L6",
+    "coordinates": {
+      "lat": 43.6912,
+      "lon": -79.4912
+    },
+    "operating_hours": "5:00 AM - 11:00 PM",
+    "services": "Drive-thru, Mobile Order, McDelivery",
+    "phone": "(416) 886-6078",
+    "location_type": "restaurant"
+  },
+  {
+    "name": "McDonald's Avenue Road",
+    "address": "1890 Avenue Rd, North York, ON M5M 3Z8",
+    "coordinates": {
+      "lat": 43.7156,
+      "lon": -79.4103
+    },
+    "operating_hours": "6:00 AM - 11:00 PM",
+    "services": "Drive-thru, Mobile Order, McDelivery, McCaf\u00e9",
+    "phone": "(416) 318-4392",
+    "location_type": "restaurant"
+  },
+  {
+    "name": "McDonald's Yonge Downtown",
+    "address": "123 Yonge St, Toronto, ON M5C 1W4",
+    "coordinates": {
+      "lat": 43.6506,
+      "lon": -79.3799
+    },
+    "operating_hours": "6:00 AM - 12:00 AM",
+    "services": "Mobile Order, McDelivery, PlayPlace",
+    "phone": "(416) 622-5457",
+    "location_type": "restaurant"
+  },
+  {
+    "name": "McDonald's Church Street",
+    "address": "127 Church Street, Toronto, ON M5C 2G5",
+    "coordinates": {
+      "lat": 43.6501,
+      "lon": -79.3762
+    },
+    "operating_hours": "6:00 AM - 11:00 PM",
+    "services": "Drive-thru, McDelivery, PlayPlace",
+    "phone": "(416) 320-7436",
+    "location_type": "restaurant"
+  },
+  {
+    "name": "McDonald's McCaul Street",
+    "address": "109 McCaul Street, Toronto, ON M5T 3K5",
+    "coordinates": {
+      "lat": 43.6558,
+      "lon": -79.3913
+    },
+    "operating_hours": "24 hours",
+    "services": "Drive-thru, Mobile Order, McCaf\u00e9",
+    "phone": "(416) 679-4061",
+    "location_type": "restaurant"
+  },
+  {
+    "name": "McDonald's Spadina",
+    "address": "160 Spadina Avenue, Toronto, ON M5T 2C2",
+    "coordinates": {
+      "lat": 43.6536,
+      "lon": -79.3951
+    },
+    "operating_hours": "24 hours",
+    "services": "Drive-thru, Mobile Order, McCaf\u00e9, PlayPlace",
+    "phone": "(416) 991-2013",
+    "location_type": "restaurant"
+  },
+  {
+    "name": "McDonald's Yonge Midtown",
+    "address": "675 Yonge Street, Toronto, ON M4Y 1T2",
+    "coordinates": {
+      "lat": 43.6677,
+      "lon": -79.3865
+    },
+    "operating_hours": "5:00 AM - 11:00 PM",
+    "services": "Drive-thru, McDelivery, McCaf\u00e9, PlayPlace",
+    "phone": "(416) 401-7405",
+    "location_type": "restaurant"
+  },
+  {
+    "name": "McDonald's Bathurst",
+    "address": "344 Bathurst Street, Toronto, ON M5T 2S3",
+    "coordinates": {
+      "lat": 43.6558,
+      "lon": -79.4026
+    },
+    "operating_hours": "6:00 AM - 10:00 PM",
+    "services": "Drive-thru, McCaf\u00e9",
+    "phone": "(416) 306-9994",
+    "location_type": "restaurant"
+  },
+  {
+    "name": "McDonald's Bloor East",
+    "address": "345 Bloor Street East, Toronto, ON M4W 3J6",
+    "coordinates": {
+      "lat": 43.6719,
+      "lon": -79.3832
+    },
+    "operating_hours": "24 hours",
+    "services": "Drive-thru, Mobile Order, McDelivery",
+    "phone": "(416) 440-4118",
+    "location_type": "restaurant"
+  },
+  {
+    "name": "McDonald's St Clair East",
+    "address": "710 St. Clair W., Toronto, ON M6C 1B2",
+    "coordinates": {
+      "lat": 43.6781,
+      "lon": -79.4234
+    },
+    "operating_hours": "6:00 AM - 11:00 PM",
+    "services": "Drive-thru, McDelivery, McCaf\u00e9, PlayPlace",
+    "phone": "(416) 730-6745",
+    "location_type": "restaurant"
+  },
+  {
+    "name": "McDonald's Dundas West",
+    "address": "2365 Dundas Street West, Toronto, ON M6P 1W7",
+    "coordinates": {
+      "lat": 43.6681,
+      "lon": -79.4589
+    },
+    "operating_hours": "6:00 AM - 10:00 PM",
+    "services": "Drive-thru, Mobile Order, McCaf\u00e9, PlayPlace",
+    "phone": "(416) 852-4335",
+    "location_type": "restaurant"
+  },
+  {
+    "name": "McDonald's Eglinton East",
+    "address": "20 Eglinton Ave E, Toronto, ON M4P 1A9",
+    "coordinates": {
+      "lat": 43.7058,
+      "lon": -79.3962
+    },
+    "operating_hours": "6:00 AM - 11:00 PM",
+    "services": "Drive-thru, Mobile Order, McCaf\u00e9, 24/7",
+    "phone": "(416) 309-6899",
+    "location_type": "restaurant"
+  },
+  {
+    "name": "McDonald's Jane Street",
+    "address": "2020 Jane Street, North York, ON M9N 2V3",
+    "coordinates": {
+      "lat": 43.7234,
+      "lon": -79.5178
+    },
+    "operating_hours": "6:00 AM - 12:00 AM",
+    "services": "Mobile Order, McDelivery, PlayPlace",
+    "phone": "(416) 322-7849",
+    "location_type": "restaurant"
+  },
+  {
+    "name": "McDonald's Bay Street",
+    "address": "181 Bay St, Toronto, ON M5J 2S1",
+    "coordinates": {
+      "lat": 43.6479,
+      "lon": -79.3789
+    },
+    "operating_hours": "5:00 AM - 11:00 PM",
+    "services": "Drive-thru, Mobile Order, McDelivery",
+    "phone": "(416) 682-7517",
+    "location_type": "restaurant"
+  },
+  {
+    "name": "McDonald's Wellington",
+    "address": "100 Wellington St. West, Toronto, ON M5J 2N7",
+    "coordinates": {
+      "lat": 43.6469,
+      "lon": -79.3823
+    },
+    "operating_hours": "6:00 AM - 11:00 PM",
+    "services": "Drive-thru, Mobile Order, McCaf\u00e9, PlayPlace",
+    "phone": "(416) 240-9509",
+    "location_type": "restaurant"
+  },
+  {
+    "name": "McDonald's Eaton Centre",
+    "address": "Urban Eatery, Toronto, ON M5B 2L9",
+    "coordinates": {
+      "lat": 43.6544,
+      "lon": -79.3807
+    },
+    "operating_hours": "6:00 AM - 11:00 PM",
+    "services": "Drive-thru, Mobile Order, McDelivery, McCaf\u00e9",
+    "phone": "(416) 206-8568",
+    "location_type": "restaurant"
+  },
+  {
+    "name": "McDonald's Union Station",
+    "address": "200 Front Street West, Toronto, ON M5V 3K2",
+    "coordinates": {
+      "lat": 43.6458,
+      "lon": -79.3806
+    },
+    "operating_hours": "5:00 AM - 11:00 PM",
+    "services": "Drive-thru, McDelivery, McCaf\u00e9",
+    "phone": "(416) 938-2524",
+    "location_type": "restaurant"
+  },
+  {
+    "name": "McDonald's Yonge College",
+    "address": "470 Yonge Street, Toronto, ON M4Y 1X5",
+    "coordinates": {
+      "lat": 43.6612,
+      "lon": -79.3843
+    },
+    "operating_hours": "6:00 AM - 11:00 PM",
+    "services": "Drive-thru, Mobile Order, McDelivery, McCaf\u00e9",
+    "phone": "(416) 396-8479",
+    "location_type": "restaurant"
+  },
+  {
+    "name": "McDonald's Yonge Wellesley",
+    "address": "552 Yonge Street, Toronto, ON M4Y 1Y8",
+    "coordinates": {
+      "lat": 43.6643,
+      "lon": -79.3856
+    },
+    "operating_hours": "6:00 AM - 11:00 PM",
+    "services": "Drive-thru, Mobile Order, McDelivery",
+    "phone": "(416) 684-4826",
+    "location_type": "restaurant"
+  },
+  {
+    "name": "McDonald's St Clair Yonge",
+    "address": "11 St. Clair Ave East, Toronto, ON M4T 1L8",
+    "coordinates": {
+      "lat": 43.6891,
+      "lon": -79.3931
+    },
+    "operating_hours": "6:00 AM - 12:00 AM",
+    "services": "Mobile Order, McCaf\u00e9, 24/7",
+    "phone": "(416) 737-9523",
+    "location_type": "restaurant"
+  },
+  {
+    "name": "McDonald's Dufferin Mall",
+    "address": "900 Dufferin Street, Toronto, ON M6H 4E9",
+    "coordinates": {
+      "lat": 43.6633,
+      "lon": -79.4356
+    },
+    "operating_hours": "6:00 AM - 10:00 PM",
+    "services": "Drive-thru, Mobile Order, McDelivery, McCaf\u00e9, PlayPlace",
+    "phone": "(416) 385-4956",
+    "location_type": "restaurant"
+  },
+  {
+    "name": "McDonald's Danforth",
+    "address": "1735 Danforth Avenue, Toronto, ON M4C 1H9",
+    "coordinates": {
+      "lat": 43.6889,
+      "lon": -79.3234
+    },
+    "operating_hours": "6:00 AM - 11:00 PM",
+    "services": "Drive-thru, Mobile Order, McDelivery, 24/7",
+    "phone": "(416) 682-2890",
+    "location_type": "restaurant"
+  },
+  {
+    "name": "McDonald's Don Mills",
+    "address": "747 Don Mills Road, North York, ON M3C 1T2",
+    "coordinates": {
+      "lat": 43.7234,
+      "lon": -79.3412
+    },
+    "operating_hours": "6:00 AM - 12:00 AM",
+    "services": "Drive-thru, McDelivery, PlayPlace",
+    "phone": "(416) 500-6588",
+    "location_type": "restaurant"
+  },
+  {
+    "name": "McDonald's St Clair Keele",
+    "address": "2525 St. Clair Ave. West, Toronto, ON M6N 4Z5",
+    "coordinates": {
+      "lat": 43.6781,
+      "lon": -79.4712
+    },
+    "operating_hours": "24 hours",
+    "services": "Drive-thru, Mobile Order, McCaf\u00e9, PlayPlace",
+    "phone": "(416) 812-2664",
+    "location_type": "restaurant"
+  },
+  {
+    "name": "McDonald's Lawrence West",
+    "address": "1305 Lawrence Avenue West, Toronto, ON M6L 1A5",
+    "coordinates": {
+      "lat": 43.7234,
+      "lon": -79.4456
+    },
+    "operating_hours": "6:00 AM - 10:00 PM",
+    "services": "Drive-thru, Mobile Order, McDelivery, McCaf\u00e9",
+    "phone": "(416) 435-2887",
+    "location_type": "restaurant"
+  },
+  {
+    "name": "McDonald's York Mills",
+    "address": "808 York Mills Rd., North York, ON M3B 1X8",
+    "coordinates": {
+      "lat": 43.7578,
+      "lon": -79.3623
+    },
+    "operating_hours": "24 hours",
+    "services": "Drive-thru, Mobile Order, McDelivery",
+    "phone": "(416) 546-6153",
+    "location_type": "restaurant"
+  },
+  {
+    "name": "McDonald's Weston Road",
+    "address": "2625F Weston Road, North York, ON M9N 3X2",
+    "coordinates": {
+      "lat": 43.7234,
+      "lon": -79.5234
+    },
+    "operating_hours": "24 hours",
+    "services": "McCaf\u00e9",
+    "phone": "(416) 353-2092",
+    "location_type": "restaurant"
+  },
+  {
+    "name": "McDonald's Overlea",
+    "address": "45 Overlea Blvd, Toronto, ON M4H 1C3",
+    "coordinates": {
+      "lat": 43.7089,
+      "lon": -79.3445
+    },
+    "operating_hours": "24 hours",
+    "services": "Drive-thru, Mobile Order, McDelivery",
+    "phone": "(416) 448-9121",
+    "location_type": "restaurant"
+  },
+  {
+    "name": "McDonald's Square One",
+    "address": "100 City Centre Dr, Mississauga, ON L5B 2C9",
+    "coordinates": {
+      "lat": 43.593,
+      "lon": -79.6412
+    },
+    "operating_hours": "6:00 AM - 11:00 PM",
+    "services": "Drive-thru, Mobile Order, McDelivery, PlayPlace, 24/7",
+    "phone": "(416) 447-5224",
+    "location_type": "restaurant"
+  },
+  {
+    "name": "McDonald's Dundas Mississauga",
+    "address": "3045 Dundas St W, Mississauga, ON L5L 3R8",
+    "coordinates": {
+      "lat": 43.5661,
+      "lon": -79.6845
+    },
+    "operating_hours": "24 hours",
+    "services": "Drive-thru, McDelivery, McCaf\u00e9, PlayPlace",
+    "phone": "(416) 405-5407",
+    "location_type": "restaurant"
+  },
+  {
+    "name": "McDonald's Hurontario",
+    "address": "1585 Hurontario St, Mississauga, ON L5G 3H7",
+    "coordinates": {
+      "lat": 43.5789,
+      "lon": -79.6234
+    },
+    "operating_hours": "6:00 AM - 10:00 PM",
+    "services": "Drive-thru, Mobile Order, McDelivery",
+    "phone": "(416) 571-2886",
+    "location_type": "restaurant"
+  },
+  {
+    "name": "McDonald's Heartland",
+    "address": "5650 Hurontario St, Mississauga, ON L5R 0C7",
+    "coordinates": {
+      "lat": 43.5234,
+      "lon": -79.6567
+    },
+    "operating_hours": "24 hours",
+    "services": "Drive-thru, Mobile Order, McDelivery",
+    "phone": "(416) 513-1303",
+    "location_type": "restaurant"
+  },
+  {
+    "name": "McDonald's Erin Mills",
+    "address": "5100 Erin Mills Pkwy, Mississauga, ON L5M 4Z5",
+    "coordinates": {
+      "lat": 43.5456,
+      "lon": -79.7234
+    },
+    "operating_hours": "6:00 AM - 11:00 PM",
+    "services": "Drive-thru, Mobile Order, McDelivery",
+    "phone": "(416) 966-9081",
+    "location_type": "restaurant"
+  },
+  {
+    "name": "McDonald's Airport Road",
+    "address": "6677 Airport Rd, Mississauga, ON L4V 1E4",
+    "coordinates": {
+      "lat": 43.6789,
+      "lon": -79.6123
+    },
+    "operating_hours": "6:00 AM - 11:00 PM",
+    "services": "Drive-thru, Mobile Order, McCaf\u00e9, 24/7",
+    "phone": "(416) 937-3803",
+    "location_type": "restaurant"
+  },
+  {
+    "name": "McDonald's Queen Brampton",
+    "address": "25 Queen St E, Brampton, ON L6V 1A2",
+    "coordinates": {
+      "lat": 43.6831,
+      "lon": -79.7567
+    },
+    "operating_hours": "24 hours",
+    "services": "Drive-thru, McDelivery, McCaf\u00e9, PlayPlace",
+    "phone": "(416) 494-9225",
+    "location_type": "restaurant"
+  },
+  {
+    "name": "McDonald's Bramalea",
+    "address": "25 Peel Centre Dr, Brampton, ON L6T 3R5",
+    "coordinates": {
+      "lat": 43.7234,
+      "lon": -79.7456
+    },
+    "operating_hours": "6:00 AM - 12:00 AM",
+    "services": "Drive-thru, McDelivery, McCaf\u00e9",
+    "phone": "(416) 617-2644",
+    "location_type": "restaurant"
+  },
+  {
+    "name": "McDonald's Steeles Brampton",
+    "address": "499 Steeles Ave E, Brampton, ON L6W 4P7",
+    "coordinates": {
+      "lat": 43.7456,
+      "lon": -79.7123
+    },
+    "operating_hours": "6:00 AM - 12:00 AM",
+    "services": "Drive-thru, Mobile Order, McDelivery, PlayPlace",
+    "phone": "(416) 291-6529",
+    "location_type": "restaurant"
+  },
+  {
+    "name": "McDonald's Bovaird",
+    "address": "315 Bovaird Dr E, Brampton, ON L6V 1N7",
+    "coordinates": {
+      "lat": 43.7123,
+      "lon": -79.7345
+    },
+    "operating_hours": "5:00 AM - 11:00 PM",
+    "services": "Drive-thru, McDelivery, McCaf\u00e9",
+    "phone": "(416) 270-8841",
+    "location_type": "restaurant"
+  },
+  {
+    "name": "McDonald's Highway 7",
+    "address": "3601 Highway 7 E, Markham, ON L3R 0M3",
+    "coordinates": {
+      "lat": 43.8456,
+      "lon": -79.3234
+    },
+    "operating_hours": "5:00 AM - 11:00 PM",
+    "services": "Drive-thru, Mobile Order, McDelivery",
+    "phone": "(416) 441-1238",
+    "location_type": "restaurant"
+  },
+  {
+    "name": "McDonald's Main Markham",
+    "address": "9255 Markham Rd, Markham, ON L6E 1A1",
+    "coordinates": {
+      "lat": 43.8234,
+      "lon": -79.2567
+    },
+    "operating_hours": "6:00 AM - 11:00 PM",
+    "services": "Drive-thru, Mobile Order, 24/7",
+    "phone": "(416) 541-5205",
+    "location_type": "restaurant"
+  },
+  {
+    "name": "McDonald's Steeles Markham",
+    "address": "8601 Warden Ave, Markham, ON L6G 1A5",
+    "coordinates": {
+      "lat": 43.8567,
+      "lon": -79.3123
+    },
+    "operating_hours": "6:00 AM - 12:00 AM",
+    "services": "Drive-thru, Mobile Order, McDelivery, McCaf\u00e9, PlayPlace",
+    "phone": "(416) 495-7789",
+    "location_type": "restaurant"
+  },
+  {
+    "name": "McDonald's 16th Avenue",
+    "address": "5762 16th Ave, Markham, ON L3P 7Y1",
+    "coordinates": {
+      "lat": 43.8789,
+      "lon": -79.3456
+    },
+    "operating_hours": "24 hours",
+    "services": "Drive-thru, Mobile Order, McCaf\u00e9, PlayPlace",
+    "phone": "(416) 409-8656",
+    "location_type": "restaurant"
+  },
+  {
+    "name": "McDonald's Yonge Richmond Hill",
+    "address": "9625 Yonge St, Richmond Hill, ON L4C 5T2",
+    "coordinates": {
+      "lat": 43.8567,
+      "lon": -79.4234
+    },
+    "operating_hours": "24 hours",
+    "services": "Drive-thru, Mobile Order, McDelivery, PlayPlace, 24/7",
+    "phone": "(416) 658-9906",
+    "location_type": "restaurant"
+  },
+  {
+    "name": "McDonald's Bayview Richmond Hill",
+    "address": "600 Hwy 7 E, Richmond Hill, ON L4B 2N7",
+    "coordinates": {
+      "lat": 43.8234,
+      "lon": -79.3789
+    },
+    "operating_hours": "6:00 AM - 11:00 PM",
+    "services": "Drive-thru, Mobile Order, McDelivery, McCaf\u00e9",
+    "phone": "(416) 878-6696",
+    "location_type": "restaurant"
+  },
+  {
+    "name": "McDonald's Trafalgar",
+    "address": "2501 Third Line, Oakville, ON L6M 5A9",
+    "coordinates": {
+      "lat": 43.4567,
+      "lon": -79.7234
+    },
+    "operating_hours": "6:00 AM - 11:00 PM",
+    "services": "Drive-thru, Mobile Order, McDelivery, McCaf\u00e9, PlayPlace",
+    "phone": "(416) 859-2260",
+    "location_type": "restaurant"
+  },
+  {
+    "name": "McDonald's QEW Oakville",
+    "address": "333 North Service Rd W, Oakville, ON L6M 2S2",
+    "coordinates": {
+      "lat": 43.4234,
+      "lon": -79.6789
+    },
+    "operating_hours": "24 hours",
+    "services": "Drive-thru, Mobile Order, McCaf\u00e9, PlayPlace",
+    "phone": "(416) 775-9416",
+    "location_type": "restaurant"
+  }
+]

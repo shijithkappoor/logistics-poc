@@ -12,6 +12,8 @@ from inventory_models import (
     FeasibilityRequest, FeasibilityResponse, LocationType
 )
 from inventory_simulator import InventorySimulator
+import random
+import uuid
 
 # Set up logging
 logging.basicConfig(level=logging.INFO)
@@ -231,3 +233,40 @@ async def get_metrics():
     except Exception as e:
         logger.error(f"Error retrieving metrics: {e}")
         raise HTTPException(status_code=500, detail="Error retrieving metrics")
+
+
+@router.post("/generate", response_model=PostEventsResponse)
+async def generate_stock_events(count: int = Query(1, ge=1, le=50, description="Number of simulated events to generate")) -> PostEventsResponse:
+    """Generate a small batch of simulated consume events and apply them via the simulator.
+
+    This is a convenience/debug endpoint to trigger inventory changes without using the background feeder.
+    """
+    try:
+        franchisees = ['FRAN_001', 'FRAN_002', 'FRAN_003', 'FRAN_004', 'FRAN_005']
+        sample_items = [
+            "BREAD_WHITE", "MILK_2PCT", "EGGS_DOZEN", "BUTTER_SALTED",
+            "CHEESE_CHEDDAR", "YOGURT_VANILLA", "APPLES_GALA", "BANANAS"
+        ]
+
+        events = []
+        for _ in range(count):
+            item = random.choice(sample_items)
+            fran = random.choice(franchisees)
+            evt = {
+                'id': str(uuid.uuid4()),
+                'type': 'consume',
+                'ts': datetime.utcnow(),
+                'franchisee_id': fran,
+                'item_id': item,
+                'qty': round(random.uniform(0.5, 5.0), 2)
+            }
+            events.append(evt)
+
+        logger.info(f"API generator: creating {len(events)} simulated consume events")
+        response = simulator.process_events(events)
+        logger.info(f"API generator: processed events accepted={response.accepted} rejected={len(response.rejected)}")
+        return response
+
+    except Exception as e:
+        logger.error(f"Error generating simulated events: {e}")
+        raise HTTPException(status_code=500, detail="Error generating simulated events")

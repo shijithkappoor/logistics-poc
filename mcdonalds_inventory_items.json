@@ -1,0 +1,471 @@
+[
+  {
+    "item_id": "BIG_MAC",
+    "name": "Big Mac",
+    "category": "burgers",
+    "unit": "each",
+    "shelf_life_days": 1
+  },
+  {
+    "item_id": "QUARTER_POUNDER",
+    "name": "Quarter Pounder with Cheese",
+    "category": "burgers",
+    "unit": "each",
+    "shelf_life_days": 1
+  },
+  {
+    "item_id": "CHEESEBURGER",
+    "name": "Cheeseburger",
+    "category": "burgers",
+    "unit": "each",
+    "shelf_life_days": 1
+  },
+  {
+    "item_id": "HAMBURGER",
+    "name": "Hamburger",
+    "category": "burgers",
+    "unit": "each",
+    "shelf_life_days": 1
+  },
+  {
+    "item_id": "DOUBLE_CHEESE",
+    "name": "Double Cheeseburger",
+    "category": "burgers",
+    "unit": "each",
+    "shelf_life_days": 1
+  },
+  {
+    "item_id": "MCCHICKEN",
+    "name": "McChicken",
+    "category": "chicken",
+    "unit": "each",
+    "shelf_life_days": 1
+  },
+  {
+    "item_id": "SPICY_MCCHICKEN",
+    "name": "Spicy McChicken",
+    "category": "chicken",
+    "unit": "each",
+    "shelf_life_days": 1
+  },
+  {
+    "item_id": "CRISPY_CHICKEN",
+    "name": "Crispy Chicken Sandwich",
+    "category": "chicken",
+    "unit": "each",
+    "shelf_life_days": 1
+  },
+  {
+    "item_id": "FILET_O_FISH",
+    "name": "Filet-O-Fish",
+    "category": "fish",
+    "unit": "each",
+    "shelf_life_days": 1
+  },
+  {
+    "item_id": "NUGGETS_4PC",
+    "name": "Chicken McNuggets 4pc",
+    "category": "nuggets",
+    "unit": "box",
+    "shelf_life_days": 1
+  },
+  {
+    "item_id": "NUGGETS_6PC",
+    "name": "Chicken McNuggets 6pc",
+    "category": "nuggets",
+    "unit": "box",
+    "shelf_life_days": 1
+  },
+  {
+    "item_id": "NUGGETS_10PC",
+    "name": "Chicken McNuggets 10pc",
+    "category": "nuggets",
+    "unit": "box",
+    "shelf_life_days": 1
+  },
+  {
+    "item_id": "NUGGETS_20PC",
+    "name": "Chicken McNuggets 20pc",
+    "category": "nuggets",
+    "unit": "box",
+    "shelf_life_days": 1
+  },
+  {
+    "item_id": "EGG_MCMUFFIN",
+    "name": "Egg McMuffin",
+    "category": "breakfast",
+    "unit": "each",
+    "shelf_life_days": 1
+  },
+  {
+    "item_id": "SAUSAGE_MCMUFFIN",
+    "name": "Sausage McMuffin",
+    "category": "breakfast",
+    "unit": "each",
+    "shelf_life_days": 1
+  },
+  {
+    "item_id": "HOTCAKES",
+    "name": "Hotcakes",
+    "category": "breakfast",
+    "unit": "serving",
+    "shelf_life_days": 1
+  },
+  {
+    "item_id": "HASH_BROWNS",
+    "name": "Hash Browns",
+    "category": "breakfast",
+    "unit": "each",
+    "shelf_life_days": 1
+  },
+  {
+    "item_id": "FRIES_SMALL",
+    "name": "World Famous Fries Small",
+    "category": "sides",
+    "unit": "serving",
+    "shelf_life_days": 1
+  },
+  {
+    "item_id": "FRIES_MEDIUM",
+    "name": "World Famous Fries Medium",
+    "category": "sides",
+    "unit": "serving",
+    "shelf_life_days": 1
+  },
+  {
+    "item_id": "FRIES_LARGE",
+    "name": "World Famous Fries Large",
+    "category": "sides",
+    "unit": "serving",
+    "shelf_life_days": 1
+  },
+  {
+    "item_id": "APPLE_SLICES",
+    "name": "Apple Slices",
+    "category": "sides",
+    "unit": "bag",
+    "shelf_life_days": 3
+  },
+  {
+    "item_id": "MCFLURRY_OREO",
+    "name": "McFlurry with Oreo Cookies",
+    "category": "desserts",
+    "unit": "cup",
+    "shelf_life_days": 1
+  },
+  {
+    "item_id": "MCFLURRY_MMNO",
+    "name": "McFlurry with M&M's",
+    "category": "desserts",
+    "unit": "cup",
+    "shelf_life_days": 1
+  },
+  {
+    "item_id": "APPLE_PIE",
+    "name": "Baked Apple Pie",
+    "category": "desserts",
+    "unit": "each",
+    "shelf_life_days": 2
+  },
+  {
+    "item_id": "COOKIES",
+    "name": "Chocolate Chip Cookies",
+    "category": "desserts",
+    "unit": "box",
+    "shelf_life_days": 7
+  },
+  {
+    "item_id": "BEEF_PATTY_REG",
+    "name": "Regular Beef Patty",
+    "category": "meat",
+    "unit": "kg",
+    "shelf_life_days": 3
+  },
+  {
+    "item_id": "BEEF_PATTY_QTR",
+    "name": "Quarter Pound Beef Patty",
+    "category": "meat",
+    "unit": "kg",
+    "shelf_life_days": 3
+  },
+  {
+    "item_id": "CHICKEN_BREAST",
+    "name": "Chicken Breast",
+    "category": "meat",
+    "unit": "kg",
+    "shelf_life_days": 2
+  },
+  {
+    "item_id": "CHICKEN_NUGGET_MIX",
+    "name": "Chicken Nugget Mix",
+    "category": "meat",
+    "unit": "kg",
+    "shelf_life_days": 2
+  },
+  {
+    "item_id": "FISH_FILLET",
+    "name": "Fish Fillet",
+    "category": "meat",
+    "unit": "kg",
+    "shelf_life_days": 2
+  },
+  {
+    "item_id": "SAUSAGE_PATTY",
+    "name": "Sausage Patty",
+    "category": "meat",
+    "unit": "kg",
+    "shelf_life_days": 5
+  },
+  {
+    "item_id": "EGGS_LIQUID",
+    "name": "Liquid Eggs",
+    "category": "dairy",
+    "unit": "liters",
+    "shelf_life_days": 7
+  },
+  {
+    "item_id": "CHEESE_SLICE",
+    "name": "American Cheese Slices",
+    "category": "dairy",
+    "unit": "kg",
+    "shelf_life_days": 14
+  },
+  {
+    "item_id": "MILK_2PCT",
+    "name": "2% Milk",
+    "category": "dairy",
+    "unit": "liters",
+    "shelf_life_days": 7
+  },
+  {
+    "item_id": "BUTTER",
+    "name": "Butter",
+    "category": "dairy",
+    "unit": "kg",
+    "shelf_life_days": 30
+  },
+  {
+    "item_id": "ICE_CREAM_VANILLA",
+    "name": "Vanilla Ice Cream Mix",
+    "category": "dairy",
+    "unit": "liters",
+    "shelf_life_days": 14
+  },
+  {
+    "item_id": "LETTUCE",
+    "name": "Iceberg Lettuce",
+    "category": "produce",
+    "unit": "kg",
+    "shelf_life_days": 5
+  },
+  {
+    "item_id": "ONIONS",
+    "name": "Diced Onions",
+    "category": "produce",
+    "unit": "kg",
+    "shelf_life_days": 7
+  },
+  {
+    "item_id": "PICKLES",
+    "name": "Pickle Slices",
+    "category": "produce",
+    "unit": "kg",
+    "shelf_life_days": 30
+  },
+  {
+    "item_id": "TOMATOES",
+    "name": "Tomato Slices",
+    "category": "produce",
+    "unit": "kg",
+    "shelf_life_days": 3
+  },
+  {
+    "item_id": "APPLES",
+    "name": "Apple Slices",
+    "category": "produce",
+    "unit": "kg",
+    "shelf_life_days": 5
+  },
+  {
+    "item_id": "FRIES_FROZEN",
+    "name": "Frozen French Fries",
+    "category": "frozen",
+    "unit": "kg",
+    "shelf_life_days": 365
+  },
+  {
+    "item_id": "HASH_BROWN_FROZEN",
+    "name": "Frozen Hash Browns",
+    "category": "frozen",
+    "unit": "kg",
+    "shelf_life_days": 365
+  },
+  {
+    "item_id": "APPLE_PIE_FROZEN",
+    "name": "Frozen Apple Pies",
+    "category": "frozen",
+    "unit": "kg",
+    "shelf_life_days": 180
+  },
+  {
+    "item_id": "BUN_BIG_MAC",
+    "name": "Big Mac Buns",
+    "category": "bakery",
+    "unit": "pieces",
+    "shelf_life_days": 3
+  },
+  {
+    "item_id": "BUN_QUARTER",
+    "name": "Quarter Pounder Buns",
+    "category": "bakery",
+    "unit": "pieces",
+    "shelf_life_days": 3
+  },
+  {
+    "item_id": "BUN_REGULAR",
+    "name": "Regular Hamburger Buns",
+    "category": "bakery",
+    "unit": "pieces",
+    "shelf_life_days": 3
+  },
+  {
+    "item_id": "MUFFIN_ENGLISH",
+    "name": "English Muffins",
+    "category": "bakery",
+    "unit": "pieces",
+    "shelf_life_days": 5
+  },
+  {
+    "item_id": "KETCHUP",
+    "name": "Ketchup",
+    "category": "condiments",
+    "unit": "liters",
+    "shelf_life_days": 90
+  },
+  {
+    "item_id": "MUSTARD",
+    "name": "Yellow Mustard",
+    "category": "condiments",
+    "unit": "liters",
+    "shelf_life_days": 90
+  },
+  {
+    "item_id": "MAYO",
+    "name": "Mayonnaise",
+    "category": "condiments",
+    "unit": "liters",
+    "shelf_life_days": 60
+  },
+  {
+    "item_id": "BIG_MAC_SAUCE",
+    "name": "Big Mac Special Sauce",
+    "category": "condiments",
+    "unit": "liters",
+    "shelf_life_days": 30
+  },
+  {
+    "item_id": "TARTAR_SAUCE",
+    "name": "Tartar Sauce",
+    "category": "condiments",
+    "unit": "liters",
+    "shelf_life_days": 30
+  },
+  {
+    "item_id": "COCA_COLA_SYRUP",
+    "name": "Coca-Cola Syrup",
+    "category": "beverages",
+    "unit": "liters",
+    "shelf_life_days": 120
+  },
+  {
+    "item_id": "SPRITE_SYRUP",
+    "name": "Sprite Syrup",
+    "category": "beverages",
+    "unit": "liters",
+    "shelf_life_days": 120
+  },
+  {
+    "item_id": "ORANGE_JUICE",
+    "name": "Orange Juice",
+    "category": "beverages",
+    "unit": "liters",
+    "shelf_life_days": 14
+  },
+  {
+    "item_id": "COFFEE_BEANS",
+    "name": "McCaf\u00e9 Coffee Beans",
+    "category": "beverages",
+    "unit": "kg",
+    "shelf_life_days": 180
+  },
+  {
+    "item_id": "CUP_SMALL",
+    "name": "Small Drink Cups",
+    "category": "packaging",
+    "unit": "pieces",
+    "shelf_life_days": 365
+  },
+  {
+    "item_id": "CUP_MEDIUM",
+    "name": "Medium Drink Cups",
+    "category": "packaging",
+    "unit": "pieces",
+    "shelf_life_days": 365
+  },
+  {
+    "item_id": "CUP_LARGE",
+    "name": "Large Drink Cups",
+    "category": "packaging",
+    "unit": "pieces",
+    "shelf_life_days": 365
+  },
+  {
+    "item_id": "BOX_NUGGETS",
+    "name": "Chicken McNuggets Boxes",
+    "category": "packaging",
+    "unit": "pieces",
+    "shelf_life_days": 365
+  },
+  {
+    "item_id": "BAG_FRIES",
+    "name": "French Fries Bags",
+    "category": "packaging",
+    "unit": "pieces",
+    "shelf_life_days": 365
+  },
+  {
+    "item_id": "WRAPPER_BURGER",
+    "name": "Burger Wrappers",
+    "category": "packaging",
+    "unit": "pieces",
+    "shelf_life_days": 365
+  },
+  {
+    "item_id": "BAG_PAPER",
+    "name": "Paper Bags",
+    "category": "packaging",
+    "unit": "pieces",
+    "shelf_life_days": 365
+  },
+  {
+    "item_id": "NAPKINS",
+    "name": "Napkins",
+    "category": "packaging",
+    "unit": "pieces",
+    "shelf_life_days": 365
+  },
+  {
+    "item_id": "STRAWS",
+    "name": "Drinking Straws",
+    "category": "packaging",
+    "unit": "pieces",
+    "shelf_life_days": 365
+  },
+  {
+    "item_id": "LIDS",
+    "name": "Drink Cup Lids",
+    "category": "packaging",
+    "unit": "pieces",
+    "shelf_life_days": 365
+  }
+]

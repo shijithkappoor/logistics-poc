@@ -15,6 +15,13 @@ from inventory_models import (
     FeasibilityRequest, FeasibilityResponse, InsufficientStock, InsufficientFeasibility,
     RejectedEvent, ReservationLine, FeasibilityLine
 )
+# Import DB helper to persist simulator updates
+try:
+    from seed_mcdonalds_inventory import get_db_connection
+except Exception:
+    # Fallback - if seeder module is not available, we'll attempt to import psycopg2 directly
+    get_db_connection = None
+    pass
 
 logger = logging.getLogger(__name__)
 
@@ -254,22 +261,38 @@ class InventorySimulator:
         with self.state.lock:
             accepted = 0
             rejected = []
-            
-            for event in events:
+
+            # Normalize events: accept either StockEvent instances or plain dicts
+            normalized_events: List[StockEvent] = []
+            for evt in events:
+                if isinstance(evt, dict):
+                    try:
+                        normalized_events.append(StockEvent(**evt))
+                    except Exception as conv_err:
+                        logger.error(f"Failed to convert event dict to StockEvent: {conv_err} - event={evt}")
+                        # record rejection for the malformed event
+                        rejected.append(RejectedEvent(id=str(evt.get('id', '<unknown>')), error=str(conv_err)))
+                else:
+                    normalized_events.append(evt)
+
+            for event in normalized_events:
                 try:
                     self._validate_event(event)
                     self._apply_event(event)
                     self.state.events.append(event)
                     accepted += 1
-                    logger.info(f"Applied event {event.id}: {event.type} {event.qty} of {event.item_id}")
-                    
+                    event_id = getattr(event, 'id', getattr(event, 'get', lambda k, d=None: d)('id', '<unknown>'))
+                    logger.info(f"Applied event {event_id}: {event.type} {event.qty} of {event.item_id}")
+
                 except Exception as e:
+                    # If event is a dict (malformed), ensure we safely extract an id
+                    event_id = getattr(event, 'id', getattr(event, 'get', lambda k, d=None: d)('id', '<unknown>'))
                     rejected.append(RejectedEvent(
-                        id=event.id,
+                        id=str(event_id),
                         error=str(e)
                     ))
-                    logger.error(f"Rejected event {event.id}: {e}")
-            
+                    logger.error(f"Rejected event {event_id}: {e}")
+
             return PostEventsResponse(
                 accepted=accepted,
                 rejected=rejected
@@ -291,20 +314,33 @@ class InventorySimulator:
         """Apply stock event to inventory"""
         if event.type == StockEventType.REPLENISH:
             # Add stock to warehouse
-            key = self._get_stock_key(LocationType.WAREHOUSE, event.warehouse_id, event.item_id)
+            assert event.warehouse_id is not None, "warehouse_id is required for replenish"
+            key = self._get_stock_key(LocationType.WAREHOUSE, str(event.warehouse_id), event.item_id)
             current_qty = self.state.stock.get(key, 0.0)
             self.state.stock[key] = current_qty + event.qty
+            # Persist change to DB (best-effort)
+            try:
+                self._persist_stock(key, self.state.stock[key])
+            except Exception:
+                logger.exception("Failed to persist replenish event to DB")
             
         elif event.type == StockEventType.CONSUME:
             # Remove stock from franchisee
-            key = self._get_stock_key(LocationType.FRANCHISEE, event.franchisee_id, event.item_id)
+            assert event.franchisee_id is not None, "franchisee_id is required for consume"
+            key = self._get_stock_key(LocationType.FRANCHISEE, str(event.franchisee_id), event.item_id)
             current_qty = self.state.stock.get(key, 0.0)
             self.state.stock[key] = max(0.0, current_qty - event.qty)
+            # Persist change to DB (best-effort)
+            try:
+                self._persist_stock(key, self.state.stock[key])
+            except Exception:
+                logger.exception("Failed to persist consume event to DB")
             
         elif event.type == StockEventType.TRANSFER:
             # Move stock between warehouses
-            from_key = self._get_stock_key(LocationType.WAREHOUSE, event.from_warehouse_id, event.item_id)
-            to_key = self._get_stock_key(LocationType.WAREHOUSE, event.to_warehouse_id, event.item_id)
+            assert event.from_warehouse_id is not None and event.to_warehouse_id is not None, "transfer requires from_warehouse_id and to_warehouse_id"
+            from_key = self._get_stock_key(LocationType.WAREHOUSE, str(event.from_warehouse_id), event.item_id)
+            to_key = self._get_stock_key(LocationType.WAREHOUSE, str(event.to_warehouse_id), event.item_id)
             
             from_qty = self.state.stock.get(from_key, 0.0)
             to_qty = self.state.stock.get(to_key, 0.0)
@@ -314,17 +350,41 @@ class InventorySimulator:
             
             self.state.stock[from_key] = from_qty - event.qty
             self.state.stock[to_key] = to_qty + event.qty
+            # Persist both sides of transfer
+            try:
+                self._persist_stock(from_key, self.state.stock[from_key])
+                self._persist_stock(to_key, self.state.stock[to_key])
+            except Exception:
+                logger.exception("Failed to persist transfer event to DB")
             
         elif event.type == StockEventType.CORRECTION:
             # Inventory correction - set absolute quantity
             if event.warehouse_id:
-                key = self._get_stock_key(LocationType.WAREHOUSE, event.warehouse_id, event.item_id)
+                key = self._get_stock_key(LocationType.WAREHOUSE, str(event.warehouse_id), event.item_id)
             elif event.franchisee_id:
-                key = self._get_stock_key(LocationType.FRANCHISEE, event.franchisee_id, event.item_id)
+                key = self._get_stock_key(LocationType.FRANCHISEE, str(event.franchisee_id), event.item_id)
             else:
                 raise ValueError("Correction events require warehouse_id or franchisee_id")
             
             self.state.stock[key] = event.qty
+            # Persist correction
+            try:
+                self._persist_stock(key, self.state.stock[key])
+            except Exception:
+                logger.exception("Failed to persist correction event to DB")
+
+    def _persist_stock(self, key: Tuple[str, str, str], qty: float):
+        """Persist a single stock key to the Postgres inventory_stock table (best-effort).
+
+        This is intentionally best-effort and will not raise on DB failures (caller handles logging).
+        """
+        loc_type, loc_id, item_id = key
+        # Use db_helpers to centralize persistence logic (best-effort)
+        try:
+            from db_helpers import upsert_inventory_stock
+            upsert_inventory_stock(key, qty)
+        except Exception:
+            logger.debug("db_helpers not available or upsert failed; skipping persistence")
     
     def check_feasibility(self, request: FeasibilityRequest) -> FeasibilityResponse:
         """Check feasibility of fulfilling orders with current stock"""

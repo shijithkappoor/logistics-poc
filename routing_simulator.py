@@ -5,7 +5,8 @@ import random
 import uuid
 from datetime import datetime, timedelta
 from typing import List, Dict, Tuple, Set
-from dataclasses import dataclass
+from dataclasses import dataclass, field
+import requests
 import math
 
 from routing_models import (
@@ -29,6 +30,8 @@ class OptimizationResult:
     overlap_incidents: List[OverlapIncident]
     kpi: PlanKPI
     runtime_s: float
+    # store route geometries keyed by truck_id (list of [lon, lat] coords)
+    route_geometries: Dict[str, List[List[float]]] = field(default_factory=dict)
 
 
 class RoutingSimulator:
@@ -263,7 +266,7 @@ class RoutingSimulator:
                 
                 # Populate H3 cells
                 route_stops = self.populate_h3_cells(route_stops, request.params.overlap_h3_res)
-                
+
                 # Calculate utilization
                 utilization = self.calculate_utilization(
                     RouteSummary(truck_id=truck.id, stops=route_stops, distance_km=total_distance, 
@@ -278,6 +281,26 @@ class RoutingSimulator:
                     drive_time_min=total_drive_time,
                     utilization_pct=utilization
                 ))
+
+        # Attempt to fetch route geometries via local OSRM for each generated route
+        route_geometries: Dict[str, List[List[float]]] = {}
+        for r in routes:
+            try:
+                coords = ";".join([f"{s.location.lon},{s.location.lat}" for s in r.stops])
+                osrm_url = f"http://127.0.0.1:5000/route/v1/driving/{coords}"
+                resp = requests.get(osrm_url, params={'overview': 'full', 'geometries': 'geojson'}, timeout=2.0)
+                if resp.status_code == 200:
+                    data = resp.json()
+                    if data.get('routes') and data['routes'][0].get('geometry'):
+                        geom_coords = data['routes'][0]['geometry']['coordinates']
+                        # store as [[lon, lat], ...]
+                        route_geometries[r.truck_id] = geom_coords
+                        continue
+            except Exception:
+                pass
+
+            # fallback: straight line between stops
+            route_geometries[r.truck_id] = [[s.location.lon, s.location.lat] for s in r.stops]
         
         # Detect overlaps
         overlap_incidents = self.detect_overlaps(routes)
@@ -297,7 +320,8 @@ class RoutingSimulator:
             routes=routes,
             overlap_incidents=overlap_incidents,
             kpi=kpi,
-            runtime_s=kpi.runtime_s
+            runtime_s=kpi.runtime_s,
+            route_geometries=route_geometries
         )
     
     def _assign_stops_to_depots(self, stops: List, depots: List) -> Dict[str, List]:
